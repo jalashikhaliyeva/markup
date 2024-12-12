@@ -1,0 +1,144 @@
+/* NeonButton.module.css */
+
+.neonButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #181818;
+  background: #fff; /* Initial background color */
+  border-radius: 12px; /* Adjust radius to match the desired style */
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1; /* Ensure it sits above the ::before pseudo-element */
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(213, 160, 236, 0.3);
+  /* box-shadow: 0 0 10px rgba(162, 15, 225, 0.3); */
+  /* gap: 8px; */
+
+  /* Transition for background color */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* The pseudo-element that will show the animated gradient border */
+.neonButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+
+  padding: 2px; /* Thickness of the border */
+  background: linear-gradient(
+    270deg,
+    #ff0ffd,
+    #edb547,
+    #006ffc,
+    #d73de5,
+    #85ae87,
+    #197df7
+  );
+  background-size: 600% 600%;
+  animation: neon-border 6s linear infinite;
+
+  /* Masking to display only the border */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+
+  /* Neon glow */
+  box-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 20px #00ffff;
+
+  z-index: -1; /* Position behind the button content */
+}
+
+/* Keyframes for the animated gradient movement */
+@keyframes neon-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hover state enhancements */
+.neonButton:hover {
+  /* background-color: #7d83b3b7; Smoothly transition to the desired color */
+  background-color: #514DFB; /* Smoothly transition to the desired color */
+  /* background-color: #e4e8f8;  */
+  color: #fff;
+}
+
+/* Text and Icon Animation */
+.buttonContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  user-select: none; /* Prevent text selection during animation */
+}
+
+.buttonText,
+.buttonIcon {
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 1;
+}
+
+/* Define keyframe for moving up, disappearing, and reappearing from bottom */
+@keyframes textMoveUpDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation on hover */
+.neonButton:hover .buttonText {
+  animation: textMoveUpDown 0.6s forwards;
+}
+
+/* Optional: To allow multiple hover triggers */
+.buttonText {
+  animation: none;
+}
+
+/* Optional Active State for Click Feedback */
+.neonButton:active {
+  box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+/* Focus State for Accessibility */
+.neonButton:focus {
+  outline: none;
+  box-shadow: 0 0 10px #dae1fe, 0 0 20px #dae1fe, 0 0 40px #dae1fe;
+}
+
+/* Performance Optimization */
+.buttonText,
+.buttonIcon {
+  will-change: transform, opacity;
+}
