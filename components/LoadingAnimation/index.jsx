@@ -1,3 +1,4 @@
+// components/LoadingAnimation.js
 import React from 'react';
 import Lottie from 'lottie-react';
 import animationData from '@/shared/loading-animation/animationData.json';
