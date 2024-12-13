@@ -1,9 +1,11 @@
 import React from "react";
+import { useRouter } from "next/router"; // Import useRouter for route checking
 import EmblaCarousel from "../EmblaCarousel/EmblaCarousel";
-import Container from "../Container";
-import NavigationTitle from "../NavigationTitle";
 
 function Customers() {
+  const router = useRouter(); // Get the router object
+  const isAboutPage = router.pathname === "/about"; // Check if the current page is the About page
+
   const OPTIONS = { loop: true };
 
   // Static data for slides
@@ -30,7 +32,11 @@ function Customers() {
   const autoScrollLeft = { playOnInit: true, interval: 6000, speed: -1 }; // negative speed for opposite direction
 
   return (
-    <div className="bg-mainGray  dark:bg-bgDarkGray py-custom-space">
+    <div
+      className={`bg-mainGray py-3 md:py-custom-space ${
+        isAboutPage ? "dark:bg-black" : "dark:bg-bgDarkGray"
+      }`}
+    >
       <EmblaCarousel
         slides={slides}
         options={OPTIONS}

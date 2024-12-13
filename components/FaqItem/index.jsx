@@ -50,14 +50,14 @@ function FaqItem({ item, defaultOpen }) {
         onClick={() => setOpen(!open)}
         className="group flex w-full items-center"
       >
-        <span className="text-2xl font-gilroy font-bold flex-1 text-left">
+        <span className="text-2xl dark:text-white font-gilroy font-bold flex-1 text-left">
           {item.question}
         </span>
         <span className="ml-4">
           {open ? (
-            <FiMinus className="size-7 fill-black group-hover:fill-black/50" />
+            <FiMinus className="size-7 dark:fill-white fill-black group-hover:fill-black/50" />
           ) : (
-            <FiPlus className="size-7 fill-black group-hover:fill-black/50" />
+            <FiPlus className="size-7 dark:fill-white fill-black group-hover:fill-black/50" />
           )}
         </span>
       </button>

@@ -27,7 +27,12 @@ module.exports = {
         bgDarkGray : "#1E1E1E",
         cardBgDark:"#2E2E2E",
         darkHoverColor:"#616BEC",
-        darkPurple:"#515ACD"
+        darkPurple:"#515ACD",
+        bgHoverCategory:"#333435"
+      },
+      screens: {
+        'xs': '480px',    // Custom smaller size
+       
       },
       backgroundImage: {
         "custom-gradient":

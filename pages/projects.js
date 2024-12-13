@@ -76,7 +76,7 @@ function Projects() {
       : projectsData.filter((project) => project.category === selectedFilter);
 
   return (
-    <div className="py-20 bg-mainGray">
+    <div className="py-20 bg-mainGray dark:bg-bgDark">
       <main>
         <Header />
         <SingleTitle>Xidmətlərimiz</SingleTitle>

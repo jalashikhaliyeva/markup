@@ -15,23 +15,23 @@ import React from "react";
 
 function About() {
   return (
-    <div className="pt-28">
+    <div className="pt-28 dark:bg-bgDark">
       <main>
         <Header />
 
         {/* Main About Section */}
         <Container>
-          <div className="bg-mainGray rounded-2xl mb-28">
+          <div className="bg-mainGray dark:bg-black  rounded-2xl mb-28">
             {/* <SingleTitle>Haqqımızda</SingleTitle> */}
 
-            <div className="p-9">
-              <h1 className=" text-black font-medium leading-83 flex items-center justify-center text-title ">
+            <div className="p-2 lg:p-9">
+              <h1 className=" text-black dark:text-white font-medium leading-83 flex items-center justify-center text-4xl md:text-title ">
                 Haqqımızda
               </h1>
               <p className=" text-lg leading-6 flex items-center justify-center text-purple1 pb-custom-space ">
                 Learn more about the company and the team behind it.
               </p>
-              <div className="flex gap-8">
+              <div className="flex flex-col lg:flex-row gap-8">
                 <Image
                   className="object-contain"
                   src="/about/aboutImg.png"

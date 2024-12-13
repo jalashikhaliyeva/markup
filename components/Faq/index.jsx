@@ -39,7 +39,7 @@ function Faq() {
     <div className="flex flex-col gap-14">
       {/* <FaqTitle /> */}
       <div className="mx-auto rounded-xl ">
-        <h2 className="text-black pt-custom-space font-medium leading-83 flex items-center justify-center text-sliderTitle ">
+        <h2 className="text-black dark:text-white pt-custom-space font-medium leading-83 flex items-center justify-center text-sliderTitle ">
           Agency questions
         </h2>
         <p className="text-lg leading-6 flex items-center justify-center text-textGray400 pb-custom-space ">

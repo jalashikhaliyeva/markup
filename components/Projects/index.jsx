@@ -4,8 +4,9 @@ import OurAdvantagesSection from "../OurAdvantagesSection";
 import Container from "../Container";
 import NavigationTitle from "../NavigationTitle";
 import NavigationButton from "../NavigationButton";
-
+import { useRouter } from "next/router";
 function Projects() {
+  const router = useRouter(); 
   const data = {
     advantage: [
       {
@@ -67,6 +68,9 @@ function Projects() {
     ],
   };
 
+  const handleNavigate = () => {
+    router.push("/projects"); // Navigate to /services
+  };
   return (
     <div className="bg-white dark:bg-bgDark py-custom-space">
       <Container>
@@ -74,7 +78,7 @@ function Projects() {
           <NavigationTitle>Layihələr</NavigationTitle>
 
           <div className="hidden lg:block">
-          <button className="py-3 px-4 text-center flex justify-center rounded-2xl border border-neutralBlack dark:border-white text-lg leading-6  items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group">
+          <button onClick={handleNavigate} className="py-3 px-4 text-center flex justify-center rounded-2xl border border-neutralBlack dark:border-white text-lg leading-6  items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group">
             Hamısına bax
             <span className="transform transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1 group-hover:-translate-y-0.5">
               <svg

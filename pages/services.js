@@ -6,13 +6,12 @@ import React from "react";
 
 function Services() {
   return (
-    <div className="pt-20 bg-mainGray">
+    <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <main>
         <Header />
         <SingleTitle>Xidmətlərimiz</SingleTitle>
         <Container>
-        <CervicesCard />
-
+          <CervicesCard />
         </Container>
       </main>
     </div>

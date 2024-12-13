@@ -12,15 +12,15 @@ function BlogCard({ imageSrc, title, date }) {
         alt={title}
       />
       <p
-        className={` text-lg font-medium text-grayTextinBox tracking-036 leading-normal py-2 px-4 border rounded-full border-black w-[30%]`}
+        className={` text-lg font-medium text-grayTextinBox tracking-036 leading-normal py-2 px-4 border rounded-full dark:border-white dark:text-white border-black w-[30%]`}
       >
         {date}
       </p>
-      <h5 className="text-sliderTitle leading-52 text-textSecondaryDefault font-medium pb-4">
+      <h5 className="text-sliderTitle dark:text-white leading-52 text-textSecondaryDefault font-medium pb-4">
         {title}
       </h5>
 
-      <div className="flex items-center group cursor-pointer gap-2 pb-3">
+      <div className="flex items-center group cursor-pointer gap-2 pb-3 dark:text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

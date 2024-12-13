@@ -4,14 +4,22 @@ import NavigationTitle from "../NavigationTitle";
 import NavigationButton from "../NavigationButton";
 import { RxArrowTopRight } from "react-icons/rx";
 import CervicesCard from "../CervicesCard";
+import { useRouter } from "next/router"; // Import useRouter
+
 function Services() {
+  const router = useRouter(); // Initialize the router
+
+  const handleNavigate = () => {
+    router.push("/services"); // Navigate to /services
+  };
+
   return (
     <div className="bg-mainBgColor dark:bg-bgDarkGray">
       <Container>
-        <div className="flex flex-col md:flex-row justify-between  py-5 lg:py-custom-space">
+        <div className="flex flex-col md:flex-row justify-between py-5 lg:py-custom-space">
           <NavigationTitle>Xidmətlər</NavigationTitle>
           <div className="hidden lg:block">
-            <NavigationButton
+            <NavigationButton onClick={handleNavigate} // Pass the onClick handler
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

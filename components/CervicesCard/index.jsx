@@ -1,9 +1,12 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import NavigationButton from "../NavigationButton";
 
 function CervicesCard() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const router = useRouter(); // Use useRouter to get the current route
+  const isIndexPage = router.pathname === "/"; // Check if the current page is the index page
 
   const handleMouseEnter = (index) => {
     setHoveredCard(index);
@@ -71,26 +74,29 @@ function CervicesCard() {
         </div>
       ))}
 
-      <div className="block lg:hidden w-full">
-        <NavigationButton
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="25"
-              viewBox="0 0 24 25"
-              fill="none"
-            >
-              <path
-                d="M16.0037 10.3842L7.39712 18.9908L5.98291 17.5766L14.5895 8.96997H7.00373V6.96997H18.0037V17.97H16.0037V10.3842Z"
-                fill="currentColor"
-              />
-            </svg>
-          }
-        >
-          Hamısına bax
-        </NavigationButton>
-      </div>
+      {/* Show NavigationButton only on the index page */}
+      {isIndexPage && (
+        <div className="block lg:hidden w-full">
+          <NavigationButton
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+              >
+                <path
+                  d="M16.0037 10.3842L7.39712 18.9908L5.98291 17.5766L14.5895 8.96997H7.00373V6.96997H18.0037V17.97H16.0037V10.3842Z"
+                  fill="currentColor"
+                />
+              </svg>
+            }
+          >
+            Hamısına bax
+          </NavigationButton>
+        </div>
+      )}
     </div>
   );
 }
