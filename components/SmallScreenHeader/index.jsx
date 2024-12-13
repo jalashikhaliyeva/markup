@@ -75,16 +75,16 @@ function SmallScreenHeader() {
         <nav className="w-full max-w-md mx-auto mt-20">
           <ul className="flex flex-col gap-4">
             <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a href="/">Home</a>
+              <a>Home</a>
             </li>
             <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a href="/about">About</a>
+              <a >About</a>
             </li>
             <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a href="/services">Services</a>
+              <a >Services</a>
             </li>
             <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a href="/contact">Contact</a>
+              <a>Contact</a>
             </li>
           </ul>
         </nav>
