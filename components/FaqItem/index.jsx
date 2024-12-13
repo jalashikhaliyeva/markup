@@ -1,14 +1,7 @@
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-} from "@headlessui/react";
-// import { MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
-import styles from "./faqSect.module.css";
 import React, { useEffect, useState, useRef } from "react";
+import { FiPlus, FiMinus } from "react-icons/fi";
 import sanitizeHtml from "sanitize-html";
-import { FiPlus } from "react-icons/fi";
-import { FiMinus } from "react-icons/fi";
+import styles from "./faqSect.module.css";
 
 const Faq = React.forwardRef(({ faqs }, ref) => {
   const [isClient, setIsClient] = useState(false);
@@ -21,9 +14,6 @@ const Faq = React.forwardRef(({ faqs }, ref) => {
 
   return (
     <div className="" ref={ref}>
-      {/* <h3 className="pb-10 text-center font-gilroy text-2xl  md:text-3xl font-medium text-textSecondaryDefault">
-        Sualın var?
-      </h3> */}
       <div className={styles.faqSection}>
         <div className="mx-auto">
           <div className="mx-auto rounded-xl divide-y">
@@ -55,7 +45,7 @@ function FaqItem({ item, defaultOpen }) {
   }, [open]);
 
   return (
-    <div className="p-6 mb-4 border-b border-gray-700">
+    <div className="p-6 mb-4 border-gray-700">
       <button
         onClick={() => setOpen(!open)}
         className="group flex w-full items-center"
@@ -73,7 +63,9 @@ function FaqItem({ item, defaultOpen }) {
       </button>
       <div
         ref={panelRef}
-        className={`text-lg text-textGray400 font-normal tracking-036 text-grayTextinBox disclosure-panel overflow-hidden transition-all duration-600 ease-in-out transform`}
+        className={`text-lg text-textGray400 font-medium tracking-036 text-grayTextinBox disclosure-panel overflow-hidden transition-all duration-600 ease-in-out transform ${
+          open ? "mt-4" : ""
+        }`}
         style={{
           maxHeight: open ? `${panelRef.current?.scrollHeight}px` : "0px",
           opacity: open ? "1" : "0",

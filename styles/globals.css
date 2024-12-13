@@ -4,11 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Corrected Selector */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --button-bg: #fff;
+  --button-color: #181818;
+  --button-shadow: rgba(213, 160, 236, 0.3);
+  --background-color: #ededed;
 }
 
+
+root {
+  --button-bg: #fff;
+  --button-color: #181818;
+  --button-shadow: rgba(213, 160, 236, 0.3);
+  --background-color: #ededed;
+}
+
+.dark {
+  --button-bg: #333435;
+  --button-color: #fff;
+  --button-shadow: rgba(0, 0, 0, 0.5);
+  --background-color: #333435;
+
+}
 /* @media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
@@ -28,5 +46,41 @@ body {
     background-position: 200% 50%;
   }
 }
+.theme-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* Start from the corner where your toggle button is, adjust as needed */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.8s ease-in-out;
+  pointer-events: none; /* so it doesn't block interaction when inactive */
+  z-index: 9999; /* Make sure it overlays everything */
+}
+
+/* Background classes for light/dark */
+.theme-overlay.dark-bg {
+  background: #000;
+}
+
+.theme-overlay.light-bg {
+  background: #fff;
+}
+
+/* Active state expands the overlay to cover the entire viewport.
+   Scale factor depends on your screen size. Try something large like scale(50).
+*/
+.theme-overlay.active {
+  transform: scale(50);
+}
 
 
+
+/* Active state expands the overlay to cover the entire viewport.
+   Scale factor depends on your screen size. Try something large like scale(50).
+*/
+.theme-overlay.active {
+  transform: scale(50);
+}

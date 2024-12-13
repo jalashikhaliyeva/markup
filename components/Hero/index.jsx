@@ -6,11 +6,11 @@ import { FiLinkedin } from "react-icons/fi";
 
 function Hero() {
   return (
-    <div className="shadow-sm pb-9 pt-28">
+    <div className="shadow-sm pb-9 pt-28 dark:bg-bgDark">
       <Container>
-        <div className="flex justify-between items-center py-16">
-          <div className="flex flex-col justify-between ">
-            <h1 className="font-grotesk text-huge font-medium leading-78 text-neutralBlack">
+        <div className="flex-col  gap-5 lg:flex-row  flex justify-between items-center lg:py-16">
+          <div className="flex flex-col justify-between mb-10 lg:mb-0 ">
+            <h1 className="font-grotesk text-titleResponsive  md:text-textXl xl:text-huge font-medium leading-10 md:leading-78    text-neutralBlack dark:text-white">
               Virtual <br /> dünyaya
               <span className="text-gradient">
                 <span className="gradient-text pl-3">keçid</span>
@@ -26,7 +26,7 @@ function Hero() {
             loop
             muted
             playsInline
-            className="object-cover w-[542px] h-[402px]"
+            className="object-cover w-[302px] h-[224px]   md:h-[402px]  md:w-[642px]  lg:h-[402px]  lg:w-[442px]  xl:h-[402px]  xl:w-[542px]"
             // Optional: Add a poster image for better UX during loading
             // poster="/hero/heroPoster.png"
           >
@@ -44,12 +44,12 @@ function Hero() {
 /> */}
         </div>
 
-        <div className="flex items-center gap-2 tems-baseline">
+        <div className="hidden md:block flex items-center gap-2 tems-baseline">
           {/* SVG Icons */}
           <div className="flex space-x-4">
-            <FiInstagram className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer" />
-            <FiFacebook className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer" />
-            <FiLinkedin className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer" />
+            <FiInstagram className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />
+            <FiFacebook className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />
+            <FiLinkedin className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />
           </div>
         </div>
       </Container>

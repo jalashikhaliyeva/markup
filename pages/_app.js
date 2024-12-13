@@ -1,12 +1,10 @@
-// Import necessary modules and styles
 import "@/styles/reset.css";
 import "@/styles/globals.css";
 import ThemeProvider from "@/shared/context/ThemeProvider";
-import dynamic from "next/dynamic"; // Import dynamic from next/dynamic
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-// Dynamically import LoadingAnimation with SSR disabled
 const LoadingAnimation = dynamic(() => import("@/components/LoadingAnimation"), {
   ssr: false,
 });
@@ -16,11 +14,13 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const handleStart = () => setLoading(true);
+    const handleStart = () => {
+      if (!loading) setLoading(true);
+    };
     const handleComplete = () => {
       setTimeout(() => {
-        setLoading(false);
-      }, 2000); // 2 seconds delay
+        if (loading) setLoading(false);
+      }, 2000);
     };
 
     router.events.on("routeChangeStart", handleStart);
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleComplete);
       router.events.off("routeChangeError", handleComplete);
     };
-  }, [router]);
+  }, [router, loading]);
 
   return (
     <ThemeProvider>

@@ -1,9 +1,12 @@
 import Blogs from "@/components/Blogs";
+import Container from "@/components/Container";
 import Customers from "@/components/Customers";
+import CustomersTitleIndex from "@/components/CustomersTitleIndex";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoSection from "@/components/InfoSection";
+import NavigationTitle from "@/components/NavigationTitle";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 import styles from "@/styles/gradient.module.css";
@@ -19,6 +22,7 @@ export default function Home() {
 
         <Services />
         <Projects />
+        <CustomersTitleIndex />
         <Customers />
         <Blogs />
         <InfoSection />

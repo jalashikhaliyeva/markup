@@ -33,7 +33,7 @@
   gap: 8px;
   /* width: 200px; */
   /* height: 80px; */
-  background-color: #fff;
+  background-color: var(--background-color); /* Use variable */
   border-radius: 10px;
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
   padding: 20px;

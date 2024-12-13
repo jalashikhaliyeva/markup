@@ -53,21 +53,21 @@ const Slider = ({ data }) => {
         <div className={`${styles.embla__container} flex  `}>
           {data?.map((slide, index) => (
             <div
-              className={`${styles.embla__slide}    flex-[0_0_35%] px-2 `}
+              className={`${styles.embla__slide}    lg:flex-[0_0_35%] px-2 `}
               key={slide.id}
             >
-              <div className="flex flex-col w-full bg-boxGrayBodyColor rounded-2xl p-6 ">
+              <div className="flex flex-col w-full bg-boxGrayBodyColor rounded-2xl lg:p-6 ">
                 <Image
                   width={370}
                   height={290}
                   src={slide.image}
                   alt={`Slide ${index + 1}`}
-                  className="hidden lg:block mb-4"
+                  className="mb-4"
                 />
                 <h5 className="text-lg w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard">
-                {slide.btn}
+                  {slide.btn}
                 </h5>
-                <h5 className="text-sliderTitle leading-52  text-textSecondaryDefault font-medium pb-4 ">
+                <h5 className="text-sliderTitle leading-52  text-textSecondaryDefault font-medium pb-4  dark:text-white">
                   {slide.title}
                 </h5>
                 <div className="flex items-center group cursor-pointer gap-2">
@@ -77,15 +77,15 @@ const Slider = ({ data }) => {
                     height="25"
                     viewBox="0 0 24 25"
                     fill="none"
-                    className="transition-transform duration-300 group-hover:rotate-45 ml-2"
+                    className="transform transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1 group-hover:translate-y-[-2px]"
                   >
                     <path
                       d="M16.0037 10.3842L7.39712 18.9908L5.98291 17.5766L14.5895 8.96997H7.00373V6.96997H18.0037V17.97H16.0037V10.3842Z"
-                      fill="currentColor"
+                      className="fill-black dark:fill-white"
                     />
                   </svg>
                   <p
-                    className={`${styles.border_animation} text-lg font-medium text-grayTextinBox tracking-036 leading-normal`}
+                    className={`${styles.border_animation} text-lg font-medium text-grayTextinBox tracking-036 leading-normal dark:text-white`}
                     dangerouslySetInnerHTML={{
                       __html: sanitizeHtml(slide.desc),
                     }}

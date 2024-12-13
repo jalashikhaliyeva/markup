@@ -4,14 +4,14 @@ import NeonButton from "../NeonButton";
 
 function FastContact() {
   return (
-    <div className="bg-contactPurple dark:bg-gray-900 py-custom-space px-5 flex flex-col gap-28 justify-between rounded-3xl w-[50%]">
-      <p className="text-lg font-normal leading-6 text-textGray w-[400px]">
+    <div className="bg-contactPurple dark:bg-darkPurple py-custom-space px-5 flex flex-col gap-14 lg:gap-28 justify-between rounded-3xl w-full lg:w-[50%]">
+      <p className="text-lg font-normal leading-6 text-textGray w-full lg:w-[400px]">
         Sualınız var və ya dəstəyə ehtiyacınız var? Bizimlə istənilən vaxt əlaqə
         saxlayın! Komandamız bütün suallarınızı cavablandırmaq və sizə dəstək
         olmaq üçün buradadır
       </p>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-5 lg:gap-0">
         <NavigationTitle>Bizimlə əlaqə</NavigationTitle>
         <NeonButton
           onClick={() => alert("Button Clicked!")}

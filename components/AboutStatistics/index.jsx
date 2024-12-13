@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup";
 
 function AboutStatistics() {
   return (
@@ -12,28 +13,40 @@ function AboutStatistics() {
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-16 w-[70%]">
-        <div className="flex flex-col gap-3">
-          <h4 className="text-black font-normal text-6xl">400+</h4>
-          <h5 className="leading-7 font-medium  bg-custom-gradient bg-clip-text text-transparent">
-            Projects completed
+        {/* Define a fixed width that can accommodate the largest number */}
+        <div className="flex flex-col items-center gap-3 min-w-[150px]">
+          <h4 className="text-black font-normal text-6xl font-mono">
+            <CountUp end={400} duration={3} suffix="+" />
+          </h4>
+          <h5 className="leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
+            Projects Completed
           </h5>
         </div>
-        <div className="flex flex-col gap-3">
-          <h4 className="text-black font-normal text-6xl">600%</h4>
-          <h5 className="text-pink-500 leading-7 font-medium  bg-custom-gradient bg-clip-text text-transparent">
-            Projects completed
+
+        <div className="flex flex-col items-center gap-3 min-w-[150px]">
+          <h4 className="text-black font-normal text-6xl font-mono">
+            <CountUp end={600} duration={3} suffix="%" />
+          </h4>
+          <h5 className="text-pink-500 leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
+            Customer Satisfaction
           </h5>
         </div>
-        <div className="flex flex-col gap-3">
-          <h4 className="text-black font-normal text-6xl">10k</h4>
-          <h5 className="text-pink-500 leading-7 font-medium  bg-custom-gradient bg-clip-text text-transparent">
-            Projects completed
+
+        <div className="flex flex-col items-center gap-3 min-w-[150px]">
+          <h4 className="text-black font-normal text-6xl font-mono">
+            <CountUp end={10} duration={3} separator="," suffix="k" />
+          </h4>
+          <h5 className="text-pink-500 leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
+            Users Engaged
           </h5>
         </div>
-        <div className="flex flex-col gap-3">
-          <h4 className="text-black font-normal text-6xl">200+</h4>
-          <h5 className="text-pink-500 leading-7 font-medium  bg-custom-gradient bg-clip-text text-transparent">
-            Projects completed
+
+        <div className="flex flex-col items-center gap-3 min-w-[150px]">
+          <h4 className="text-black font-normal text-6xl font-mono">
+            <CountUp end={200} duration={3} suffix="+" />
+          </h4>
+          <h5 className="text-pink-500 leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
+            Active Campaigns
           </h5>
         </div>
       </div>

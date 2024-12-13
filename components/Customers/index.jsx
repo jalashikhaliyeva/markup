@@ -30,13 +30,7 @@ function Customers() {
   const autoScrollLeft = { playOnInit: true, interval: 6000, speed: -1 }; // negative speed for opposite direction
 
   return (
-    <div className="bg-mainGray py-custom-space">
-      <Container>
-        <NavigationTitle>Müştərilər</NavigationTitle>
-        <p className="text-textGray text-lg leading-6 pb-custom-space">
-          Böyük ideyalar, güclü tərəfdaşlıqlar
-        </p>
-      </Container>
+    <div className="bg-mainGray  dark:bg-bgDarkGray py-custom-space">
       <EmblaCarousel
         slides={slides}
         options={OPTIONS}
