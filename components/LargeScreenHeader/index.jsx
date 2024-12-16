@@ -6,9 +6,10 @@ import useTheme from "@/shared/hooks/useTheme";
 import Container from "../Container";
 import NeonButton from "../NeonButton";
 
-function LargeScreenHeader({ router, isDarkMode, toggleTheme }) {
+function LargeScreenHeader({  isDarkMode, toggleTheme }) {
+  const router = useRouter(); 
   return (
-    <nav className="bg-mainGray dark:bg-darkHeader shadow-elevation1 py-3 px-5 rounded-xl gap-8 flex items-center w-full justify-between transition-shadow duration-300">
+    <nav className="bg-mainGray dark:bg-darkHeader  py-3 px-5 rounded-xl gap-8 flex items-center w-full justify-between transition-shadow duration-300">
       <div className="gap-8 flex text-neutralBlack dark:text-white font-medium font-grotesk leading-6 text-center">
         <a
           className="relative group cursor-pointer"
@@ -53,7 +54,7 @@ function LargeScreenHeader({ router, isDarkMode, toggleTheme }) {
             title="Switch to Dark Mode"
           />
         )}
-        <NeonButton onClick={() => alert("Button Clicked!")}>
+        <NeonButton   onClick={() => router.push(`/about`)}>
           Bizimlə əlaqə
         </NeonButton>
       </div>

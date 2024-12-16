@@ -12,7 +12,7 @@ function AboutStatistics() {
         strategies based on data and insights.
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-5 md:gap-16 w-full lg:w-[70%]">
+      <div className="flex flex-wrap items-center  gap-5 md:gap-16 w-full lg:w-[70%]">
         {/* Define a fixed width that can accommodate the largest number */}
         <div className="flex flex-col items-center gap-3 min-w-[150px]">
           <h4 className="text-black dark:text-white font-normal text-4xl md:text-6xl font-mono">

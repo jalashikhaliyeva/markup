@@ -36,9 +36,9 @@ function Header() {
   }, [isLargeScreen]);
   return (
     <div
-      className={`fixed pb-2 top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed pb-2 top-0 left-0 w-full z-50 transition-all duration-300  ${
         isScrolled
-          ? "shadow-sm bg-white dark:bg-bgDark backdrop-filter backdrop-blur-md"
+          ? "shadow-sm bg-mainGray dark:bg-bgDark backdrop-filter backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
