@@ -6,7 +6,7 @@ import NavigationTitle from "../NavigationTitle";
 function OurAdvantagesSection({ data }) {
   return (
     <div>
-      <Container>
+      {/* <Container> */}
         {/* <h2
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
@@ -16,7 +16,7 @@ function OurAdvantagesSection({ data }) {
         </h2> */}
 
         <Slider data={data} />
-      </Container>
+      {/* </Container> */}
     </div>
   );
 }

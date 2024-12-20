@@ -7,7 +7,7 @@ import Container from "../Container";
 import Image from "next/image";
 import useMediaQuery from "@/shared/hooks/useMediaQuery";
 
-function Header() {
+function Header({ bgColor, darkBgColor }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
   const router = useRouter();
@@ -34,13 +34,20 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isLargeScreen]);
+
+  const currentBgColor = isDarkMode ? darkBgColor : bgColor;
   return (
     <div
-      className={`fixed pb-2 top-0 left-0 w-full z-50 transition-all duration-300  ${
+      className={`fixed pb-2 top-0 left-0 dark:bg-darkHeader w-full z-50 transition-all duration-300  ${
         isScrolled
-          ? "shadow-sm bg-mainGray dark:bg-bgDark backdrop-filter backdrop-blur-md"
+          ? "shadow-sm backdrop-filter backdrop-blur-md"
           : "bg-transparent"
       }`}
+      style={{
+        backgroundColor: isScrolled
+          ? currentBgColor || "transparent"
+          : "transparent",
+      }}
     >
       <header>
         {isLargeScreen ? (
@@ -69,8 +76,10 @@ function Header() {
                   />
                 </div>
                 <LargeScreenHeader
+                  bgColor={bgColor}
                   router={router}
                   isDarkMode={isDarkMode}
+                  darkBgColor={darkBgColor}
                   toggleTheme={toggleTheme}
                 />
               </div>

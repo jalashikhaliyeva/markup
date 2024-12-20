@@ -11,7 +11,7 @@ function FastContact() {
         olmaq üçün buradadır
       </p>
 
-      <div className="flex items-center justify-between gap-5 lg:gap-0">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
         <NavigationTitle>Bizimlə əlaqə</NavigationTitle>
         <NeonButton
           onClick={() => alert("Button Clicked!")}

@@ -12,7 +12,6 @@
   --background-color: #ededed;
 }
 
-
 root {
   --button-bg: #fff;
   --button-color: #181818;
@@ -25,7 +24,6 @@ root {
   --button-color: #fff;
   --button-shadow: rgba(0, 0, 0, 0.5);
   --background-color: #333435;
-
 }
 /* @media (prefers-color-scheme: light) {
   :root {
@@ -75,8 +73,6 @@ body {
 .theme-overlay.active {
   transform: scale(50);
 }
-
-
 
 /* Active state expands the overlay to cover the entire viewport.
    Scale factor depends on your screen size. Try something large like scale(50).

@@ -11,7 +11,7 @@ function Hero() {
         <div className="flex-col  gap-5 lg:flex-row  flex justify-between items-center lg:py-16">
           <div className="flex flex-col justify-between mb-10 lg:mb-0 ">
             <h1 className="font-grotesk text-titleResponsive  md:text-textXl xl:text-huge font-medium leading-10 md:leading-78    text-neutralBlack dark:text-white">
-              Virtual <br /> dünyaya
+              Virtual dünyaya
               <span className="text-gradient">
                 <span className="gradient-text pl-3">keçid</span>
               </span>
@@ -26,7 +26,7 @@ function Hero() {
             loop
             muted
             playsInline
-            className="object-cover w-[302px] h-[224px]   md:h-[402px]  md:w-[642px]  lg:h-[402px]  lg:w-[442px]  xl:h-[402px]  xl:w-[542px]"
+            className="object-cover w-full h-[224px]   md:h-[402px]  md:w-[642px]  lg:h-[402px]  lg:w-[442px]  xl:h-[402px]  xl:w-[542px]"
             // Optional: Add a poster image for better UX during loading
             // poster="/hero/heroPoster.png"
           >

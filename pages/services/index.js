@@ -5,10 +5,12 @@ import SingleTitle from "@/components/SingleTitle";
 import React from "react";
 
 function Services() {
+  const headerBgColor = "#ffff"; 
+  const headerDarkBgColor = "#333435"; 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <main>
-        <Header />
+        <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
         <SingleTitle>Xidmətlərimiz</SingleTitle>
         <Container>
           <CervicesCard />

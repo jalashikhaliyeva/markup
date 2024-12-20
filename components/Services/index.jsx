@@ -14,12 +14,13 @@ function Services() {
   };
 
   return (
-    <div className="bg-mainBgColor dark:bg-bgDarkGray">
+    <div className="bg-mainBgColor dark:bg-bgDarkGray pb-custom-space">
       <Container>
         <div className="flex flex-col md:flex-row justify-between py-5 lg:py-custom-space">
           <NavigationTitle>Xidmətlər</NavigationTitle>
           <div className="hidden lg:block">
-            <NavigationButton onClick={handleNavigate} // Pass the onClick handler
+            <NavigationButton
+              onClick={handleNavigate} // Pass the onClick handler
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

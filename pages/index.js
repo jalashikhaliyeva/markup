@@ -12,14 +12,16 @@ import Services from "@/components/Services";
 import styles from "@/styles/gradient.module.css";
 
 export default function Home() {
+  const headerBgColor = "#F5F5F7";
+
+  const headerDarkBgColor = "#333435";
   return (
     <>
       <main>
         <div className={styles.background}>
-          <Header />
+          <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
           <Hero />
         </div>
-
         <Services />
         <Projects />
         <CustomersTitleIndex />

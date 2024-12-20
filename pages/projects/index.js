@@ -1,66 +1,12 @@
+// pages/projects/index.js
+
 import React, { useState } from "react";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProjectsCard from "@/components/ProjectsCard";
 import Container from "@/components/Container";
 import Header from "@/components/Header";
 import SingleTitle from "@/components/SingleTitle";
-
-const projectsData = [
-  {
-    id: 1,
-    imageSrc: "/projects/projects.png",
-    category: "Website",
-    title: "Project Title 1",
-  },
-  {
-    id: 2,
-    imageSrc: "/projects/projects.png",
-    category: "App",
-    title: "Project Title 2",
-  },
-  {
-    id: 3,
-    imageSrc: "/projects/projects.png",
-    category: "Design",
-    title: "Project Title 3",
-  },
-  {
-    id: 4,
-    imageSrc: "/projects/projects.png",
-    category: "Marketing",
-    title: "Project Title 4",
-  },
-  {
-    id: 5,
-    imageSrc: "/projects/projects.png",
-    category: "SEO",
-    title: "Project Title 5",
-  },
-  {
-    id: 6,
-    imageSrc: "/projects/projects.png",
-    category: "Development",
-    title: "Project Title 6",
-  },
-  {
-    id: 7,
-    imageSrc: "/projects/projects.png",
-    category: "Consulting",
-    title: "Project Title 7",
-  },
-  {
-    id: 8,
-    imageSrc: "/projects/projects.png",
-    category: "Support",
-    title: "Project Title 8",
-  },
-  {
-    id: 9,
-    imageSrc: "/projects/projects.png",
-    category: "Analysis",
-    title: "Project Title 9",
-  },
-];
+import { projectsData } from "@/shared/data/projectsData"; // Importing the data
 
 const filters = [
   "Hamısı",
@@ -69,7 +15,8 @@ const filters = [
 
 function Projects() {
   const [selectedFilter, setSelectedFilter] = useState("Hamısı");
-
+  const headerBgColor = "#ffff"; 
+  const headerDarkBgColor = "#333435"; 
   const filteredProjects =
     selectedFilter === "Hamısı"
       ? projectsData
@@ -78,8 +25,8 @@ function Projects() {
   return (
     <div className="py-20 bg-mainGray dark:bg-bgDark">
       <main>
-        <Header />
-        <SingleTitle>Xidmətlərimiz</SingleTitle>
+        <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
+        <SingleTitle>Layihələr</SingleTitle>
         <Container>
           <div className="flex flex-wrap gap-4 justify-center mb-6">
             {filters.map((filter) => (
@@ -101,6 +48,7 @@ function Projects() {
                 imageSrc={project.imageSrc}
                 category={project.category}
                 title={project.title}
+                slug={project.slug} // Pass slug to ProjectsCard
               />
             ))}
           </div>

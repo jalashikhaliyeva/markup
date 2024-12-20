@@ -70,7 +70,7 @@
 /* Hover state enhancements */
 .neonButton:hover {
   /* background-color: #7d83b3b7; Smoothly transition to the desired color */
-  background-color: #514DFB; /* Smoothly transition to the desired color */
+  background-color: #514dfb; /* Smoothly transition to the desired color */
   /* background-color: #e4e8f8;  */
   color: #fff;
 }

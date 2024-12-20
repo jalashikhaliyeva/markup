@@ -1,0 +1,102 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  /* border-radius: 18px; */
+}
+
+/* Top border and Left border on the .card itself */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(
+    to right,
+    #FF0FFD 0%,
+    #006FFC 38%,
+    #D73DE5 57%,
+    #EDB547 64%,
+    #6E5EEE 68%,
+    #85AE87 79%,
+    #197DF7 93%
+  ); /* Gradient border color */
+  transition: all 0.9s ease;
+  border-radius: 18px;
+}
+
+/* Top border line */
+.card::before {
+  height: 2px;
+  width: 0;
+  top: 0;
+  left: 0;
+}
+
+/* Left border line */
+.card::after {
+  width: 2px;
+  height: 0;
+  top: 0;
+  left: 0;
+}
+
+/* Wrapper for Right and Bottom borders */
+.borderWrapper {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 18px;
+}
+
+.borderWrapper::before,
+.borderWrapper::after {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(
+    to right,
+    #FF0FFD 0%,
+    #006FFC 38%,
+    #D73DE5 57%,
+    #EDB547 64%,
+    #6E5EEE 68%,
+    #85AE87 79%,
+    #197DF7 93%
+  ); /* Gradient border color */
+  transition: all 0.9s ease;
+  border-radius: 18px;
+}
+
+/* Right border line */
+.borderWrapper::before {
+  width: 2px;
+  height: 0;
+  top: 0;
+  right: 0;
+}
+
+/* Bottom border line */
+.borderWrapper::after {
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Hover states to animate the borders outward */
+.card:hover::before {
+  width: 100%;
+}
+
+.card:hover::after {
+  height: 100%;
+}
+
+.card:hover .borderWrapper::before {
+  height: 100%;
+}
+
+.card:hover .borderWrapper::after {
+  width: 100%;
+}

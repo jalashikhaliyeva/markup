@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "./ProjectsCard.module.css";
+
 function ProjectsCard({ imageSrc, category, title, slug }) {
   const router = useRouter();
 
@@ -10,10 +11,7 @@ function ProjectsCard({ imageSrc, category, title, slug }) {
   };
 
   return (
-    <div
-      onClick={handleNavigate}
-      className={`relative flex flex-col space-y-4 cursor-pointer ${styles.card}`}
-    >
+    <div onClick={handleNavigate} className={`relative flex flex-col space-y-4 cursor-pointer ${styles.card}`}>
       {/* Content */}
       <Image
         src={imageSrc}

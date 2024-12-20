@@ -11,7 +11,7 @@ function FastAbout() {
         edərək mükəmməlliyə nail olmaqdır.
       </p>
 
-      <div className="flex items-center justify-between gap-5 lg:gap-0">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
         <NavigationTitle>Haqqımızda</NavigationTitle>
         <NeonButton
           onClick={() => alert("Button Clicked!")}

@@ -56,7 +56,7 @@ const Slider = ({ data }) => {
               className={`${styles.embla__slide}    lg:flex-[0_0_35%] px-2 `}
               key={slide.id}
             >
-              <div className="flex flex-col w-full bg-boxGrayBodyColor rounded-2xl lg:p-6 ">
+              <div className="flex flex-col w-full bg-boxGrayBodyColor rounded-2xl  ">
                 <Image
                   width={370}
                   height={290}

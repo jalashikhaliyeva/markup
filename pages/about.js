@@ -14,10 +14,12 @@ import Image from "next/image";
 import React from "react";
 
 function About() {
+  const headerBgColor = "#ffff"; 
+  const headerDarkBgColor = "#333435"; 
   return (
     <div className="pt-28 dark:bg-bgDark">
       <main>
-        <Header />
+        <Header bgColor={headerBgColor}  darkBgColor={headerDarkBgColor} />
 
         {/* Main About Section */}
         <Container>
