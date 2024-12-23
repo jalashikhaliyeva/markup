@@ -44,7 +44,7 @@ function Hero() {
 /> */}
         </div>
 
-        <div className="hidden md:block flex items-center gap-2 tems-baseline">
+        <div className="hidden md:block flex items-center gap-2 tems-baseline md:pt-10">
           {/* SVG Icons */}
           <div className="flex space-x-4">
             <FiInstagram className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />

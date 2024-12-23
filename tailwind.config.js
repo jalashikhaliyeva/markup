@@ -43,8 +43,9 @@ module.exports = {
         primary: "#616BEC",
         darkGray: "#1C1F22",
         blackButtonHover: "#6242FC",
-        customPurple: '#6a5acd',
-        customBlue: '#197df7',
+        customPurple: "#6a5acd",
+        customBlue: "#197df7",
+        textSecondaryDefault: "#1F2937",
       },
       transitionDelay: {
         150: "150ms",

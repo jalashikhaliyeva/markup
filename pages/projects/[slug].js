@@ -15,10 +15,11 @@ import Projects from "@/components/Projects";
 import OurAdvantagesSection from "@/components/OurAdvantagesSection";
 import SimilarProjectsTitle from "@/components/SimilarProjectsTitle";
 import Footer from "@/components/Footer";
+import Breadcrumb from "@/components/Breadcrumb";
 
 function ProjectPage({ project }) {
-  const headerBgColor = "#ffff"; 
-  const headerDarkBgColor = "#333435"; 
+  const headerBgColor = "#ffff";
+  const headerDarkBgColor = "#333435";
   const data = {
     advantage: [
       {
@@ -97,7 +98,9 @@ function ProjectPage({ project }) {
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
-
+        <Container>
+          <Breadcrumb />
+        </Container>
         <Container>
           <TitleButtonProject project={project} />
           <CategoriesProject category={project.category} />

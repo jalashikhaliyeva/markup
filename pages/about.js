@@ -1,4 +1,5 @@
 import AboutStatistics from "@/components/AboutStatistics";
+import Breadcrumb from "@/components/Breadcrumb";
 import CervicesCard from "@/components/CervicesCard";
 import Container from "@/components/Container";
 import Customers from "@/components/Customers";
@@ -17,10 +18,12 @@ function About() {
   const headerBgColor = "#ffff"; 
   const headerDarkBgColor = "#333435"; 
   return (
-    <div className="pt-28 dark:bg-bgDark">
+    <div className="pt-16 dark:bg-bgDark">
       <main>
         <Header bgColor={headerBgColor}  darkBgColor={headerDarkBgColor} />
-
+        <Container>
+          <Breadcrumb />
+        </Container>
         {/* Main About Section */}
         <Container>
           <div className="bg-mainGray dark:bg-black  rounded-2xl mb-28">

@@ -7,6 +7,7 @@ import React from "react";
 import ServiceAbout from "@/components/ServiceAbout";
 import ServiceTitle from "@/components/ServiceTitle";
 import ServicesOffer from "@/components/ServicesOffer";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export async function getStaticPaths() {
   // Generate paths based on available services
@@ -32,13 +33,16 @@ export async function getStaticProps({ params }) {
 }
 
 function ProjectSingle({ serviceData }) {
-  const headerBgColor = "#ffff"; 
-  const headerDarkBgColor = "#333435"; 
+  const headerBgColor = "#ffff";
+  const headerDarkBgColor = "#333435";
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <Container>
+        <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
+
+        <Breadcrumb />
+
         <main className="bg-white dark:bg-black p-10 rounded-2xl mt-custom-space">
-          <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
           <ServiceTitle title={serviceData.title} />
           <ServiceAbout description={serviceData.description} />
           <ServicesOffer />

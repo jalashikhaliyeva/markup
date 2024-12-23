@@ -7,6 +7,7 @@ import Container from "@/components/Container";
 import Header from "@/components/Header";
 import SingleTitle from "@/components/SingleTitle";
 import { projectsData } from "@/shared/data/projectsData"; // Importing the data
+import Breadcrumb from "@/components/Breadcrumb";
 
 const filters = [
   "Hamısı",
@@ -26,6 +27,10 @@ function Projects() {
     <div className="py-20 bg-mainGray dark:bg-bgDark">
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
+        <Container>
+        <Breadcrumb />
+
+        </Container>
         <SingleTitle>Layihələr</SingleTitle>
         <Container>
           <div className="flex flex-wrap gap-4 justify-center mb-6">

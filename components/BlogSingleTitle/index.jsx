@@ -4,7 +4,7 @@ import SingleTitle from "../SingleTitle";
 function BlogsSingleTitle({ blog }) {
   return (
     <div>
-      <h1 className="text-black dark:text-white font-medium leading-83 flex items-center justify-center text-4xl md:text-title md:pt-custom-space pb-1">
+      <h1 className="text-black dark:text-white font-medium leading-83 flex items-center justify-center text-4xl md:text-title  pb-1">
         {blog.title}
       </h1>
       <div className="flex items-center justify-center">

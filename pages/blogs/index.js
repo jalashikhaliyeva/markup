@@ -8,6 +8,7 @@ import SingleTitle from "@/components/SingleTitle";
 import Footer from "@/components/Footer";
 import blogsData from "@/shared/data/blogsData";
 import { useRouter } from "next/router";
+import Breadcrumb from "@/components/Breadcrumb";
 
 function Blogs() {
   const headerBgColor = "#ffff";
@@ -24,6 +25,10 @@ function Blogs() {
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
+        <Container>
+
+          <Breadcrumb />
+        </Container>
         <SingleTitle>Bloqlar</SingleTitle>
         <Container>
           <div

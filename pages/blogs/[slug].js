@@ -8,6 +8,7 @@ import Container from "@/components/Container";
 import SingleTitle from "@/components/SingleTitle";
 import BlogCardSingle from "@/components/BlogCardSingle";
 import BlogsSingleTitle from "@/components/BlogSingleTitle";
+import Breadcrumb from "@/components/Breadcrumb";
 
 function BlogSingle() {
   const headerBgColor = "#ffff";
@@ -38,6 +39,9 @@ function BlogSingle() {
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <Header bgColor={headerBgColor}  darkBgColor={headerDarkBgColor}/>
+      <Container>
+          <Breadcrumb />
+        </Container>
       <Container>
         <BlogsSingleTitle blog={blog} />
         <BlogCardSingle blog={blog} />
