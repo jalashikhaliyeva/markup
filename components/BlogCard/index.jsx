@@ -1,3 +1,4 @@
+// components/BlogCard.js
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -37,7 +38,7 @@ function BlogCard({ imageSrc, title, date, slug }) {
         </div>
 
         {/* Date Section - Always takes up space, hidden by opacity */}
-        <div className="mt-2 px-4  text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-200 w-[29%] text-lg rounded-2xl mx-4 py-1">
+        <div className="mt-2 px-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-200 w-[29%] text-lg rounded-2xl mx-4 py-1">
           {date}
         </div>
 

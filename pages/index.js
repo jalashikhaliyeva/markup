@@ -3,6 +3,8 @@ import Container from "@/components/Container";
 import Customers from "@/components/Customers";
 import CustomersTitleIndex from "@/components/CustomersTitleIndex";
 import Footer from "@/components/Footer";
+import Forms from "@/components/Forms";
+import FormsTitleIndex from "@/components/FormsTitleIndex";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoSection from "@/components/InfoSection";
@@ -22,9 +24,11 @@ export default function Home() {
           <Hero />
         </div>
         <Services />
-        <Projects />
         <CustomersTitleIndex />
         <Customers />
+        <Projects />
+        <FormsTitleIndex />
+        <Forms />
         <Blogs />
         <InfoSection />
 

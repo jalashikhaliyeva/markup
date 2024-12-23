@@ -9,7 +9,7 @@
 
 .embla__container {
   display: flex;
-  gap: 26px;
+  /* gap: 26px; */
 }
 
 .embla__slide {
@@ -22,13 +22,32 @@
 
 @media (min-width: 1024px) {
   .embla__slide {
-    flex: 0 0 39%;
+    /* flex: 0 0 39%; */
+    flex: 0 0 34%;
+  }
+}
+@media (min-width: 768px) {
+  .embla__slide {
+    /* flex: 0 0 39%; */
+    flex: 0 0 34%;
+  }
+}
+@media (min-width: 1024px) {
+  .embla__slide {
+    /* flex: 0 0 39%; */
+    flex: 0 0 34%;
   }
 }
 
 @media (min-width: 1280px) {
   .embla__slide {
-    flex: 0 0 29%;
+    flex: 0 0 27%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .embla__slide {
+    flex: 0 0 22%;
   }
 }
 .embla__button {
@@ -110,4 +129,3 @@
   border-radius: 5px;
   transition: transform 0.3s ease, width 0.3s ease;
 } */
-

@@ -159,8 +159,21 @@ module.exports = {
           borderLeftColor: "transparent",
         },
       };
+      const gradientBorderT = {
+        ".border-t-gradient": {
+          borderImage:
+            "linear-gradient(to right, #FF0FFD, #006FFC, #D73DE5, #EDB547, #6E5EEE, #85AE87, #197DF7) 1",
+          borderTopWidth: "1px",
+          borderTopColor: "transparent",
+          borderTopStyle: "solid",
+          borderRightWidth: "0px",
+          borderBottomWidth: "0px",
+          borderLeftWidth: "0px",
+        },
+      };
       addUtilities(gradientBorder, ["responsive"]);
       addUtilities(gradientBorderl, ["responsive"]);
+      addUtilities(gradientBorderT, ["responsive"]);
     },
   ],
 };

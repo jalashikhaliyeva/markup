@@ -8,13 +8,12 @@ function BlogCardSingle({ blog }) {
   return (
     <div className="flex flex-col pb-custom-space ">
       <Image
-        className="w-full h-full lg:[520px] object-cover rounded-2xl my-custom-space"
+        className="w-full h-full lg:[540px] md:w-[60%] mx-auto  object-cover rounded-2xl my-custom-space"
         src="/blogs/singleBlog.png"
         width={1000}
         height={516}
         alt={blog.title}
       />
-      
 
       <div className="md:w-[60%] mx-auto ">
         <p className="pb-custom-space  border-b-4 border-b-gradient dark:text-white">
@@ -65,8 +64,10 @@ function BlogCardSingle({ blog }) {
 
         <div className="flex flex-col py-custom-space">
           <div className="flex items-center gap-2">
-           <hr className="w-[30px] h-[2px] rounded-xl text-black bg-black dark:bg-white dark:text-white"></hr>
-            <p className="text-black dark:text-white font-medium leading-6 text-base">Share</p>
+            <hr className="w-[30px] h-[2px] rounded-xl text-black bg-black dark:bg-white dark:text-white"></hr>
+            <p className="text-black dark:text-white font-medium leading-6 text-base">
+              Share
+            </p>
           </div>
 
           <div className="flex space-x-4 items-center pt-4">
