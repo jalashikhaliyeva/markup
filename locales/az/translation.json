@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "services": "Xidmətlərimiz",
+    "projects": "Layihələr",
+    "about": "Haqqımızda",
+    "blogs": "Bloglar",
+    "contact": "Bizimlə əlaqə"
+  },
+  "theme": {
+    "light": "Aydın Rejimə keç",
+    "dark": "Qaranlıq Rejimə keç"
+  }
+}

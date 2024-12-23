@@ -4,9 +4,9 @@ import CountUp from "react-countup";
 
 function AboutProject() {
   return (
-    <div className="bg-white dark:bg-black p-5 flex rounded-xl my-custom-space gap-8">
+    <div className="bg-white dark:bg-black p-5 flex flex-col m-auto items-center lg:flex-row rounded-xl my-custom-space gap-8">
       <Image
-        className="object-contain"
+        className="object-contain w-full"
         src="/about/aboutImg.png"
         width={546}
         height={492}

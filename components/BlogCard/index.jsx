@@ -1,4 +1,5 @@
 // components/BlogCard.js
+
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -19,7 +20,7 @@ function BlogCard({ imageSrc, title, date, slug }) {
       }}
       role="button"
       aria-label={`Read more about ${title}`}
-      className="relative w-[31%] group cursor-pointer overflow-hidden rounded-xl hover:border hover:border-purple-400"
+      className="relative group cursor-pointer overflow-hidden rounded-xl hover:border hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
     >
       {/* Inner Card */}
       <div className="relative z-10 rounded-xl bg-white dark:bg-bgDark flex flex-col h-full">
@@ -38,7 +39,7 @@ function BlogCard({ imageSrc, title, date, slug }) {
         </div>
 
         {/* Date Section - Always takes up space, hidden by opacity */}
-        <div className="mt-2 px-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-200 w-[29%] text-lg rounded-2xl mx-4 py-1">
+        <div className="mt-2 px-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-200 w-24 sm:w-28 text-lg rounded-2xl mx-4 py-1">
           {date}
         </div>
 

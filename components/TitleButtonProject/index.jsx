@@ -8,7 +8,7 @@ function TitleButtonProject({project}) {
     router.push("/projects"); // Navigate to /services
   };
   return (
-    <div className="flex justify-between items-center py-custom-space">
+    <div className="flex justify-between items-center pb-5 lg:pb-custom-space">
       <NavigationTitle>{project.title}</NavigationTitle>
 
       <div className="hidden lg:block">

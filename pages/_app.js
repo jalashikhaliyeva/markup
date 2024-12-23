@@ -4,11 +4,14 @@ import ThemeProvider from "@/shared/context/ThemeProvider";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { I18nextProvider } from 'react-i18next';
+import i18n from "../locales/i18n"; 
+
 const LoadingAnimation = dynamic(() => import("@/components/LoadingAnimation"), {
   ssr: false,
 });
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -34,8 +37,12 @@ export default function App({ Component, pageProps }) {
   }, [router, loading]);
 
   return (
-    <ThemeProvider>
-      {loading ? <LoadingAnimation /> : <Component {...pageProps} />}
-    </ThemeProvider>
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider>
+        {loading ? <LoadingAnimation /> : <Component {...pageProps} />}
+      </ThemeProvider>
+    </I18nextProvider>
   );
 }
+
+export default App;

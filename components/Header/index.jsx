@@ -6,8 +6,10 @@ import useTheme from "@/shared/hooks/useTheme";
 import Container from "../Container";
 import Image from "next/image";
 import useMediaQuery from "@/shared/hooks/useMediaQuery";
+import { useTranslation } from "react-i18next";
 
 function Header({ bgColor, darkBgColor }) {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
   const router = useRouter();

@@ -26,14 +26,13 @@ function Blogs() {
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
         <Container>
-
           <Breadcrumb />
         </Container>
         <SingleTitle>Bloqlar</SingleTitle>
         <Container>
+          {/* Using grid for better responsiveness */}
           <div
-            className="flex flex-wrap justify-center items-center mb-20"
-            style={{ gap: "33px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20"
           >
             {blogsData.slice(0, visibleBlogs).map((project) => (
               <BlogCard
@@ -49,7 +48,7 @@ function Blogs() {
             <div className="flex justify-center mb-10">
               <button
                 onClick={loadMoreBlogs}
-                className="py-3 px-4 text-center rounded-2xl border border-neutralBlack dark:border-white text-lg leading-6 items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group"
+                className="py-3 px-6 text-center rounded-2xl border border-neutralBlack dark:border-white text-lg leading-6 items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group"
               >
                 Daha çox yüklə
               </button>
