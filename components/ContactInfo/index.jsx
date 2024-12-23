@@ -8,7 +8,21 @@ import { FiLinkedin } from "react-icons/fi";
 function ContactInfo() {
   return (
     <div className="flex flex-col">
-      <NavigationTitle>Bizimlə əlaqə</NavigationTitle>
+      <h2 className="font-grotesk font-medium leading-9 lg:leading-83 text-neutralBlack dark:text-white text-3xl md:text-title">
+        Bizimlə{" "}
+        <span
+          style={{
+            background:
+              "linear-gradient(90deg, #FF0FFD 0.24%, #006FFC 32.56%, #6E5EEE 65.48%,  #197DF7 92.99%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+          className="inline-block"
+        >
+          əlaqə
+        </span>
+      </h2>
+
       <Image
         src="/contact-img.png"
         width={411}

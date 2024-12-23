@@ -74,17 +74,35 @@ function SmallScreenHeader() {
       >
         <nav className="w-full max-w-md mx-auto mt-20">
           <ul className="flex flex-col gap-4">
-            <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a>Home</a>
+            <li
+              onClick={() => router.push(`/services`)}
+              className="py-2 px-7 border-b-gradient dark:text-white"
+            >
+              <a>Xidmətlərimiz</a>
             </li>
-            <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a >About</a>
+            <li
+              onClick={() => router.push(`/projects`)}
+              className="py-2 px-7 border-b-gradient dark:text-white"
+            >
+              <a>Layihələr</a>
             </li>
-            <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a >Services</a>
+            <li
+              onClick={() => router.push(`/about`)}
+              className="py-2 px-7 border-b-gradient dark:text-white"
+            >
+              <a>Haqqımızda</a>
             </li>
-            <li className="py-2 px-7 border-b-gradient dark:text-white">
-              <a>Contact</a>
+            <li
+              onClick={() => router.push(`/blogs`)}
+              className="py-2 px-7 border-b-gradient dark:text-white"
+            >
+              <a>Bloglar</a>
+            </li>
+            <li
+              onClick={() => router.push(`/contact`)}
+              className="py-2 px-7 border-b-gradient dark:text-white"
+            >
+              <a>Bizimlə əlaqə</a>
             </li>
           </ul>
         </nav>

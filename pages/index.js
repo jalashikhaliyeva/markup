@@ -13,7 +13,6 @@ import styles from "@/styles/gradient.module.css";
 
 export default function Home() {
   const headerBgColor = "#F5F5F7";
-
   const headerDarkBgColor = "#333435";
   return (
     <>

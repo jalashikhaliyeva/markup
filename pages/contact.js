@@ -19,7 +19,7 @@ function Contact() {
         }`}
         style={{
           backgroundImage: isDarkMode ? "none" : "url('/BG.png')",
-        }}
+        }}z
       >
         <main>
           <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />

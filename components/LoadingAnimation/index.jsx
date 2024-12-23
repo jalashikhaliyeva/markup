@@ -1,27 +1,56 @@
+// import React from 'react';
+
+// const LoadingAnimation = () => {
+//   return (
+//     <div
+//       style={{
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         height: '100vh',
+//         width: '100vw',
+//         position: 'fixed',
+//         top: 0,
+//         left: 0,
+//         zIndex: 9999,
+//       }}
+//     >
+
+//       <img
+//         src="/loading-gif/load_1main.gif"
+//         alt="Loading content..."
+//         style={{ maxHeight: '80%', maxWidth: '80%' }}
+//       />
+
+//     </div>
+//   );
+// };
+
+// export default LoadingAnimation;
+
 // components/LoadingAnimation.js
-import React from 'react';
-import Lottie from 'lottie-react';
-import animationData from '@/shared/loading-animation/animationData.json';
+import Image from "next/image";
 
 const LoadingAnimation = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh', // Full viewport height
-        width: '100vw', // Full viewport width
-        position: 'fixed', // Fixed position to overlay on the page
-        top: 0,
-        left: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.9)', // Optional: background overlay
-        zIndex: 9999, // Ensure it stays on top
-      }}
-    >
-      <div style={{ height: '400px', width: '600px' }}>
-        <Lottie animationData={animationData} loop={true} />
-      </div>
+    <div className="flex justify-center items-center fixed top-0 left-0 w-full h-full bg-white dark:bg-bgDark z-50">
+      {/* Light Mode Loading GIF */}
+      <Image
+        src="/loading-gif/load_1main.gif"
+        alt="Loading content..."
+        width={200} // Adjust as needed
+        height={200} // Adjust as needed
+        className="block dark:hidden w-[50%]"
+      />
+
+      {/* Dark Mode Loading GIF */}
+      <Image
+        src="/loading-gif/load_1main.gif"
+        alt="Loading content..."
+        width={200} // Adjust as needed
+        height={200} // Adjust as needed
+        className="hidden dark:block w-[50%]"
+      />
     </div>
   );
 };
