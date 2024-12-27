@@ -75,7 +75,7 @@ function Blogs({blogs}) {
     router.push("/blogs"); // Navigate to /services
   };
   return (
-    <div className="pt-custom-space dark:bg-bgDarkGray">
+    <div className="pt-custom-space pb-10 dark:bg-bgDarkGray">
       <Container>
         <div className="flex justify-between items-center py-custom-space">
           <NavigationTitle>{t("nav.blogs")}</NavigationTitle>
