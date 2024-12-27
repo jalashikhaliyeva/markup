@@ -1,3 +1,5 @@
+/* embla.module.css */
+
 .embla {
   position: relative;
 }
@@ -9,7 +11,7 @@
 
 .embla__container {
   display: flex;
-  /* gap: 26px; */
+  gap: 12px;
 }
 
 .embla__slide {
@@ -18,23 +20,31 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 10px;
+
+  /* Reserve space for the border */
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  /* Smooth transition for border-color */
+  transition: border-color 0.3s ease;
+}
+
+.embla__slide:hover {
+  /* Only change the border color on hover */
+  /* border-color: #256ae1;  */
+  border-color: #4658ff; /* Replace with your desired hover color */
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 34%;
+  }
 }
 
 @media (min-width: 1024px) {
   .embla__slide {
-    /* flex: 0 0 39%; */
-    flex: 0 0 34%;
-  }
-}
-@media (min-width: 768px) {
-  .embla__slide {
-    /* flex: 0 0 39%; */
-    flex: 0 0 34%;
-  }
-}
-@media (min-width: 1024px) {
-  .embla__slide {
-    /* flex: 0 0 39%; */
     flex: 0 0 34%;
   }
 }
@@ -50,6 +60,8 @@
     flex: 0 0 22%;
   }
 }
+
+/* Navigation Buttons */
 .embla__button {
   position: absolute;
   top: 50%;
@@ -83,6 +95,7 @@
   cursor: not-allowed;
 }
 
+/* Dots Navigation */
 .embla__dots {
   display: flex;
   justify-content: center;
@@ -102,6 +115,8 @@
 .embla__dot--selected {
   background-color: var(--brandBlueDark);
 }
+
+/* Optional: Progress Bar */
 /* 
 .embla__progress {
   position: relative;
@@ -128,4 +143,5 @@
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   transition: transform 0.3s ease, width 0.3s ease;
-} */
+}
+*/

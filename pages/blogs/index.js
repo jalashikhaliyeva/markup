@@ -6,23 +6,32 @@ import Container from "@/components/Container";
 import Header from "@/components/Header";
 import SingleTitle from "@/components/SingleTitle";
 import Footer from "@/components/Footer";
-import blogsData from "@/shared/data/blogsData";
 import { useRouter } from "next/router";
 import Breadcrumb from "@/components/Breadcrumb";
+import { getBlogs } from "@/services/getBlogs";
+import Head from "next/head";
 
-function Blogs() {
+function Blogs({ blogsData, metaTag }) {
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
   const router = useRouter();
   const [visibleBlogs, setVisibleBlogs] = useState(6); // Initially show 6 blogs
+
   const loadMoreBlogs = () => {
     setVisibleBlogs((prevVisible) => prevVisible + 6); // Load 6 each time
   };
 
-  const hasMoreBlogs = visibleBlogs < blogsData.length;
+  const hasMoreBlogs = visibleBlogs < blogsData?.length;
 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
+      {/* Head component to set meta tags dynamically */}
+      <Head>
+        <title>{metaTag?.meta_title}</title>
+        <meta name="description" content={metaTag.meta_description} />
+        <meta name="keywords" content={metaTag.meta_keywords} />
+      </Head>
+
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
         <Container>
@@ -31,16 +40,14 @@ function Blogs() {
         <SingleTitle>Bloqlar</SingleTitle>
         <Container>
           {/* Using grid for better responsiveness */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20"
-          >
-            {blogsData.slice(0, visibleBlogs).map((project) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20">
+            {blogsData.slice(0, visibleBlogs).map((blog) => (
               <BlogCard
-                key={project.id}
-                imageSrc={project.imageSrc}
-                title={project.title}
-                date={project.date}
-                slug={project.slug}
+                key={blog.slug} // Assuming 'slug' is unique
+                imageSrc={blog.thumb_image} // Using thumbnail for performance
+                title={blog.title}
+                date={blog.created_at}
+                slug={blog.slug}
               />
             ))}
           </div>
@@ -55,10 +62,38 @@ function Blogs() {
             </div>
           )}
         </Container>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   );
 }
 
 export default Blogs;
+
+// Server-side data fetching
+export async function getServerSideProps(context) {
+  const lang = context.locale || "az"; // Default to "az" if locale is not set
+
+  try {
+    const data = await getBlogs(lang);
+
+    return {
+      props: {
+        blogsData: data.item || [], // Pass the blogs array
+        metaTag: data.meta_tag || {}, // Pass meta tags
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch blogs:", error);
+    return {
+      props: {
+        blogsData: [],
+        metaTag: {
+          meta_title: "Blogs",
+          meta_description: "Default description for blogs.",
+          meta_keywords: "blogs, default keywords",
+        },
+      },
+    };
+  }
+}

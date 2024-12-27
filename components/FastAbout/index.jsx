@@ -1,8 +1,9 @@
 import React from "react";
 import NavigationTitle from "../NavigationTitle";
 import NeonButton from "../NeonButton";
-
+import { useTranslation } from "react-i18next";
 function FastAbout() {
+  const { t } = useTranslation();
   return (
     <div className="rounded-3xl bg-mainGray dark:bg-darkHeader py-custom-space px-5 flex flex-col justify-between w-full lg:w-[50%]">
       <p className="text-lg font-normal leading-6 text-textGray w-full lg:w-[400px]">
@@ -12,9 +13,9 @@ function FastAbout() {
       </p>
 
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
-        <NavigationTitle>Haqqımızda</NavigationTitle>
+        <NavigationTitle>{t("nav.about")}</NavigationTitle>
         <NeonButton
-          onClick={() => alert("Button Clicked!")}
+          // onClick={() => alert("Button Clicked!")}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +31,7 @@ function FastAbout() {
             </svg>
           }
         >
-          Bizimlə əlaqə
+        {t('nav.contact')}
         </NeonButton>
       </div>
     </div>

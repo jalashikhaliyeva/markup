@@ -5,8 +5,9 @@ import NavigationButton from "../NavigationButton";
 import { RxArrowTopRight } from "react-icons/rx";
 import CervicesCard from "../CervicesCard";
 import { useRouter } from "next/router"; // Import useRouter
-
-function Services() {
+import { useTranslation } from "react-i18next";
+function Services({services}) {
+  const { t } = useTranslation();
   const router = useRouter(); // Initialize the router
 
   const handleNavigate = () => {
@@ -17,7 +18,8 @@ function Services() {
     <div className="bg-mainBgColor dark:bg-bgDarkGray pb-custom-space">
       <Container>
         <div className="flex flex-col md:flex-row justify-between py-5 lg:py-custom-space">
-          <NavigationTitle>Xidmətlər</NavigationTitle>
+          {/* <NavigationTitle>Xidmətlər</NavigationTitle> */}
+          <NavigationTitle>{t("nav.services")}</NavigationTitle>
           <div className="hidden lg:block">
             <NavigationButton
               onClick={handleNavigate} // Pass the onClick handler
@@ -36,12 +38,12 @@ function Services() {
                 </svg>
               }
             >
-              Hamısına bax
+              {t("nav.seeAll")}
             </NavigationButton>
           </div>
         </div>
 
-        <CervicesCard />
+        <CervicesCard item={services}/>
       </Container>
     </div>
   );

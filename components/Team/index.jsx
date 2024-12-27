@@ -39,12 +39,12 @@ const teamMembers = [
   },
 ];
 
-function Team() {
+function Team({data}) {
   return (
     <div className="flex flex-col items-center">
       <TeamTitle />
       <div className="flex flex-wrap gap-8 justify-center">
-        {teamMembers.map((member) => (
+        {data.map((member) => (
           <TeamMemberCard key={member.id} {...member} />
         ))}
       </div>

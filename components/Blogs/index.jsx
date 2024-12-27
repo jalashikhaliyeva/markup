@@ -4,69 +4,72 @@ import NavigationTitle from "../NavigationTitle";
 import OurAdvantagesSection from "../OurAdvantagesSection";
 import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
-
-function Blogs() {
+import { useTranslation } from "react-i18next";
+function Blogs({blogs}) {
+  
+  const { t } = useTranslation();
   const router = useRouter();
-  const data = {
-    advantage: [
-      {
-        id: 4,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 5,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 6,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 6,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 6,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 6,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 6,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-      {
-        id: 6,
-        title: "Uğura Aparan Rəqəmsal Həllər",
-        desc: "Ətraflı",
-        btn: "12.12.2024",
-        image: "/blogs/blogs.png",
-      },
-    ],
-  };
+  // const data = {
+  //   advantage: [
+  //     {
+  //       id: 1,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 5,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 6,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 7,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //     {
+  //       id: 8,
+  //       title: "Uğura Aparan Rəqəmsal Həllər",
+  //       desc: "Ətraflı",
+  //       btn: "12.12.2024",
+  //       image: "/blogs/blogs.png",
+  //     },
+  //   ],
+  // };
+  
 
   const handleNavigate = () => {
     router.push("/blogs"); // Navigate to /services
@@ -75,7 +78,7 @@ function Blogs() {
     <div className="pt-custom-space dark:bg-bgDarkGray">
       <Container>
         <div className="flex justify-between items-center py-custom-space">
-          <NavigationTitle>Bloqlar</NavigationTitle>
+          <NavigationTitle>{t("nav.blogs")}</NavigationTitle>
           <div className="hidden lg:block">
             <NavigationButton
               onClick={handleNavigate}
@@ -94,14 +97,16 @@ function Blogs() {
                 </svg>
               }
             >
-              Hamısına bax
+                   {t("nav.seeAll")}
             </NavigationButton>
           </div>
         </div>
       </Container>
       <div>
         {/* Pass the advantage array directly */}
-        <OurAdvantagesSection data={data.advantage} />
+        <Container>
+          <OurAdvantagesSection data={blogs} />
+        </Container>
 
         <Container>
           <div className="block lg:hidden w-full">

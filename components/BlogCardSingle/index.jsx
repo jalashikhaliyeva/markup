@@ -9,7 +9,7 @@ function BlogCardSingle({ blog }) {
     <div className="flex flex-col pb-custom-space ">
       <Image
         className="w-full h-full lg:[540px] md:w-[60%] mx-auto  object-cover rounded-2xl my-custom-space"
-        src="/blogs/singleBlog.png"
+        src={blog.image}
         width={1000}
         height={516}
         alt={blog.title}
@@ -17,10 +17,7 @@ function BlogCardSingle({ blog }) {
 
       <div className="md:w-[60%] mx-auto ">
         <p className="pb-custom-space  border-b-4 border-b-gradient dark:text-white">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum ullam
-          totam consequuntur molestiae sed minus? Iusto eaque accusantium
-          recusandae non porro ex perferendis magnam a, aperiam enim dignissimos
-          tenetur saepe!
+       {blog.desc}
         </p>
 
         <h6 className="pt-custom-space pb-6 text-black dark:text-white font-medium leading-9 text-32">

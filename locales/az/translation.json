@@ -4,7 +4,11 @@
     "projects": "Layihələr",
     "about": "Haqqımızda",
     "blogs": "Bloglar",
-    "contact": "Bizimlə əlaqə"
+    "contact": "Bizimlə əlaqə",
+    "seeAll": "Hamısına bax",
+    "clients": "Müştərilər",
+    "forums": "Forumlar",
+    "usefulLinks": "Faydalı linklər"
   },
   "theme": {
     "light": "Aydın Rejimə keç",

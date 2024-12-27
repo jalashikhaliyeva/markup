@@ -2,18 +2,20 @@ import { useRouter } from "next/router";
 import React from "react";
 import NavigationTitle from "../NavigationTitle";
 
-function TitleButtonProject({project}) {
+function TitleButtonProject({ title, link }) {
   const router = useRouter();
-  const handleNavigate = () => {
-    router.push("/projects"); // Navigate to /services
+  const handleNavigate = (link) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
   };
   return (
     <div className="flex justify-between items-center pb-5 lg:pb-custom-space">
-      <NavigationTitle>{project.title}</NavigationTitle>
+      <NavigationTitle>{title}</NavigationTitle>
 
       <div className="hidden lg:block">
         <button
-          onClick={handleNavigate}
+          onClick={() => handleNavigate(link)}
           className="py-3 px-4 text-center flex justify-center rounded-full border border-neutralBlack bg-neutralBlack text-white dark:border-white text-lg leading-6  items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group"
         >
           Sayta keçid

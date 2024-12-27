@@ -2,9 +2,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import NavigationButton from "../NavigationButton";
-import { services } from "@/shared/data/servicesData";
 
-function CervicesCard() {
+function CervicesCard({ item }) {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [visibleCards, setVisibleCards] = useState(6); // Number of initially visible cards
   const router = useRouter();
@@ -26,6 +25,9 @@ function CervicesCard() {
     setVisibleCards((prev) => prev + 6); // Load 6 more cards on each click
   };
 
+  // Ensure that item and item.item are defined and are arrays
+  const services = Array.isArray(item?.item) ? item.item : [];
+
   return (
     <div className="flex flex-col w-full pb-10">
       <div className="flex flex-row flex-wrap gap-5">
@@ -43,7 +45,7 @@ function CervicesCard() {
                   {service.title}
                 </h3>
                 <p className="text-neutralBlack dark:text-white text-xs md:text-base leading-4 font-normal pb-4 md:pb-0 line-clamp-2">
-                  {service.description}
+                  {service.short_desc}
                 </p>
               </div>
               <button className="self-start dark:text-white text-left flex items-center gap-2 text-xl leading-6 font-medium mt-2 md:mt-0">
@@ -74,8 +76,13 @@ function CervicesCard() {
                 }`}
               />
               {/* Hovered Image */}
+
               <Image
-                src={service.imageHovered}
+                src={
+                  service.image_2 && service.image_2 !== "null"
+                    ? service.image_2
+                    : service.image
+                }
                 alt={`Hovered ${service.title} Card`}
                 layout="fill"
                 className={`absolute inset-0 transition-opacity duration-500 object-contain ${
@@ -87,7 +94,6 @@ function CervicesCard() {
         ))}
       </div>
 
-      {/* Load More Button */}
       {/* Load More Button */}
       {!isIndexPage && visibleCards < services.length && (
         <div className="mt-5 flex justify-center">

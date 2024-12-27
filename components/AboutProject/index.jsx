@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import CountUp from "react-countup";
 
-function AboutProject() {
+function AboutProject({description ,image}) {
   return (
     <div className="bg-white dark:bg-black p-5 flex flex-col m-auto items-center lg:flex-row rounded-xl my-custom-space gap-8">
       <Image
-        className="object-contain w-full"
-        src="/about/aboutImg.png"
+        className="object-contain w-[40%]"
+        src={image}
         width={546}
         height={492}
         alt="About Image"
@@ -58,13 +58,7 @@ function AboutProject() {
 
         {/* Description */}
         <p className="text-black dark:text-white leading-7 font-normal text-base lg:text-lg">
-          Flex Jeans 2019-cu ildə təsis edilmiş ilk Azərbaycan cins geyim
-          brendidir. Şirkət olaraq hədəfimiz müştərilərimizə sərfəli qiymətlərlə
-          ən keyfiyyətli cins şalvarlar təklif etməkdir. Modellərimizi
-          yaradarkən onları əvəz edilməz edən üç aspect bizim həmişə diqqət
-          mərkəzimizdədir - cins şalvarlar sizə uyğun üslubda, rahat və
-          universal olmalıdırlar. Bütün geyimlər yüksək keyfiyyətli denim
-          parçadan və hər bir bədən ölçüsünə tam uyğun şəkildə hazırlanır.
+        {description}
         </p>
       </div>
     </div>

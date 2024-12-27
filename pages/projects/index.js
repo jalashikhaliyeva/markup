@@ -1,35 +1,40 @@
-// pages/projects/index.js
-
 import React, { useState } from "react";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProjectsCard from "@/components/ProjectsCard";
 import Container from "@/components/Container";
 import Header from "@/components/Header";
 import SingleTitle from "@/components/SingleTitle";
-import { projectsData } from "@/shared/data/projectsData"; // Importing the data
 import Breadcrumb from "@/components/Breadcrumb";
+import { getAllProjects } from "@/services/getAllProjects"; // Ensure correct path
+import Head from "next/head";
+import Footer from "@/components/Footer";
 
-const filters = [
-  "Hamısı",
-  ...new Set(projectsData.map((project) => project.category)),
-];
-
-function Projects() {
+function Projects({ projectsData, categories, metaTag }) {
   const [selectedFilter, setSelectedFilter] = useState("Hamısı");
-  const headerBgColor = "#ffff"; 
-  const headerDarkBgColor = "#333435"; 
+
+  const headerBgColor = "#ffff";
+  const headerDarkBgColor = "#333435";
+
+  const filters = ["Hamısı", ...categories?.map((category) => category.title)];
+
   const filteredProjects =
     selectedFilter === "Hamısı"
       ? projectsData
-      : projectsData.filter((project) => project.category === selectedFilter);
+      : projectsData.filter((project) =>
+          project.category.some((cat) => cat.title === selectedFilter)
+        );
 
   return (
     <div className="py-20 bg-mainGray dark:bg-bgDark">
+      <Head>
+        <title>{metaTag.meta_title}</title>
+        <meta name="description" content={metaTag.meta_description} />
+        <meta name="keywords" content={metaTag.meta_keywords} />
+      </Head>
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
         <Container>
-        <Breadcrumb />
-
+          <Breadcrumb />
         </Container>
         <SingleTitle>Layihələr</SingleTitle>
         <Container>
@@ -49,18 +54,55 @@ function Projects() {
           >
             {filteredProjects.map((project) => (
               <ProjectsCard
-                key={project.id}
-                imageSrc={project.imageSrc}
-                category={project.category}
+                key={project.slug} // Assuming slug is unique
+                imageSrc={project.thumb_image}
+                category={project.category.map((cat) => cat.title).join(", ")}
                 title={project.title}
-                slug={project.slug} // Pass slug to ProjectsCard
+                slug={project.slug}
               />
             ))}
           </div>
         </Container>
+        {/* <Footer /> */}
       </main>
     </div>
   );
 }
 
 export default Projects;
+
+export async function getServerSideProps(context) {
+  const lang = context.locale || "az"; // Default to "az" if locale is not set
+
+  try {
+    const data = await getAllProjects(lang);
+
+    // Destructure the response
+    const {
+      item: projectsData,
+      category: categories,
+      meta_tag: metaTag,
+    } = data;
+
+    return {
+      props: {
+        projectsData,
+        categories,
+        metaTag,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch projects data:", error);
+    return {
+      props: {
+        projectsData: [],
+        categories: [],
+        metaTag: {
+          meta_title: "Projects",
+          meta_description: "Projects description",
+          meta_keywords: "projects, projects keywords",
+        },
+      },
+    };
+  }
+}

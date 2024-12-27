@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/router"; // Import useRouter
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./embla.module.css";
 import { MdNavigateNext } from "react-icons/md";
@@ -10,8 +11,11 @@ const Slider = ({ data }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     containScroll: "trimSnaps",
-    // align: data.length <= 2 ? "center" : "start", // Center align if there are 2 or fewer slides
+    // align: data.length <= 2 ? "center" : "start", // Optional alignment
   });
+
+  const router = useRouter(); // Initialize the router
+
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -26,7 +30,6 @@ const Slider = ({ data }) => {
     () => emblaApi && emblaApi.scrollNext(),
     [emblaApi]
   );
-
   const scrollTo = useCallback(
     (index) => emblaApi && emblaApi.scrollTo(index),
     [emblaApi]
@@ -44,40 +47,63 @@ const Slider = ({ data }) => {
     setScrollSnaps(emblaApi.scrollSnapList());
     setShowDots(data?.length > 3); // Show dots only if there are more than 3 slides
     emblaApi.on("select", onSelect);
-    onSelect(); // Call immediately to set initial state
+    onSelect(); // Initialize state
   }, [emblaApi, onSelect, data?.length]);
+
+  // Handler for card click
+  const handleCardClick = (projectName) => {
+    // Encode the project name to make it URL-safe
+    const encodedName = encodeURIComponent(projectName);
+    router.push(`/projects/${encodedName}`);
+  };
 
   return (
     <div className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
-        <div className={`${styles.embla__container} flex  `}>
+        <div className={`${styles.embla__container} flex`}>
           {data?.map((slide, index) => (
             <div
-              className={`${styles.embla__slide}    lg:flex-[0_0_35%] px-2 `}
+              className={`${styles.embla__slide} lg:flex-[0_0_35%] px-2`}
               key={slide.id}
             >
-              <div className="flex flex-col w-full bg-boxGrayBodyColor rounded-2xl  ">
+              {/* 
+                Apply the 'group' class here to make the entire card a hover target.
+                This ensures that hovering anywhere on the card affects the child SVG.
+                Also, add an onClick handler and cursor-pointer for better UX.
+              */}
+              <div
+                className="group flex flex-col w-full bg-boxGrayBodyColor rounded-2xl transition-transform duration-300 cursor-pointer"
+                onClick={() => handleCardClick(slide.title)} // Add onClick handler
+              >
                 <Image
                   width={370}
                   height={290}
                   src={slide.image}
                   alt={`Slide ${index + 1}`}
-                  className="mb-4"
+                  className="mb-4 rounded-t-2xl"
                 />
-                <h5 className="text-lg w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard">
-                  {slide.btn}
-                </h5>
-                <h5 className="text-sliderTitle leading-52  text-textSecondaryDefault font-medium pb-4  dark:text-white">
+
+                <div className="flex flex-wrap mt-2 gap-2">
+                  {slide.category?.map((cat) => (
+                    <span
+                      key={cat.slug}
+                      className="text-lg w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard"
+                    >
+                      {cat.title}
+                    </span>
+                  ))}
+                </div>
+                <h5 className="text-sliderTitle leading-52 text-textSecondaryDefault font-medium pb-4 dark:text-white">
                   {slide.title}
                 </h5>
-                <div className="flex items-center group cursor-pointer gap-2">
+                <div className="flex items-center cursor-pointer gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="25"
                     viewBox="0 0 24 25"
                     fill="none"
-                    className="transform transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1 group-hover:translate-y-[-2px]"
+                    className="transform transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1"
                   >
                     <path
                       d="M16.0037 10.3842L7.39712 18.9908L5.98291 17.5766L14.5895 8.96997H7.00373V6.96997H18.0037V17.97H16.0037V10.3842Z"
@@ -86,10 +112,12 @@ const Slider = ({ data }) => {
                   </svg>
                   <p
                     className={`${styles.border_animation} text-lg font-medium text-grayTextinBox tracking-036 leading-normal dark:text-white`}
-                    dangerouslySetInnerHTML={{
-                      __html: sanitizeHtml(slide.desc),
-                    }}
-                  ></p>
+                    // dangerouslySetInnerHTML={{
+                    //   __html: sanitizeHtml(slide.desc),
+                    // }}
+                  >
+                    Ətraflı
+                  </p>
                 </div>
               </div>
             </div>
@@ -101,6 +129,7 @@ const Slider = ({ data }) => {
         <button
           className={`${styles.embla__button} ${styles["embla__button--prev"]}`}
           onClick={scrollPrev}
+          aria-label="Previous Slide"
         >
           <GrFormPrevious className="fill-black text-black text-lg" />
         </button>
@@ -110,8 +139,9 @@ const Slider = ({ data }) => {
         <button
           className={`${styles.embla__button} ${styles["embla__button--next"]}`}
           onClick={scrollNext}
+          aria-label="Next Slide"
         >
-          <MdNavigateNext className="fill-black" />
+          <MdNavigateNext className="fill-black text-black text-lg" />
         </button>
       )}
 
@@ -124,6 +154,7 @@ const Slider = ({ data }) => {
                 index === selectedIndex ? styles["embla__dot--selected"] : ""
               }`}
               onClick={() => scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>

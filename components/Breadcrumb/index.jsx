@@ -43,16 +43,16 @@ const Breadcrumb = () => {
 
       items.push(
         <div key={path} className="flex items-center">
-          <span className=" text-base font-normal leading-6 text-grayText mx-2">
+          <span className=" text-base font-normal leading-6 text-grayText mx-2 dark:text-white">
             /
           </span>
           {isLast ? (
-            <span className=" text-base font-normal leading-6 text-textSecondaryDefault">
+            <span className=" text-base font-normal leading-6 text-textSecondaryDefault dark:text-white">
               {label}
             </span>
           ) : (
             <Link href={path}>
-              <span className=" text-base font-normal leading-6 text-grayText hover:text-textSecondaryDefault cursor-pointer transition-colors duration-300 ease-in-out">
+              <span className=" text-base font-normal leading-6 text-grayText hover:text-textSecondaryDefault dark:text-white cursor-pointer transition-colors duration-300 ease-in-out">
                 {label}
               </span>
             </Link>
@@ -70,8 +70,8 @@ const Breadcrumb = () => {
   return (
     <div className="flex flex-wrap md:flex-nowrap flex-row gap-3 mb-6 mt-custom-space">
       {/* Static home link */}
-      <Link href="/home">
-        <span className=" text-base font-normal leading-6 text-gray-500 hover:text-textSecondaryDefault cursor-pointer transition-colors duration-300 ease-in-out">
+      <Link href="/">
+        <span className=" text-base font-normal leading-6 text-gray-500 dark:text-gray-400 hover:text-textSecondaryDefault cursor-pointer transition-colors duration-300 ease-in-out">
           Əsas səhifə
         </span>
       </Link>
@@ -90,7 +90,6 @@ const Breadcrumb = () => {
         </>
       )}
 
-      {/* Render dynamic breadcrumb items */}
       {breadcrumbItems}
     </div>
   );

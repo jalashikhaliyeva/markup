@@ -11,7 +11,7 @@ import {
 } from "react-icons/fi";
 import ThemeToggle from "../ThemeToggle";
 
-const Footer = () => {
+const Footer = ({ data }) => {
   return (
     <footer className="py-custom-space relative border-4 border-transparent bg-white dark:bg-bgDark">
       {/* Gradient border */}
@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             {/* Logo */}
             <Image
-              src="/logo/markup-logoII.png"
+              src={data?.logo?.footer_logo}
               width={169}
               height={53}
               alt="Logo"
@@ -33,7 +33,7 @@ const Footer = () => {
 
             {/* Dark Mode Logo */}
             <Image
-              src="/logo/logo-dark-footer.png"
+              src={data?.logo?.footer_logo}
               width={169}
               height={53}
               alt="Logo Dark"
@@ -89,19 +89,21 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="w-1/2 sm:w-1/3 md:w-1/3">
-            <h3 className="text-lg font-bold mb-4 sm:mb-9 dark:text-white">Contact</h3>
+            <h3 className="text-lg font-bold mb-4 sm:mb-9 dark:text-white">
+              Contact
+            </h3>
             <ul className="mt-2 space-y-4 sm:space-y-6">
               <li className="text-textGray text-sm  md:text-base dark:text-textGray flex items-center gap-2">
                 <FiPhone className="size-6" />
-                +994 70 250 10 04
-              </li> 
+                {data?.contact?.phone}
+              </li>
               <li className="text-textGray  text-sm  md:text-base dark:text-textGray flex items-center gap-2">
                 <FiMail className="size-6" />
-                office@markup.az
+                {data?.contact?.email}
               </li>
               <li className="text-textGray  text-sm  md:text-base dark:text-textGray flex items-center gap-2">
                 <FiNavigation className="size-6" />
-                Baku, Azerbaijan, Nerimanov ray., Əhməd Rəcəbli küç., 33 Esra Plaza Blok C
+                {data?.contact?.address}
               </li>
             </ul>
           </div>

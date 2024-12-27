@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 
-function TeamMemberCard({ name, position, image, description, linkedin }) {
+function TeamMemberCard({ name, profession, image, description, linkedin }) {
   return (
     <div className="group relative flex flex-col gap-3 w-[130px]   md:w-[280px] rounded-2xl">
       {/* Container with perspective and the flipping content */}
@@ -51,7 +51,7 @@ function TeamMemberCard({ name, position, image, description, linkedin }) {
           {name}
         </h6>
         <p className="font-normal text-lg leading-6 text-transparent bg-clip-text bg-gradient-to-r from-[#655C71] via-[#655C71] to-[#A25FF8]">
-          {position}
+          {profession}
         </p>
       </div>
     </div>

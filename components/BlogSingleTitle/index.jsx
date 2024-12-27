@@ -9,7 +9,7 @@ function BlogsSingleTitle({ blog }) {
       </h1>
       <div className="flex items-center justify-center">
         <p className="text-pink-500 text-xl justify-center items-center  leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
-          {blog.date}
+          {blog.created_at}
         </p>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import React from "react";
 import NavigationTitle from "../NavigationTitle";
 import NeonButton from "../NeonButton";
+import { useTranslation } from "react-i18next";
 
 function FastContact() {
+    const { t } = useTranslation();
   return (
     <div className="bg-contactPurple dark:bg-darkPurple py-custom-space px-5 flex flex-col gap-14 lg:gap-28 justify-between rounded-3xl w-full lg:w-[50%]">
       <p className="text-lg font-normal leading-6 text-textGray w-full lg:w-[400px]">
@@ -12,9 +14,9 @@ function FastContact() {
       </p>
 
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
-        <NavigationTitle>Bizimlə əlaqə</NavigationTitle>
+        <NavigationTitle>{t('nav.contact')}</NavigationTitle>
         <NeonButton
-          onClick={() => alert("Button Clicked!")}
+          // onClick={() => alert("Button Clicked!")}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +32,7 @@ function FastContact() {
             </svg>
           }
         >
-          Bizimlə əlaqə
+       {t('nav.contact')}
         </NeonButton>
       </div>
     </div>

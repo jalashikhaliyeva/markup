@@ -11,20 +11,25 @@ const EmblaCarousel = ({ slides, options, autoScrollOptions }) => {
   useEffect(() => {
     setIsPlaying(true);
   }, []);
+  const handleSlideClick = (link) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <div className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
           {slides?.map((slide, index) => (
-            <div className={styles.embla__slide} key={index}>
+            <div   onClick={() => handleSlideClick(slide.link)} className={styles.embla__slide} key={index}>
               <div className={styles.box}>
                 <Image
                   width={55}
                   height={55}
-                  src={slide?.imageSrc}
+                  src={slide?.image}
                   alt="Banner Logo"
-                  style={{ width: "85px", height: "45px", objectFit: "contain" }}
+                  style={{ width: "105px", height: "65px", objectFit: "cover" }}
                 />
                 <div className={styles.text}>{slide.text}</div>
               </div>

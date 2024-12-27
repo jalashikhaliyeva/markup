@@ -1,54 +1,63 @@
 import React from "react";
 import CountUp from "react-countup";
 
-function AboutStatistics() {
+/**
+ * Helper function to split out the integer portion and suffix
+ * from strings like "400+", "600%", "10k", etc.
+ */
+function parseCountString(countString) {
+  let end = 0;
+  let suffix = "";
+
+  // Remove all non-digit characters temporarily to parse the number
+  const numericValue = parseInt(countString.replace(/\D+/g, ""), 10) || 0;
+
+  // Check how the string ends to figure out suffix
+  if (countString.endsWith("+")) {
+    end = numericValue;
+    suffix = "+";
+  } else if (countString.endsWith("%")) {
+    end = numericValue;
+    suffix = "%";
+  } else if (countString.toLowerCase().endsWith("k")) {
+    end = numericValue;
+    suffix = "k";
+  } else {
+    // No special suffix
+    end = numericValue;
+  }
+
+  return { end, suffix };
+}
+
+function AboutStatistics({ desc, count }) {
   return (
     <div className="flex flex-col gap-16">
-      <p className="text-black dark:text-white leading-7 font-medium text-xl">
-        Digital marketing allows businesses to reach and engage with a wider
-        audience, generate leads, drive website traffic, and increase brand
-        visibility. It provides measurable results, allows for targeted
-        marketing efforts, and enables businesses to adapt and optimize their
-        strategies based on data and insights.
-      </p>
+      <p
+        className="text-black dark:text-white leading-7 font-medium text-xl"
+        dangerouslySetInnerHTML={{ __html: desc }}
+      />
 
-      <div className="flex flex-wrap items-center  gap-5 md:gap-16 w-full lg:w-[70%]">
-        {/* Define a fixed width that can accommodate the largest number */}
-        <div className="flex flex-col items-center gap-3 min-w-[150px]">
-          <h4 className="text-black dark:text-white font-normal text-4xl md:text-6xl font-mono">
-            <CountUp end={400} duration={3} suffix="+" />
-          </h4>
-          <h5 className="leading-7 text-sm md:lext-base font-medium bg-custom-gradient bg-clip-text text-transparent">
-            Projects Completed
-          </h5>
-        </div>
+      {/* Dynamically render each counter item here */}
+      <div className="flex flex-wrap items-center gap-5 md:gap-16 w-full lg:w-[70%]">
+        {count.map((item, index) => {
+          const { title, number } = item;
+          const { end, suffix } = parseCountString(number);
 
-        <div className="flex flex-col items-center gap-3 min-w-[150px]">
-          <h4 className="text-black dark:text-white font-normal text-4xl md:text-6xl font-mono">
-            <CountUp end={600} duration={3} suffix="%" />
-          </h4>
-          <h5 className="text-pink-500 text-sm md:lext-base leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
-            Customer Satisfaction
-          </h5>
-        </div>
-
-        <div className="flex flex-col items-center gap-3 min-w-[150px]">
-          <h4 className="text-black dark:text-white font-normal text-4xl md:text-6xl font-mono">
-            <CountUp end={10} duration={3} separator="," suffix="k" />
-          </h4>
-          <h5 className="text-pink-500 text-sm md:lext-base leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
-            Users Engaged
-          </h5>
-        </div>
-
-        <div className="flex flex-col items-center gap-3 min-w-[150px]">
-          <h4 className="text-black dark:text-white font-normal text-4xl md:text-6xl font-mono">
-            <CountUp end={200} duration={3} suffix="+" />
-          </h4>
-          <h5 className="text-pink-500 text-sm md:lext-base leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
-            Active Campaigns
-          </h5>
-        </div>
+          return (
+            <div
+              key={index}
+              className="flex flex-col items-center gap-3 min-w-[150px]"
+            >
+              <h4 className="text-black dark:text-white font-normal text-4xl md:text-6xl font-mono">
+                <CountUp end={end} duration={3} suffix={suffix} />
+              </h4>
+              <h5 className="leading-7 text-sm md:text-base font-medium bg-custom-gradient bg-clip-text text-transparent">
+                {title}
+              </h5>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

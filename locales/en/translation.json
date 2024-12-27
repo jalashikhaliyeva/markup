@@ -4,7 +4,11 @@
     "projects": "Projects",
     "about": "About Us",
     "blogs": "Blogs",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "seeAll": "See All",
+    "clients": "Clients",
+    "forums": "Forums",
+    "usefulLinks": "Useful Links"
   },
   "theme": {
     "light": "Switch to Light Mode",
