@@ -1,5 +1,4 @@
 // pages/projects/[slug].js
-
 import React from "react";
 import { useRouter } from "next/router";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -12,8 +11,9 @@ import SimilarProjectsTitle from "@/components/SimilarProjectsTitle";
 import OurAdvantagesSection from "@/components/OurAdvantagesSection";
 import Footer from "@/components/Footer";
 import { getSingleProject } from "@/services/getSingleProject";
+import { getSettings } from "@/services/getSettings";
 
-function ProjectPage({ project }) {
+function ProjectPage({ project, settingsData }) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -50,16 +50,19 @@ function ProjectPage({ project }) {
         </Container>
         <Container>
           <TitleButtonProject title={project.title} link={project.link} />
-          
-          <CategoriesProject categoryTitles={project.category.map(cat => cat.title)} />
 
-          
+          <CategoriesProject
+            categoryTitles={project.category.map((cat) => cat.title)}
+          />
+
           <AboutProject description={project.desc} image={project.image} />
           <SimilarProjectsTitle />
-      
+
           {/* <OurAdvantagesSection data={data?.advantage} /> */}
         </Container>
-        {/* <Footer /> */}
+        <div className="mt-10">
+          <Footer data={settingsData} />
+        </div>
       </main>
     </div>
   );
@@ -78,6 +81,7 @@ export async function getServerSideProps(context) {
   try {
     // Using your getSingleProject function:
     const data = await getSingleProject(locale, slug);
+    const settingsData = await getSettings(locale);
 
     // Suppose the API returns data in the shape: { item: { ...projectFields } }
     if (!data?.item) {
@@ -87,6 +91,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         project: data.item,
+        settingsData,
       },
     };
   } catch (error) {

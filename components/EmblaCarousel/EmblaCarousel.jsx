@@ -29,7 +29,7 @@ const EmblaCarousel = ({ slides, options, autoScrollOptions }) => {
                   height={55}
                   src={slide?.image}
                   alt="Banner Logo"
-                  style={{ width: "105px", height: "65px", objectFit: "cover" }}
+                  style={{ width: "105px", height: "65px", objectFit: "contain" }}
                 />
                 <div className={styles.text}>{slide.text}</div>
               </div>

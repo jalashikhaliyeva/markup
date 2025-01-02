@@ -8,8 +8,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { getAllProjects } from "@/services/getAllProjects"; // Ensure correct path
 import Head from "next/head";
 import Footer from "@/components/Footer";
+import { getSettings } from "@/services/getSettings";
 
-function Projects({ projectsData, categories, metaTag }) {
+function Projects({ projectsData, categories, metaTag, settingsData }) {
   const [selectedFilter, setSelectedFilter] = useState("Hamısı");
 
   const headerBgColor = "#ffff";
@@ -25,7 +26,7 @@ function Projects({ projectsData, categories, metaTag }) {
         );
 
   return (
-    <div className="py-20 bg-mainGray dark:bg-bgDark">
+    <div className="pt-20 bg-mainGray dark:bg-bgDark">
       <Head>
         <title>{metaTag.meta_title}</title>
         <meta name="description" content={metaTag.meta_description} />
@@ -63,7 +64,9 @@ function Projects({ projectsData, categories, metaTag }) {
             ))}
           </div>
         </Container>
-        {/* <Footer /> */}
+        <div className="pt-10">
+          <Footer data={settingsData} />
+        </div>
       </main>
     </div>
   );
@@ -75,6 +78,7 @@ export async function getServerSideProps(context) {
   const lang = context.locale || "az"; // Default to "az" if locale is not set
 
   try {
+    // Fetch all projects data
     const data = await getAllProjects(lang);
 
     // Destructure the response
@@ -84,15 +88,28 @@ export async function getServerSideProps(context) {
       meta_tag: metaTag,
     } = data;
 
+    // Fetch settings data
+    const settingsData = await getSettings(lang);
+
     return {
       props: {
         projectsData,
         categories,
         metaTag,
+        settingsData, // <-- Pass settingsData as a prop
       },
     };
   } catch (error) {
     console.error("Failed to fetch projects data:", error);
+
+    // Optionally, you can still attempt to fetch settings data even if fetching projects fails
+    let settingsData = null;
+    try {
+      settingsData = await getSettings(lang);
+    } catch (settingsError) {
+      console.error("Failed to fetch settings data:", settingsError);
+    }
+
     return {
       props: {
         projectsData: [],
@@ -102,6 +119,7 @@ export async function getServerSideProps(context) {
           meta_description: "Projects description",
           meta_keywords: "projects, projects keywords",
         },
+        settingsData, // <-- Pass settingsData as a prop (could be null)
       },
     };
   }
