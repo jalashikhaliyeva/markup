@@ -1,15 +1,13 @@
+// components/Customers.js
 import React from "react";
-import { useRouter } from "next/router"; // Import useRouter for route checking
+import { useRouter } from "next/router";
 import EmblaCarousel from "../EmblaCarousel/EmblaCarousel";
 
-function Customers({slides}) {
-  const router = useRouter(); // Get the router object
-  const isAboutPage = router.pathname === "/about"; // Check if the current page is the About page
+function Customers({ slides, singleCarousel = false }) { // 1. Accept the new prop with a default value
+  const router = useRouter();
+  const isAboutPage = router.pathname === "/about";
 
   const OPTIONS = { loop: true };
-
-  // Static data for slides
-  
 
   // Embla carousel auto-scroll configurations
   const autoScrollRight = { playOnInit: true, interval: 6000, speed: 1 };
@@ -21,16 +19,29 @@ function Customers({slides}) {
         isAboutPage ? "dark:bg-black" : "dark:bg-bgDarkGray"
       }`}
     >
-      <EmblaCarousel
-        slides={slides}
-        options={OPTIONS}
-        autoScrollOptions={autoScrollRight}
-      />
-      <EmblaCarousel
-        slides={slides}
-        options={OPTIONS}
-        autoScrollOptions={autoScrollLeft}
-      />
+      {/* 2. Conditional Rendering */}
+      {singleCarousel ? (
+        // You can choose which direction to scroll when singleCarousel is true
+        // Here, we'll default to scrolling right
+        <EmblaCarousel
+          slides={slides}
+          options={OPTIONS}
+          autoScrollOptions={autoScrollRight}
+        />
+      ) : (
+        <>
+          <EmblaCarousel
+            slides={slides}
+            options={OPTIONS}
+            autoScrollOptions={autoScrollRight}
+          />
+          <EmblaCarousel
+            slides={slides}
+            options={OPTIONS}
+            autoScrollOptions={autoScrollLeft}
+          />
+        </>
+      )}
     </div>
   );
 }

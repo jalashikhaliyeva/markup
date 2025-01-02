@@ -10,8 +10,9 @@ import { useRouter } from "next/router";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getBlogs } from "@/services/getBlogs";
 import Head from "next/head";
+import { getSettings } from "@/services/getSettings";
 
-function Blogs({ blogsData, metaTag }) {
+function Blogs({ blogsData, metaTag , settingsData}) {
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
   const router = useRouter();
@@ -62,7 +63,7 @@ function Blogs({ blogsData, metaTag }) {
             </div>
           )}
         </Container>
-        {/* <Footer /> */}
+        <Footer data={settingsData} />
       </main>
     </div>
   );
@@ -76,11 +77,12 @@ export async function getServerSideProps(context) {
 
   try {
     const data = await getBlogs(lang);
-
+    const settingsData = await getSettings(lang);
     return {
       props: {
         blogsData: data.item || [], // Pass the blogs array
         metaTag: data.meta_tag || {}, // Pass meta tags
+        settingsData,
       },
     };
   } catch (error) {
@@ -88,11 +90,13 @@ export async function getServerSideProps(context) {
     return {
       props: {
         blogsData: [],
+   
         metaTag: {
           meta_title: "Blogs",
           meta_description: "Default description for blogs.",
           meta_keywords: "blogs, default keywords",
         },
+        settingsData,
       },
     };
   }

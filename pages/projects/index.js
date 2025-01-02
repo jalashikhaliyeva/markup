@@ -96,7 +96,7 @@ export async function getServerSideProps(context) {
         projectsData,
         categories,
         metaTag,
-        settingsData, // <-- Pass settingsData as a prop
+        settingsData,
       },
     };
   } catch (error) {

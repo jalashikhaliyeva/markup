@@ -12,8 +12,9 @@ import OurAdvantagesSection from "@/components/OurAdvantagesSection";
 import Footer from "@/components/Footer";
 import { getSingleProject } from "@/services/getSingleProject";
 import { getSettings } from "@/services/getSettings";
+import Customers from "@/components/Customers";
 
-function ProjectPage({ project, settingsData }) {
+function ProjectPage({ project, settingsData, similarProjects }) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -57,6 +58,7 @@ function ProjectPage({ project, settingsData }) {
 
           <AboutProject description={project.desc} image={project.image} />
           <SimilarProjectsTitle />
+          <Customers slides={similarProjects} singleCarousel={true} />
 
           {/* <OurAdvantagesSection data={data?.advantage} /> */}
         </Container>
@@ -91,6 +93,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         project: data.item,
+        similarProjects: data.related_project,
         settingsData,
       },
     };

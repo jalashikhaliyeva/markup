@@ -18,12 +18,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
-function About({ aboutData, faqData, teamData, clientsData }) {
+function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
   // Added clientsData
   const router = useRouter();
   const { locale } = router;
 
-  if (!aboutData || !faqData || !teamData || !clientsData) {
+  if (!aboutData || !faqData || !teamData || !clientsData || !settingsData) {
     // Updated condition
     return <LoadingAnimation />;
   }
@@ -70,7 +70,7 @@ function About({ aboutData, faqData, teamData, clientsData }) {
           </div>
         </Container>
 
-        {/* <Footer /> */}
+        <Footer data={settingsData} />
       </main>
     </div>
   );
@@ -84,17 +84,20 @@ import { getFaq } from "@/services/getFaq";
 import { getTeam } from "@/services/getTeam";
 import { getClients } from "@/services/getClients"; // Ensure the path is correct
 import CustomersTitleIndex from "@/components/CustomersTitleIndex";
+import { getSettings } from "@/services/getSettings";
 
 export async function getServerSideProps(context) {
-  const lang = context.locale || "az"; // Default to "az" if locale is not set
+  const lang = context.locale; // Default to "az" if locale is not set
 
   try {
-    const [aboutData, faqData, teamData, clientsData] = await Promise.all([
-      getAbout(lang),
-      getFaq(lang),
-      getTeam(lang),
-      getClients(lang), // Fetch clients data
-    ]);
+    const [aboutData, faqData, teamData, clientsData, settingsData] =
+      await Promise.all([
+        getAbout(lang),
+        getFaq(lang),
+        getTeam(lang),
+        getClients(lang), // Fetch clients data
+        getSettings(lang),
+      ]);
 
     return {
       props: {
@@ -102,9 +105,11 @@ export async function getServerSideProps(context) {
         faqData, // Data for the FAQ section
         teamData, // Data for the Team section
         clientsData, // Data for the Clients/Partners section
+        settingsData,
       },
     };
   } catch (error) {
+    
     console.error("Failed to fetch data:", error);
     return {
       props: {
@@ -112,6 +117,7 @@ export async function getServerSideProps(context) {
         faqData: null,
         teamData: null,
         clientsData: null, // Handle clients data failure
+        settingsData: null,
       },
     };
   }

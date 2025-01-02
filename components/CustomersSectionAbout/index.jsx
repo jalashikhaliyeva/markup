@@ -8,7 +8,7 @@ function CustomersSectionAbout({slides}) {
         Müştərilər
       </h4>
 
-      <Customers slides={slides} />
+      <Customers slides={slides} singleCarousel={true} />
     </div>
   );
 }

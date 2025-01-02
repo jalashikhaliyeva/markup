@@ -9,8 +9,9 @@ import BlogsSingleTitle from "@/components/BlogSingleTitle";
 import BlogCardSingle from "@/components/BlogCardSingle";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getSingleBlog } from "@/services/getSingleBlog";
+import { getSettings } from "@/services/getSettings"; // <-- Import getSettings
 
-function BlogSingle({ blog }) {
+function BlogSingle({ blog, settingsData }) {
   // Handle the case where the blog is not found
   if (!blog) {
     return (
@@ -21,7 +22,7 @@ function BlogSingle({ blog }) {
             Blog not found
           </h1>
         </Container>
-        <Footer />
+        <Footer data={settingsData} />
       </>
     );
   }
@@ -35,7 +36,6 @@ function BlogSingle({ blog }) {
         <title>{blog.meta_title}</title>
         <meta name="description" content={blog.meta_description} />
         <meta name="keywords" content={blog.meta_keywords} />
-        {/* Add more meta tags as needed */}
       </Head>
       <div className="pt-20 bg-mainGray dark:bg-bgDark">
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
@@ -46,7 +46,7 @@ function BlogSingle({ blog }) {
           <BlogsSingleTitle blog={blog} />
           <BlogCardSingle blog={blog} />
         </Container>
-        {/* <Footer /> */}
+        <Footer data={settingsData} />
       </div>
     </>
   );
@@ -77,9 +77,13 @@ export async function getServerSideProps(context) {
     // Destructure `item` from the API response
     const blog = data.item;
 
+    // Fetch settings data
+    const settingsData = await getSettings(locale); // <-- Fetch your settings
+
     return {
       props: {
         blog,
+        settingsData, // <-- Pass it as a prop
       },
     };
   } catch (error) {
