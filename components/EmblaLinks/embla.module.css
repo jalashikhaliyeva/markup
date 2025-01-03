@@ -2,7 +2,7 @@
 
 /* Existing Styles */
 .embla {
-  max-width: 126rem;
+  /* max-width: 126rem; */
   margin: auto;
   --slide-height: 19rem;
   --slide-spacing: 0.5rem;
@@ -24,7 +24,7 @@
 }
 
 .embla__slide {
-  flex: 0 0 180px;
+  /* flex: 0 0 180px; */
   min-width: 0;
   padding-left: 0.5rem;
 }
@@ -56,6 +56,7 @@
   position: relative; /* Needed for the pseudo-element */
   font-size: 16px;
   color: #8b8da4;
+  cursor: pointer;
   transition: color 0.3s ease; /* Smooth color transition */
   text-decoration: none; /* Remove default underline */
 }
@@ -74,6 +75,7 @@
   width: 0; /* Start with no underline */
   background-color: currentColor; /* Use the current text color */
   transition: width 0.3s ease; /* Smooth width transition */
+
 }
 
 /* Hover Effects */

@@ -1,13 +1,15 @@
 import useTheme from "@/shared/hooks/useTheme";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className="mt-4 flex items-center space-x-4">
       <span className="text-gray-600 dark:text-gray-400">
-        {isDarkMode ? "Dark Mode" : "Light Mode"}
+        {isDarkMode ? t("theme.light") : t("theme.dark")}
       </span>
       <button
         onClick={toggleTheme}

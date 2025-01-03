@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import React from "react";
 import useTheme from "@/shared/hooks/useTheme"; // Assuming you have a ThemeContext for theme management
+import Breadcrumb from "@/components/Breadcrumb";
 
 function Contact() {
   const { isDarkMode } = useTheme(); // Access the dark mode state from the context
@@ -24,6 +25,7 @@ function Contact() {
         <main>
           <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
           <Container>
+          <Breadcrumb />
             <div className="flex flex-col  items-center lg:flex-row pt-5 justify-between">
               <ContactInfo />
               <ContactForm />

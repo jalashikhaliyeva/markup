@@ -37,12 +37,12 @@ const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
                 </div>
 
                 <a
-                  href={slide.href}
+                  href={slide.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${styles.text} dark:text-white`}
                 >
-                  {slide.text}
+                  {slide.title}
                 </a>
               </div>
             </div>

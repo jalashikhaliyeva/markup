@@ -3,13 +3,15 @@ import Container from "../Container";
 import FastContact from "../FastContact";
 import FastAbout from "../FastAbout";
 
-function InfoSection() {
+function InfoSection({data}) {
+  console.log(data, "data inmfo");
+  
   return (
     <div className="dark:bg-bgDarkGray pt-10 lg:pt-0">
       <Container>
         <div className="flex flex-col lg:flex-row gap-5 pb-16 ">
-          <FastContact />
-          <FastAbout />
+          <FastContact  />
+          <FastAbout   />
         </div>
       </Container>
     </div>

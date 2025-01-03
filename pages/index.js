@@ -19,10 +19,11 @@ import LoadingAnimation from "@/components/LoadingAnimation";
 import { getHero } from "@/services/getHero";
 import { getServices } from "@/services/getServices";
 import { getClients } from "@/services/getClients";
-import { getProjects } from "@/services/getProjects"; // Import getProjects
+import { getProjects } from "@/services/getProjects";
 import { getForums } from "@/services/getForums";
 import { getBlogs } from "@/services/getBlogs";
 import { getSettings } from "@/services/getSettings";
+import { getUsefulLinks } from "@/services/getUsefulLinks";
 
 export default function Home({
   heroData,
@@ -32,6 +33,7 @@ export default function Home({
   forumsData,
   blogsData,
   settingsData,
+  usefulLinksData,
 }) {
   const router = useRouter();
   const { locale } = router;
@@ -46,19 +48,26 @@ export default function Home({
     !projectsData ||
     !blogsData ||
     !settingsData ||
+    !usefulLinksData ||
     !forumsData
   ) {
-    // Include projectsData in the check
     return <LoadingAnimation />;
   }
 
   const { item, meta_tag } = heroData;
+  const usefulLinksDescriptions = usefulLinksData.item
+    .map((link) => link.meta_description)
+    .join(" ");
+
+  const combinedMetaDescription =
+    `${meta_tag.meta_description} ${usefulLinksDescriptions}`.substring(0, 160);
+  console.log(combinedMetaDescription, "combinedMetaDescription");
 
   return (
     <>
       <Head>
         <title>{meta_tag.meta_title}</title>
-        <meta name="description" content={meta_tag.meta_description} />
+        <meta name="description" content={combinedMetaDescription} />
         <meta name="keywords" content={meta_tag.meta_keywords} />
       </Head>
       <main>
@@ -71,12 +80,12 @@ export default function Home({
           <CustomersTitleIndex />
           <Customers slides={clientsData.item} />
         </div>
-        <Projects projects={projectsData.item} /> {/* Pass projectsData */}
+        <Projects projects={projectsData.item} />
         <FormsTitleIndex />
         <Forms forums={forumsData.item} />
         <Blogs blogs={blogsData.item} />
-        <InfoSection />
-        <UsefulLinks />
+        <InfoSection data={settingsData} />
+        <UsefulLinks slides={usefulLinksData.item} />
         <Footer data={settingsData} />
       </main>
     </>
@@ -95,6 +104,7 @@ export async function getServerSideProps(context) {
       forumsData,
       blogsData,
       settingsData,
+      usefulLinksData,
     ] = await Promise.all([
       getHero(lang),
       getServices(lang),
@@ -103,6 +113,7 @@ export async function getServerSideProps(context) {
       getForums(lang), // Fetch projects data
       getBlogs(lang), // Fetch projects data
       getSettings(lang), // Fetch projects data
+      getUsefulLinks(lang),
     ]);
 
     return {
@@ -114,6 +125,7 @@ export async function getServerSideProps(context) {
         forumsData,
         blogsData,
         settingsData,
+        usefulLinksData,
       },
     };
   } catch (error) {
@@ -127,6 +139,7 @@ export async function getServerSideProps(context) {
         forumsData: null, // Handle projects data failure,
         blogsData: null, // Handle projects data failure,
         settingsData: null, // Handle projects data failure,
+        usefulLinksData: null, // Handle projects data failure,
       },
     };
   }

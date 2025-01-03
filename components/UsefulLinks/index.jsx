@@ -2,24 +2,24 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import EmblaLinks from "../EmblaLinks/EmblaCarousel";
 
-function UsefulLinks() {
+function UsefulLinks({slides}) {
   const { t } = useTranslation();
   const OPTIONS = { loop: true };
 
-  const slides = [
-    { text: "Markup", href: "https://markup.az/" },
-    { text: "Markup", href: "https://markup.az/" },
-    { text: "Markup", href: "https://markup.az/" },
-    { text: "Markup", href: "https://markup.az/" },
-    { text: "Markup", href: "https://markup.az/" },
-    { text: "Markup", href: "https://markup.az/" },
-    { text: "Google", href: "https://www.google.com/" },
-    { text: "Facebook", href: "https://www.facebook.com/" },
-    { text: "Twitter", href: "https://twitter.com/" },
-    { text: "LinkedIn", href: "https://www.linkedin.com/" },
-    { text: "GitHub", href: "https://github.com/" },
-    // Add more external links as needed
-  ];
+  // const slides = [
+  //   { text: "Markup", href: "https://markup.az/" },
+  //   { text: "Markup", href: "https://markup.az/" },
+  //   { text: "Markup", href: "https://markup.az/" },
+  //   { text: "Markup", href: "https://markup.az/" },
+  //   { text: "Markup", href: "https://markup.az/" },
+  //   { text: "Markup", href: "https://markup.az/" },
+  //   { text: "Google", href: "https://www.google.com/" },
+  //   { text: "Facebook", href: "https://www.facebook.com/" },
+  //   { text: "Twitter", href: "https://twitter.com/" },
+  //   { text: "LinkedIn", href: "https://www.linkedin.com/" },
+  //   { text: "GitHub", href: "https://github.com/" },
+  //   // Add more external links as needed
+  // ];
 
   // Embla carousel auto-scroll configurations
   const autoScrollRight = { playOnInit: true, interval: 6000, speed: 0.7 };

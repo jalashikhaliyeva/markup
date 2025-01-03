@@ -3,7 +3,9 @@ import NavigationTitle from "../NavigationTitle";
 import NeonButton from "../NeonButton";
 import { useTranslation } from "react-i18next";
 
-function FastContact() {
+function FastContact({data}) {
+  console.log(data, "data fast contact");
+  
     const { t } = useTranslation();
   return (
     <div className="bg-contactPurple dark:bg-darkPurple py-custom-space px-5 flex flex-col gap-14 lg:gap-28 justify-between rounded-3xl w-full lg:w-[50%]">

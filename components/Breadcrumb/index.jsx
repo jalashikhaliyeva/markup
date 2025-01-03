@@ -14,7 +14,7 @@ const Breadcrumb = () => {
     // Add more mappings as needed
     // Example:
     // about: "Haqqımızda",
-    // contact: "Əlaqə",
+    contact: "Əlaqə",
   };
 
   const pathSegments = router.asPath

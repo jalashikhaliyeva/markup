@@ -10,6 +10,8 @@
     "forums": "Forums",
     "usefulLinks": "Useful Links"
   },
+  "navigation":"Navigation",
+  "contact":"Contact",
   "theme": {
     "light": "Switch to Light Mode",
     "dark": "Switch to Dark Mode"
