@@ -8,6 +8,8 @@ import sanitizeHtml from "sanitize-html";
 import Image from "next/image";
 
 const Slider = ({ data }) => {
+  // console.log(data, "data slider");
+  
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     containScroll: "trimSnaps",
@@ -87,15 +89,16 @@ const Slider = ({ data }) => {
                   {slide.category?.map((cat) => (
                     <span
                       key={cat.slug}
-                      className="text-lg w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard"
+                      className="text-sm w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard"
                     >
                       {cat.title}
                     </span>
                   ))}
                 </div>
-                <h5 className="text-sliderTitle leading-52 text-textSecondaryDefault font-medium pb-4 dark:text-white">
+                <h5 className="text-4xl leading-52 text-textSecondaryDefault font-medium pb-2 dark:text-white">
                   {slide.title}
                 </h5>
+                <p className="text-textGray leading-6 pb-3 dark:text-gray-400 ">description</p>
                 <div className="flex items-center cursor-pointer gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

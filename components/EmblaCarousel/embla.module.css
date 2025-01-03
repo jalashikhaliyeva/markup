@@ -1,3 +1,4 @@
+/* embla.module.css */
 .embla {
   max-width: 126rem;
   margin: auto;
@@ -16,29 +17,36 @@
   backface-visibility: hidden;
   display: flex;
   touch-action: pan-y pinch-zoom;
-  margin-left: calc( 0.5rem * -1);
+  margin-left: calc(0.5rem * -1);
+  justify-content: flex-start; /* Default alignment */
+}
+
+.embla__containerCenter {
+  justify-content: center; /* Center alignment when fewer slides */
+  margin-left: 0; /* Remove negative margin to prevent offset */
 }
 
 .embla__slide {
-  flex: 0 0  180px;
+  flex: 0 0 180px;
   min-width: 0;
-  padding-left: 0.5rem; 
+  padding-left: 0.5rem;
   cursor: pointer;
-
 }
+
 .box {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 8px;
-  /* width: 200px; */
-  /* height: 80px; */
   background-color: var(--background-color); /* Use variable */
   border-radius: 10px;
-  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
   padding: 10px;
   text-align: center;
+}
+
+.boxWhite {
+  background-color: #f5f5f7; /* White background for /about page */
 }
 
 .badge {

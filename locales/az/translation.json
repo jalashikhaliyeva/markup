@@ -3,15 +3,15 @@
     "services": "Xidmətlərimiz",
     "projects": "Layihələr",
     "about": "Haqqımızda",
-    "blogs": "Bloglar",
+    "blogs": "Bloqlar",
     "contact": "Bizimlə əlaqə",
     "seeAll": "Hamısına bax",
     "clients": "Müştərilər",
     "forums": "Forumlar",
     "usefulLinks": "Faydalı linklər"
   },
-  "navigation":"Naviqasiya",
-  "contact":"Əlaqə",
+  "navigation": "Naviqasiya",
+  "contact": "Əlaqə",
   "theme": {
     "light": "Aydın Rejimə keç",
     "dark": "Qaranlıq Rejimə keç"

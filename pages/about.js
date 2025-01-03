@@ -32,7 +32,7 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
   return (
-    <div className="pt-16 dark:bg-bgDark">
+    <div className="pt-16 bg-mainGray dark:bg-bgDark">
       <Head>
         <title>{meta_tag.meta_title}</title>
         <meta name="description" content={meta_tag.meta_description} />
@@ -45,7 +45,7 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
         </Container>
         {/* Main About Section */}
         <Container>
-          <div className="bg-mainGray dark:bg-black rounded-2xl mb-28">
+          <div className="bg-white dark:bg-black rounded-2xl mb-28">
             <div className="p-2 lg:p-9">
               <h1 className="text-black dark:text-white font-medium leading-83 flex items-center justify-center text-4xl md:text-title">
                 Haqqımızda

@@ -15,9 +15,11 @@ function Customers({ slides, singleCarousel = false }) { // 1. Accept the new pr
 
   return (
     <div
-      className={`bg-mainGray py-3 md:py-custom-space ${
-        isAboutPage ? "dark:bg-black" : "dark:bg-bgDarkGray"
-      }`}
+    className={`${
+      isAboutPage ? "bg-white" : "bg-mainGray"
+    } py-3 md:py-custom-space ${
+      isAboutPage ? "dark:bg-black" : "dark:bg-bgDarkGray"
+    }`}
     >
       {/* 2. Conditional Rendering */}
       {singleCarousel ? (
