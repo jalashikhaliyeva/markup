@@ -61,11 +61,9 @@ export default BlogSingle;
  * @returns {object} props
  */
 export async function getServerSideProps(context) {
-  const { locale = "az" } = context; // Fallback to 'az' if no locale is found
-  const { slug } = context.params; // The dynamic route [slug].js
-
+  const { locale = "az" } = context; 
+  const { slug } = context.params; 
   try {
-    // Fetch the data for this particular blog
     const data = await getSingleBlog(locale, slug);
 
     if (!data?.item) {
@@ -74,16 +72,15 @@ export async function getServerSideProps(context) {
       };
     }
 
-    // Destructure `item` from the API response
     const blog = data.item;
 
-    // Fetch settings data
-    const settingsData = await getSettings(locale); // <-- Fetch your settings
+
+    const settingsData = await getSettings(locale); 
 
     return {
       props: {
         blog,
-        settingsData, // <-- Pass it as a prop
+        settingsData, 
       },
     };
   } catch (error) {

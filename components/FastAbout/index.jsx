@@ -2,19 +2,24 @@ import React from "react";
 import NavigationTitle from "../NavigationTitle";
 import NeonButton from "../NeonButton";
 import { useTranslation } from "react-i18next";
-function FastAbout() {
+import { useRouter } from "next/router";
+function FastAbout({ aboutInfo }) {
+  const router = useRouter();
   const { t } = useTranslation();
   return (
     <div className="rounded-3xl bg-mainGray dark:bg-darkHeader py-custom-space px-5 flex flex-col justify-between w-full lg:w-[50%]">
       <p className="text-lg font-normal leading-6 text-textGray w-full lg:w-[400px]">
-        Biz kimik? Yaradıcılıq və innovasiyaya önəm verən bir komandayıq.
+        {/* Biz kimik? Yaradıcılıq və innovasiyaya önəm verən bir komandayıq.
         Məqsədimiz, unikal və müştərilərimizin ehtiyaclarına uyğun həllər təqdim
-        edərək mükəmməlliyə nail olmaqdır.
+        edərək mükəmməlliyə nail olmaqdır. */}
+
+        {aboutInfo.description}
       </p>
 
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
         <NavigationTitle>{t("nav.about")}</NavigationTitle>
         <NeonButton
+          onClick={() => router.push("/about")}
           // onClick={() => alert("Button Clicked!")}
           icon={
             <svg
@@ -31,7 +36,7 @@ function FastAbout() {
             </svg>
           }
         >
-        {t('nav.contact')}
+          {t("nav.contact")}
         </NeonButton>
       </div>
     </div>

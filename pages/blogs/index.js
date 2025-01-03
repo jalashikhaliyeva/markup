@@ -22,13 +22,16 @@ function Blogs({ blogsData, metaTag , settingsData}) {
     setVisibleBlogs((prevVisible) => prevVisible + 6); // Load 6 each time
   };
 
+
+  console.log(metaTag, "metaTag blogs");
+  
   const hasMoreBlogs = visibleBlogs < blogsData?.length;
 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
       {/* Head component to set meta tags dynamically */}
       <Head>
-        <title>{metaTag?.meta_title}</title>
+      <title>{metaTag.meta_title || "Blogs"}</title>
         <meta name="description" content={metaTag.meta_description} />
         <meta name="keywords" content={metaTag.meta_keywords} />
       </Head>

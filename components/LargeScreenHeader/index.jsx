@@ -13,10 +13,10 @@ function LargeScreenHeader({ isDarkMode, toggleTheme, bgColor, darkBgColor }) {
   const { t } = useTranslation();
 
   const navLinks = [
-    { key: "services", path: "/services" },
-    { key: "projects", path: "/projects" },
     { key: "about", path: "/about" },
+    { key: "services", path: "/services" },
     { key: "blogs", path: "/blogs" },
+    { key: "projects", path: "/projects" },
   ];
 
   return (

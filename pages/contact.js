@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import React from "react";
 import useTheme from "@/shared/hooks/useTheme"; // Assuming you have a ThemeContext for theme management
 import Breadcrumb from "@/components/Breadcrumb";
+import Head from "next/head";
 
 function Contact() {
   const { isDarkMode } = useTheme(); // Access the dark mode state from the context
@@ -20,12 +21,18 @@ function Contact() {
         }`}
         style={{
           backgroundImage: isDarkMode ? "none" : "url('/BG.png')",
-        }}z
+        }}
+        z
       >
+        {/* <Head>
+          <title>{meta_tag.meta_title}</title>
+          <meta name="description" content={combinedMetaDescription} />
+          <meta name="keywords" content={meta_tag.meta_keywords} />
+        </Head> */}
         <main>
           <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
           <Container>
-          <Breadcrumb />
+            <Breadcrumb />
             <div className="flex flex-col  items-center lg:flex-row pt-5 justify-between">
               <ContactInfo />
               <ContactForm />

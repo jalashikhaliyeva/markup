@@ -10,6 +10,7 @@ import ServicesOffer from "@/components/ServicesOffer";
 import Footer from "@/components/Footer"; // <-- Make sure you have a Footer component
 import { getSingleService } from "@/services/getSingleService";
 import { getSettings } from "@/services/getSettings"; // <-- import here
+import Head from "next/head";
 
 function SingleServicePage({ serviceData, settingsData }) {
   const router = useRouter();
@@ -22,6 +23,12 @@ function SingleServicePage({ serviceData, settingsData }) {
 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
+      <Head>
+        <title>{serviceData.meta_title}</title>
+        <meta name="description" content={serviceData.meta_description} />
+        <meta name="keywords" content={serviceData.meta_keywords} />
+      </Head>
+
       <Container>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
 

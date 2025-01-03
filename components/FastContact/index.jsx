@@ -2,23 +2,25 @@ import React from "react";
 import NavigationTitle from "../NavigationTitle";
 import NeonButton from "../NeonButton";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
-function FastContact({data}) {
-  console.log(data, "data fast contact");
-  
-    const { t } = useTranslation();
+function FastContact({ contactInfo }) {
+  console.log(contactInfo, "data fast contact");
+  const router = useRouter();
+  const { t } = useTranslation();
   return (
     <div className="bg-contactPurple dark:bg-darkPurple py-custom-space px-5 flex flex-col gap-14 lg:gap-28 justify-between rounded-3xl w-full lg:w-[50%]">
       <p className="text-lg font-normal leading-6 text-textGray w-full lg:w-[400px]">
-        Sualınız var və ya dəstəyə ehtiyacınız var? Bizimlə istənilən vaxt əlaqə
+        {/* Sualınız var və ya dəstəyə ehtiyacınız var? Bizimlə istənilən vaxt əlaqə
         saxlayın! Komandamız bütün suallarınızı cavablandırmaq və sizə dəstək
-        olmaq üçün buradadır
+        olmaq üçün buradadır */}
+        {contactInfo.description}
       </p>
 
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
-        <NavigationTitle>{t('nav.contact')}</NavigationTitle>
+        <NavigationTitle>{t("nav.contact")}</NavigationTitle>
         <NeonButton
-          // onClick={() => alert("Button Clicked!")}
+          onClick={() => router.push("/contact")}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +36,7 @@ function FastContact({data}) {
             </svg>
           }
         >
-       {t('nav.contact')}
+          {t("nav.contact")}
         </NeonButton>
       </div>
     </div>

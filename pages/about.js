@@ -20,9 +20,10 @@ import React from "react";
 
 function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
   // Added clientsData
+
   const router = useRouter();
   const { locale } = router;
-
+  const { meta_tag } = aboutData;
   if (!aboutData || !faqData || !teamData || !clientsData || !settingsData) {
     // Updated condition
     return <LoadingAnimation />;
@@ -32,6 +33,11 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
   const headerDarkBgColor = "#333435";
   return (
     <div className="pt-16 dark:bg-bgDark">
+      <Head>
+        <title>{meta_tag.meta_title}</title>
+        <meta name="description" content={meta_tag.meta_description} />
+        <meta name="keywords" content={meta_tag.meta_keywords} />
+      </Head>
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
         <Container>
@@ -60,12 +66,12 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
                   count={aboutData.counter}
                 />
               </div>
-              {/* Pass faqData to Faq component */}
+      
               <Faq data={faqData.item} />
               <Team data={teamData.item} />
             </div>
 
-            {/* Pass clientsData to CustomersSectionAbout */}
+       
             <CustomersSectionAbout slides={clientsData.item} />
           </div>
         </Container>
@@ -85,6 +91,7 @@ import { getTeam } from "@/services/getTeam";
 import { getClients } from "@/services/getClients"; // Ensure the path is correct
 import CustomersTitleIndex from "@/components/CustomersTitleIndex";
 import { getSettings } from "@/services/getSettings";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   const lang = context.locale; // Default to "az" if locale is not set
@@ -109,7 +116,6 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    
     console.error("Failed to fetch data:", error);
     return {
       props: {

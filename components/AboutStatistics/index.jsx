@@ -33,10 +33,17 @@ function parseCountString(countString) {
 function AboutStatistics({ desc, count }) {
   return (
     <div className="flex flex-col gap-16">
-      <p
-        className="text-black dark:text-white leading-7 font-medium text-xl"
-        dangerouslySetInnerHTML={{ __html: desc }}
-      />
+  <p
+  className="
+    text-black 
+    dark:text-white 
+    leading-7 
+    font-medium 
+    text-xl 
+    [&_*]:!text-inherit
+  "
+  dangerouslySetInnerHTML={{ __html: desc }}
+/>
 
       {/* Dynamically render each counter item here */}
       <div className="flex flex-wrap items-center gap-5 md:gap-16 w-full lg:w-[70%]">

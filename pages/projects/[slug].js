@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import { getSingleProject } from "@/services/getSingleProject";
 import { getSettings } from "@/services/getSettings";
 import Customers from "@/components/Customers";
+import Head from "next/head";
 
 function ProjectPage({ project, settingsData, similarProjects }) {
   const router = useRouter();
@@ -44,6 +45,11 @@ function ProjectPage({ project, settingsData, similarProjects }) {
 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
+      <Head>
+        <title>{project.meta_title}</title>
+        <meta name="description" content={project.meta_description} />
+        <meta name="keywords" content={project.meta_keywords} />
+      </Head>
       <main>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
         <Container>
@@ -93,6 +99,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         project: data.item,
+
         similarProjects: data.related_project,
         settingsData,
       },

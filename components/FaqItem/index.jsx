@@ -18,7 +18,8 @@ const Faq = React.forwardRef(({ faqs }, ref) => {
         <div className="mx-auto">
           <div className="mx-auto rounded-xl divide-y">
             {faqs.map((item, index) => (
-              <FaqItem key={item.id} item={item} defaultOpen={index === 0} />
+              <FaqItem key={item.id} item={item} />
+              // <FaqItem key={item.id} item={item} defaultOpen={index === 0} />
             ))}
           </div>
         </div>
