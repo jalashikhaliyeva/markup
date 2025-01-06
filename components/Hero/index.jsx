@@ -29,7 +29,7 @@ function Hero({ title, videoUrl }) {
         <div className="flex-col gap-5 lg:flex-row flex justify-between items-center lg:py-16">
           <div className="flex flex-col justify-between mb-10 lg:mb-0">
             <h1 className="font-grotesk text-titleResponsive md:text-textXl xl:text-huge font-medium leading-10 md:leading-78 text-neutralBlack dark:text-white">
-              {mainText}{" "}
+              {mainText}
               <span className="pl-3 bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
                 {lastWord}
               </span>
