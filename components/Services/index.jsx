@@ -6,7 +6,10 @@ import { RxArrowTopRight } from "react-icons/rx";
 import CervicesCard from "../CervicesCard";
 import { useRouter } from "next/router"; // Import useRouter
 import { useTranslation } from "react-i18next";
-function Services({services}) {
+import ShortDescription from "../ShortDescription";
+function Services({ services }) {
+  console.log(services, "services page");
+
   const { t } = useTranslation();
   const router = useRouter(); // Initialize the router
 
@@ -19,10 +22,14 @@ function Services({services}) {
       <Container>
         <div className="flex flex-col md:flex-row justify-between py-5 lg:py-custom-space">
           {/* <NavigationTitle>Xidmətlər</NavigationTitle> */}
-          <NavigationTitle>{t("nav.services")}</NavigationTitle>
+          <div>
+            <NavigationTitle>{t("nav.services")}</NavigationTitle>
+            <ShortDescription desc={"Böyük ideyalar, güclü tərəfdaşlıqlar"} />
+          </div>
+
           <div className="hidden lg:block">
             <NavigationButton
-              onClick={handleNavigate} // Pass the onClick handler
+              onClick={handleNavigate}
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +50,7 @@ function Services({services}) {
           </div>
         </div>
 
-        <CervicesCard item={services}/>
+        <CervicesCard item={services} />
       </Container>
     </div>
   );

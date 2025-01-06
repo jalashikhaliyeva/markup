@@ -20,6 +20,7 @@ function SingleServicePage({ serviceData, settingsData }) {
 
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
+  console.log(serviceData, "serviceData");
 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
@@ -31,7 +32,6 @@ function SingleServicePage({ serviceData, settingsData }) {
 
       <Container>
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
-
         <Breadcrumb />
 
         <main className="bg-white dark:bg-black p-10 rounded-2xl mt-custom-space">
@@ -40,8 +40,7 @@ function SingleServicePage({ serviceData, settingsData }) {
             description={serviceData.desc}
             image={serviceData.image}
           />
-
-          <ServicesOffer />
+          <ServicesOffer data={serviceData.attributes} />
         </main>
       </Container>
 

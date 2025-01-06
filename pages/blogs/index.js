@@ -19,6 +19,7 @@ function Blogs({ blogsData, metaTag, settingsData }) {
   const headerDarkBgColor = "#333435";
   const router = useRouter();
   const [visibleBlogs, setVisibleBlogs] = useState(6); // Initially show 6 blogs
+console.log(blogsData, "blogsData");
 
   const loadMoreBlogs = () => {
     setVisibleBlogs((prevVisible) => prevVisible + 6); // Load 6 each time

@@ -20,6 +20,7 @@ import React from "react";
 
 function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
   // Added clientsData
+  console.log(aboutData, "aboutData");
 
   const router = useRouter();
   const { locale } = router;
@@ -56,7 +57,7 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
               <div className="flex flex-col lg:flex-row gap-8">
                 <Image
                   className="object-contain"
-                  src="/about/aboutImg.png"
+                  src={aboutData.item.image}
                   width={546}
                   height={492}
                   alt="About Image"
@@ -66,12 +67,11 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
                   count={aboutData.counter}
                 />
               </div>
-      
+
               <Faq data={faqData.item} />
               <Team data={teamData.item} />
             </div>
 
-       
             <CustomersSectionAbout slides={clientsData.item} />
           </div>
         </Container>

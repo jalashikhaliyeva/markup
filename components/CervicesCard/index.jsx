@@ -1,3 +1,4 @@
+// components/CervicesCard.jsx
 import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
@@ -8,6 +9,7 @@ function CervicesCard({ item }) {
   const [visibleCards, setVisibleCards] = useState(6); // Number of initially visible cards
   const router = useRouter();
   const isIndexPage = router.pathname === "/";
+  console.log(item, "item");
 
   const handleMouseEnter = (index) => {
     setHoveredCard(index);
@@ -25,8 +27,8 @@ function CervicesCard({ item }) {
     setVisibleCards((prev) => prev + 6); // Load 6 more cards on each click
   };
 
-  // Ensure that item and item.item are defined and are arrays
-  const services = Array.isArray(item?.item) ? item.item : [];
+  // Since 'item' is already an array, directly use it
+  const services = Array.isArray(item) ? item : [];
 
   return (
     <div className="flex flex-col w-full pb-10">
@@ -76,7 +78,6 @@ function CervicesCard({ item }) {
                 }`}
               />
               {/* Hovered Image */}
-
               <Image
                 src={
                   service.image_2 && service.image_2 !== "null"

@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const Slider = ({ data }) => {
   // console.log(data, "data slider");
-  
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     containScroll: "trimSnaps",
@@ -82,7 +82,7 @@ const Slider = ({ data }) => {
                   height={290}
                   src={slide.image}
                   alt={`Slide ${index + 1}`}
-                  className="mb-4 rounded-t-2xl"
+                  className="mb-4 rounded-t-2xl h-[200px]"
                 />
 
                 <div className="flex flex-wrap mt-2 gap-2">
@@ -95,10 +95,12 @@ const Slider = ({ data }) => {
                     </span>
                   ))}
                 </div>
-                <h5 className="text-4xl leading-52 text-textSecondaryDefault font-medium pb-2 dark:text-white">
+                <h5 className="text-4xl leading-52 text-textSecondaryDefault font-medium pb-2 dark:text-white line-clamp-2">
                   {slide.title}
                 </h5>
-                <p className="text-textGray leading-6 pb-3 dark:text-gray-400 ">description</p>
+                <p className="text-textGray leading-6 pb-3 dark:text-gray-400 ">
+                  description
+                </p>
                 <div className="flex items-center cursor-pointer gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -5,8 +5,8 @@ import OurAdvantagesSection from "../OurAdvantagesSection";
 import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-function Blogs({blogs}) {
-  
+import ShortDescription from "../ShortDescription";
+function Blogs({ blogs }) {
   const { t } = useTranslation();
   const router = useRouter();
   // const data = {
@@ -69,7 +69,6 @@ function Blogs({blogs}) {
   //     },
   //   ],
   // };
-  
 
   const handleNavigate = () => {
     router.push("/blogs"); // Navigate to /services
@@ -78,7 +77,11 @@ function Blogs({blogs}) {
     <div className="pt-custom-space pb-10 dark:bg-bgDarkGray">
       <Container>
         <div className="flex justify-between items-center py-custom-space">
-          <NavigationTitle>{t("nav.blogs")}</NavigationTitle>
+          <div>
+            <NavigationTitle>{t("nav.blogs")}</NavigationTitle>
+            <ShortDescription desc={"Böyük ideyalar, güclü tərəfdaşlıqlar"} />
+          </div>
+
           <div className="hidden lg:block">
             <NavigationButton
               onClick={handleNavigate}
@@ -97,7 +100,7 @@ function Blogs({blogs}) {
                 </svg>
               }
             >
-                   {t("nav.seeAll")}
+              {t("nav.seeAll")}
             </NavigationButton>
           </div>
         </div>

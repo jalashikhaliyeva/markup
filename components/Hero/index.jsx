@@ -2,14 +2,24 @@ import React, { useMemo } from "react";
 import DOMPurify from "isomorphic-dompurify";
 import Container from "../Container";
 import { FiInstagram, FiFacebook, FiLinkedin } from "react-icons/fi";
+import Image from "next/image";
+const formatLink = (link) => {
+  if (/^(https?:\/\/|mailto:|tel:)/i.test(link)) {
+    return link;
+  }
+  return `https://${link}`;
+};
+function Hero({ title, videoUrl, socialLink }) {
+  console.log(socialLink, "socialLink hero");
 
-function Hero({ title, videoUrl }) {
   const { mainText, lastWord } = useMemo(() => {
     // 1) Replace all HTML tags with a space
     const titleWithSpaces = title.replace(/<[^>]*>/g, " ");
 
     // 2) Sanitize + remove any extra whitespace
-    const strippedTitle = DOMPurify.sanitize(titleWithSpaces, { ALLOWED_TAGS: [] })
+    const strippedTitle = DOMPurify.sanitize(titleWithSpaces, {
+      ALLOWED_TAGS: [],
+    })
       .replace(/\s+/g, " ")
       .trim();
 
@@ -52,9 +62,24 @@ function Hero({ title, videoUrl }) {
 
         <div className="hidden md:flex items-center gap-2 items-baseline md:pt-10">
           <div className="flex space-x-4">
-            <FiInstagram className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />
-            <FiFacebook className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />
-            <FiLinkedin className="size-6 hover:text-hoverPurple hover:scale-110 transform transition-transform duration-300 cursor-pointer dark:text-white" />
+            {socialLink?.map((social) => (
+              <a
+                key={social.link}
+                href={formatLink(social.link)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.link.split(".")[0]}
+                className="transform hover:scale-110 transition-transform duration-300"
+              >
+                <Image
+                  src={social.image}
+                  width={24}
+                  height={24}
+                  alt={social.link.split(".")[0]}
+                  className="dark:filter dark:invert"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </Container>

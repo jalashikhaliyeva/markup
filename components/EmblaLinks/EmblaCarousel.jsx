@@ -4,6 +4,12 @@ import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import styles from "./embla.module.css";
 import { FaLink } from "react-icons/fa";
+const formatLink = (link) => {
+  if (/^(http|https):\/\//i.test(link)) {
+    return link;
+  }
+  return `https://${link}`;
+};
 const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
   const [emblaRef] = useEmblaCarousel(options, [AutoScroll(autoScrollOptions)]);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -11,6 +17,11 @@ const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
   useEffect(() => {
     setIsPlaying(true);
   }, []);
+
+  const handleClick = (link) => {
+    const formattedLink = formatLink(link);
+    window.open(formattedLink, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div className={`${styles.embla} dark:bg-darkHeader`}>
@@ -37,7 +48,7 @@ const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
                 </div>
 
                 <a
-                  href={slide.link}
+                  href={formatLink(slide.link)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${styles.text} dark:text-white`}

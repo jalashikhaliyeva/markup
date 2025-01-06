@@ -6,6 +6,7 @@ import NavigationTitle from "../NavigationTitle";
 import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import ShortDescription from "../ShortDescription";
 function Projects({ projects }) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -77,8 +78,12 @@ function Projects({ projects }) {
     <div className="bg-white dark:bg-bgDark py-custom-space">
       <Container>
         <div className="flex justify-between items-center py-custom-space">
+          <div>
           <NavigationTitle>{t("nav.projects")}</NavigationTitle>
+          <ShortDescription desc={"Böyük ideyalar, güclü tərəfdaşlıqlar"} />
 
+          </div>
+ 
           <div className="hidden lg:block">
             <button
               onClick={handleNavigate}

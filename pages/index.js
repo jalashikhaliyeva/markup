@@ -39,7 +39,7 @@ export default function Home({
   const { locale } = router;
   const headerBgColor = "#F5F5F7";
   const headerDarkBgColor = "#333435";
-  console.log(clientsData, "clientsData");
+  console.log(heroData, "heroData");
 
   if (
     !heroData ||
@@ -54,7 +54,7 @@ export default function Home({
     return <LoadingAnimation />;
   }
 
-  const { item, meta_tag } = heroData;
+  const { item, meta_tag, social_link } = heroData;
   const usefulLinksDescriptions = usefulLinksData.item
     .map((link) => link.meta_description)
     .join(" ");
@@ -62,6 +62,9 @@ export default function Home({
   const combinedMetaDescription =
     `${meta_tag.meta_description} ${usefulLinksDescriptions}`.substring(0, 160);
   console.log(combinedMetaDescription, "combinedMetaDescription");
+
+  const homeServices = servicesData.item.filter((service) => service.is_home);
+  console.log(homeServices, "homeServices");
 
   return (
     <>
@@ -73,9 +76,13 @@ export default function Home({
       <main>
         <div className={styles.background}>
           <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
-          <Hero title={item.title} videoUrl={item.video} />
+          <Hero
+            socialLink={social_link}
+            title={item.title}
+            videoUrl={item.video}
+          />
         </div>
-        <Services services={servicesData} />
+        <Services services={homeServices} />
         <div className="border-b-gradient ">
           <CustomersTitleIndex />
           <Customers slides={clientsData.item} />

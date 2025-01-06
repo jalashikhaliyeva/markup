@@ -26,6 +26,7 @@ function BlogSingle({ blog, settingsData }) {
       </>
     );
   }
+console.log(blog, "blog");
 
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";

@@ -14,13 +14,11 @@ import React from "react";
 function Services({ servicesData, settingsData }) {
   const router = useRouter();
   const { locale } = router;
-
   console.log(servicesData, "servicesData");
 
   if (!servicesData) {
     return <LoadingAnimation />;
   }
-
   // console.log(servicesData, "servicesData");
 
   const headerBgColor = "#ffff";
@@ -43,7 +41,7 @@ function Services({ servicesData, settingsData }) {
         </Container>
         <SingleTitle>Xidmətlərimiz</SingleTitle>
         <Container>
-          <CervicesCard item={servicesData} />
+          <CervicesCard item={servicesData.item} />
         </Container>
         <Footer data={settingsData} />
       </main>
