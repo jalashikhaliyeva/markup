@@ -1,5 +1,4 @@
 // components/Footer.js
-
 import React from "react";
 import Image from "next/image";
 import Container from "../Container";
@@ -12,10 +11,11 @@ import {
   FiNavigation,
 } from "react-icons/fi";
 import ThemeToggle from "../ThemeToggle";
-// import { navLinks } from "./navLinks"; // Import navLinks
 import { useTranslation } from "react-i18next";
 
 const Footer = ({ data }) => {
+  console.log(data, "data footer");
+
   const navLinks = [
     { key: "services", path: "/services" },
     { key: "projects", path: "/projects" },
@@ -28,9 +28,7 @@ const Footer = ({ data }) => {
     }
     return link;
   };
-
   const { t } = useTranslation();
-
   return (
     <footer className="py-custom-space relative border-4 border-transparent bg-white dark:bg-bgDark">
       {/* Gradient border */}
@@ -59,8 +57,7 @@ const Footer = ({ data }) => {
               className="object-contain hidden dark:block"
             />
             <p className="text-textGray leading-6 py-3 dark:text-gray-400 mt-2">
-              We offer a comprehensive suite of digital marketing services
-              covering all aspects of online presence.
+              {data?.contact?.footer_title}
             </p>
             <div className="mt-4 flex items-center space-x-4">
               <ThemeToggle />

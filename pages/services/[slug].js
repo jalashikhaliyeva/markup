@@ -11,6 +11,7 @@ import Footer from "@/components/Footer"; // <-- Make sure you have a Footer com
 import { getSingleService } from "@/services/getSingleService";
 import { getSettings } from "@/services/getSettings"; // <-- import here
 import Head from "next/head";
+import ContactBanner from "@/components/ContactBanner";
 
 function SingleServicePage({ serviceData, settingsData }) {
   const router = useRouter();
@@ -40,7 +41,9 @@ function SingleServicePage({ serviceData, settingsData }) {
             description={serviceData.desc}
             image={serviceData.image}
           />
+
           <ServicesOffer data={serviceData.attributes} />
+          <ContactBanner />
         </main>
       </Container>
 

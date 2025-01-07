@@ -37,7 +37,10 @@ function Contact({ settings }) {
           <Container>
             <Breadcrumb />
             <div className="flex flex-col  items-center lg:flex-row pt-5 justify-between">
-              <ContactInfo data={settings.contact} socialLinks={settings.social_link} />
+              <ContactInfo
+                data={settings.contact}
+                socialLinks={settings.social_link}
+              />
               <ContactForm />
             </div>
           </Container>

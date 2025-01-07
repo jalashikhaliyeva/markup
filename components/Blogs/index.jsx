@@ -6,7 +6,7 @@ import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
-function Blogs({ blogs }) {
+function Blogs({ blogs , title }) {
   const { t } = useTranslation();
   const router = useRouter();
   // const data = {
@@ -79,7 +79,7 @@ function Blogs({ blogs }) {
         <div className="flex justify-between items-center py-custom-space">
           <div>
             <NavigationTitle>{t("nav.blogs")}</NavigationTitle>
-            <ShortDescription desc={"Böyük ideyalar, güclü tərəfdaşlıqlar"} />
+            <ShortDescription desc={title} />
           </div>
 
           <div className="hidden lg:block">

@@ -24,6 +24,7 @@ import { getForums } from "@/services/getForums";
 import { getBlogs } from "@/services/getBlogs";
 import { getSettings } from "@/services/getSettings";
 import { getUsefulLinks } from "@/services/getUsefulLinks";
+import { getTitles } from "@/services/getTitles";
 
 export default function Home({
   heroData,
@@ -34,6 +35,7 @@ export default function Home({
   blogsData,
   settingsData,
   usefulLinksData,
+  titlesData,
 }) {
   const router = useRouter();
   const { locale } = router;
@@ -49,10 +51,13 @@ export default function Home({
     !blogsData ||
     !settingsData ||
     !usefulLinksData ||
+    !titlesData ||
     !forumsData
   ) {
     return <LoadingAnimation />;
   }
+
+  console.log(titlesData, "titlesData");
 
   const { item, meta_tag, social_link } = heroData;
   const usefulLinksDescriptions = usefulLinksData.item
@@ -65,6 +70,11 @@ export default function Home({
 
   const homeServices = servicesData.item.filter((service) => service.is_home);
   console.log(homeServices, "homeServices");
+
+  const titlesMap = titlesData.item.reduce((acc, { name, title }) => {
+    acc[name] = title;
+    return acc;
+  }, {});
 
   return (
     <>
@@ -82,15 +92,15 @@ export default function Home({
             videoUrl={item.video}
           />
         </div>
-        <Services services={homeServices} />
+        <Services services={homeServices} title={titlesMap.Service} />
         <div className="border-b-gradient ">
-          <CustomersTitleIndex />
+          <CustomersTitleIndex title={titlesMap.Client} />
           <Customers slides={clientsData.item} />
         </div>
-        <Projects projects={projectsData.item} />
-        <FormsTitleIndex />
+        <Projects projects={projectsData.item} title={titlesMap.Project} />
+        <FormsTitleIndex title={titlesMap.Forum} />
         <Forms forums={forumsData.item} />
-        <Blogs blogs={blogsData.item} />
+        <Blogs blogs={blogsData.item} title={titlesMap.Bloq} />
         <InfoSection data={settingsData} />
         <UsefulLinks slides={usefulLinksData.item} />
         <Footer data={settingsData} />
@@ -112,6 +122,7 @@ export async function getServerSideProps(context) {
       blogsData,
       settingsData,
       usefulLinksData,
+      titlesData,
     ] = await Promise.all([
       getHero(lang),
       getServices(lang),
@@ -121,6 +132,7 @@ export async function getServerSideProps(context) {
       getBlogs(lang), // Fetch projects data
       getSettings(lang), // Fetch projects data
       getUsefulLinks(lang),
+      getTitles(lang),
     ]);
 
     return {
@@ -133,6 +145,7 @@ export async function getServerSideProps(context) {
         blogsData,
         settingsData,
         usefulLinksData,
+        titlesData,
       },
     };
   } catch (error) {
@@ -147,6 +160,7 @@ export async function getServerSideProps(context) {
         blogsData: null, // Handle projects data failure,
         settingsData: null, // Handle projects data failure,
         usefulLinksData: null, // Handle projects data failure,
+        titlesData: null, // Handle projects data failure,
       },
     };
   }

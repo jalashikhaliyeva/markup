@@ -89,6 +89,7 @@ module.exports = {
         titleResponsive: "40px",
         textXl: "68px",
         32: "32px",
+        36: "36px",
       },
       gap: {
         "custom-space": "40px",
