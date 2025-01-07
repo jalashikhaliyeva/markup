@@ -45,9 +45,10 @@ function BlogCard({ imageSrc, title, date, slug }) {
 
         {/* Content Section */}
         <div className="flex flex-col flex-1 p-4">
-          <h5 className="text-sliderTitle dark:text-white text-textSecondaryDefault font-medium pb-2">
+          <h5 className="text-sliderTitle dark:text-white text-textSecondaryDefault font-medium pb-2 line-clamp-2">
             {title}
           </h5>
+
           <p className="text-lg dark:text-white text-textSecondaryDefault font-medium pb-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>

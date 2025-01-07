@@ -99,7 +99,7 @@ const Slider = ({ data }) => {
                   {slide.title}
                 </h5>
                 <p className="text-textGray leading-6 pb-3 dark:text-gray-400 ">
-                  description
+                  {slide.short_desc}
                 </p>
                 <div className="flex items-center cursor-pointer gap-2">
                   <svg

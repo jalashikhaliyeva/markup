@@ -6,7 +6,7 @@ import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
-function Blogs({ blogs , title }) {
+function Blogs({ blogs, title }) {
   const { t } = useTranslation();
   const router = useRouter();
   // const data = {

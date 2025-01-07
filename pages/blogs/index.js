@@ -14,12 +14,12 @@ import { getSettings } from "@/services/getSettings";
 import { useTranslation } from "react-i18next";
 
 function Blogs({ blogsData, metaTag, settingsData }) {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
   const router = useRouter();
   const [visibleBlogs, setVisibleBlogs] = useState(6); // Initially show 6 blogs
-console.log(blogsData, "blogsData");
+  console.log(blogsData, "blogsData");
 
   const loadMoreBlogs = () => {
     setVisibleBlogs((prevVisible) => prevVisible + 6); // Load 6 each time
@@ -45,7 +45,7 @@ console.log(blogsData, "blogsData");
         </Container>
 
         <h1 className="text-black dark:text-white font-medium md:leading-83 leading-6 flex items-center justify-center md:text-title text-3xl">
-        {t("nav.blogs")}
+          {t("nav.blogs")}
         </h1>
         <div className="flex items-center justify-center pb-custom-space">
           <p className="text-pink-500 text-xl justify-center items-center  leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
