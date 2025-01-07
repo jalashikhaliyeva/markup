@@ -69,10 +69,10 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
               </div>
 
               <Faq data={faqData.item} />
-              <Team data={teamData.item} />
+              {/* <Team data={teamData.item} /> */}
             </div>
 
-            <CustomersSectionAbout slides={clientsData.item} />
+            {/* <CustomersSectionAbout slides={clientsData.item} /> */}
           </div>
         </Container>
 

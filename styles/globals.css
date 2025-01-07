@@ -10,6 +10,7 @@
   --button-color: #181818;
   --button-shadow: rgba(213, 160, 236, 0.3);
   --background-color: #fff;
+  --background-color-slide: #f5f5f7;
 }
 
 root {
@@ -17,13 +18,16 @@ root {
   --button-color: #181818;
   --button-shadow: rgba(213, 160, 236, 0.3);
   --background-color: #ededed;
+  --background-color-slide: #f5f5f7;
 }
 
 .dark {
   --button-bg: #333435;
   --button-color: #fff;
   --button-shadow: rgba(0, 0, 0, 0.5);
-  --background-color: #333435;
+  /* --background-color: #333435; */
+  --background-color: #ededed;
+  --background-color-slide: #333435;
 }
 /* @media (prefers-color-scheme: light) {
   :root {

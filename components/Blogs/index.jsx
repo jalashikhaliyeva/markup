@@ -6,6 +6,7 @@ import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
+import Slider from "../EmblaCarouselAdvantage/EmblaCarousel";
 function Blogs({ blogs, title }) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -108,7 +109,8 @@ function Blogs({ blogs, title }) {
       <div>
         {/* Pass the advantage array directly */}
         <Container>
-          <OurAdvantagesSection data={blogs} />
+          {/* <OurAdvantagesSection data={blogs} /> */}
+          <Slider data={blogs}  type="blog" />
         </Container>
 
         <Container>

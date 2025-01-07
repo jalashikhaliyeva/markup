@@ -7,8 +7,8 @@ import { GrFormPrevious } from "react-icons/gr";
 import sanitizeHtml from "sanitize-html";
 import Image from "next/image";
 
-const Slider = ({ data }) => {
-  // console.log(data, "data slider");
+const Slider = ({ data , type }) => {
+  console.log(data, "data slider");
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
@@ -52,12 +52,24 @@ const Slider = ({ data }) => {
     onSelect(); // Initialize state
   }, [emblaApi, onSelect, data?.length]);
 
-  // Handler for card click
-  const handleCardClick = (projectName) => {
-    // Encode the project name to make it URL-safe
-    const encodedName = encodeURIComponent(projectName);
-    router.push(`/projects/${encodedName}`);
+  const handleCardClick = (slug) => {
+    // Encode the item name to make it URL-safe
+    // const encodedName = encodeURIComponent(itemName);
+
+    // Determine the base path based on the type prop
+    let basePath = "";
+    if (type === "blog") {
+      basePath = "/blogs";
+    } else if (type === "project") {
+      basePath = "/projects";
+    } else {
+      console.warn(`Unknown type "${type}" passed to Slider component.`);
+      return;
+    }
+
+    router.push(`${basePath}/${slug}`);
   };
+
 
   return (
     <div className={styles.embla}>
@@ -75,14 +87,14 @@ const Slider = ({ data }) => {
               */}
               <div
                 className="group flex flex-col w-full bg-boxGrayBodyColor rounded-2xl transition-transform duration-300 cursor-pointer"
-                onClick={() => handleCardClick(slide.title)} // Add onClick handler
+                onClick={() => handleCardClick(slide.slug)} // Add onClick handler
               >
                 <Image
                   width={370}
                   height={290}
                   src={slide.image}
                   alt={`Slide ${index + 1}`}
-                  className="mb-4 rounded-t-2xl h-[200px]"
+                  className="mb-4 object-cover rounded-lg h-[300px]"
                 />
 
                 <div className="flex flex-wrap mt-2 gap-2">
@@ -95,7 +107,7 @@ const Slider = ({ data }) => {
                     </span>
                   ))}
                 </div>
-                <h5 className="text-4xl leading-52 text-textSecondaryDefault font-medium pb-2 dark:text-white line-clamp-2">
+                <h5 className="text-3xl leading-52 text-textSecondaryDefault font-medium pb-2 dark:text-white line-clamp-2">
                   {slide.title}
                 </h5>
                 <p className="text-textGray leading-6 pb-3 dark:text-gray-400 ">

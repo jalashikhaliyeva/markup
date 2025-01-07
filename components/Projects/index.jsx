@@ -7,7 +7,8 @@ import NavigationButton from "../NavigationButton";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
-function Projects({ projects , title }) {
+import Slider from "../EmblaCarouselAdvantage/EmblaCarousel";
+function Projects({ projects, title }) {
   const { t } = useTranslation();
   const router = useRouter();
   // const data = {
@@ -79,11 +80,10 @@ function Projects({ projects , title }) {
       <Container>
         <div className="flex justify-between items-center py-custom-space">
           <div>
-          <NavigationTitle>{t("nav.projects")}</NavigationTitle>
-          <ShortDescription desc={title} />
-
+            <NavigationTitle>{t("nav.projects")}</NavigationTitle>
+            <ShortDescription desc={title} />
           </div>
- 
+
           <div className="hidden lg:block">
             <button
               onClick={handleNavigate}
@@ -110,7 +110,8 @@ function Projects({ projects , title }) {
       </Container>
 
       <Container>
-        <OurAdvantagesSection data={projects} />
+        {/* <OurAdvantagesSection data={projects} /> */}
+        <Slider data={projects} type="project" />
       </Container>
 
       <Container>

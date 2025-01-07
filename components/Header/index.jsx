@@ -67,8 +67,6 @@ function Header({ bgColor, darkBgColor }) {
                     alt="Logo"
                     className="object-contain block dark:hidden"
                   />
-
-                  {/* Dark Mode Logo */}
                   <Image
                     src="/logo/logo-dark.png"
                     width={44}
