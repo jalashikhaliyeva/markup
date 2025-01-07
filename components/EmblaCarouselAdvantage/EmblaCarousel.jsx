@@ -91,10 +91,11 @@ const Slider = ({ data , type }) => {
               >
                 <Image
                   width={370}
-                  height={290}
+                  height={300}
                   src={slide.image}
                   alt={`Slide ${index + 1}`}
                   className="mb-4 object-cover rounded-lg h-[300px]"
+                  quality={100}
                 />
 
                 <div className="flex flex-wrap mt-2 gap-2">

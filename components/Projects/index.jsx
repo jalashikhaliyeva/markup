@@ -71,12 +71,12 @@ function Projects({ projects, title }) {
   //     },
   //   ],
   // };
-
   const handleNavigate = () => {
     router.push("/projects"); // Navigate to /services
   };
+
   return (
-    <div className="bg-white dark:bg-bgDark py-custom-space">
+    <div className="bg-white dark:bg-bgDark py-custom-space  ">
       <Container>
         <div className="flex justify-between items-center py-custom-space">
           <div>

@@ -41,8 +41,7 @@ export default function Home({
   const { locale } = router;
   const headerBgColor = "#F5F5F7";
   const headerDarkBgColor = "#333435";
-  console.log(heroData, "heroData");
-
+  // console.log(heroData, "heroData");
   if (
     !heroData ||
     !servicesData ||
@@ -57,8 +56,6 @@ export default function Home({
     return <LoadingAnimation />;
   }
 
-  console.log(titlesData, "titlesData");
-
   const { item, meta_tag, social_link } = heroData;
   const usefulLinksDescriptions = usefulLinksData.item
     .map((link) => link.meta_description)
@@ -66,10 +63,10 @@ export default function Home({
 
   const combinedMetaDescription =
     `${meta_tag.meta_description} ${usefulLinksDescriptions}`.substring(0, 160);
-  console.log(combinedMetaDescription, "combinedMetaDescription");
+  // console.log(combinedMetaDescription, "combinedMetaDescription");
 
   const homeServices = servicesData.item.filter((service) => service.is_home);
-  console.log(homeServices, "homeServices");
+  // console.log(homeServices, "homeServices");
 
   const titlesMap = titlesData.item.reduce((acc, { name, title }) => {
     acc[name] = title;
@@ -110,7 +107,7 @@ export default function Home({
 }
 
 export async function getServerSideProps(context) {
-  const lang = context.locale || "az"; // Default to "az" if locale is not set
+  const lang = context.locale || "az";
 
   try {
     const [
@@ -126,21 +123,21 @@ export async function getServerSideProps(context) {
     ] = await Promise.all([
       getHero(lang),
       getServices(lang),
-      getClients(lang), // Fetch clients data
-      getProjects(lang), // Fetch projects data
-      getForums(lang), // Fetch projects data
-      getBlogs(lang), // Fetch projects data
-      getSettings(lang), // Fetch projects data
+      getClients(lang),
+      getProjects(lang),
+      getForums(lang),
+      getBlogs(lang),
+      getSettings(lang),
       getUsefulLinks(lang),
       getTitles(lang),
     ]);
 
     return {
       props: {
-        heroData, // Data for the Hero component
-        servicesData, // Data for the Services component
-        clientsData, // Data for the Customers component
-        projectsData, // Data for the Projects component
+        heroData,
+        servicesData,
+        clientsData,
+        projectsData,
         forumsData,
         blogsData,
         settingsData,
@@ -155,12 +152,12 @@ export async function getServerSideProps(context) {
         heroData: null,
         servicesData: null,
         clientsData: null,
-        projectsData: null, // Handle projects data failure,
-        forumsData: null, // Handle projects data failure,
-        blogsData: null, // Handle projects data failure,
-        settingsData: null, // Handle projects data failure,
-        usefulLinksData: null, // Handle projects data failure,
-        titlesData: null, // Handle projects data failure,
+        projectsData: null,
+        forumsData: null,
+        blogsData: null,
+        settingsData: null,
+        usefulLinksData: null,
+        titlesData: null,
       },
     };
   }

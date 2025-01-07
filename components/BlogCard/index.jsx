@@ -24,7 +24,6 @@ function BlogCard({ imageSrc, title, date, slug }) {
     >
       {/* Inner Card */}
       <div className="relative z-10 rounded-xl bg-white dark:bg-bgDark flex flex-col h-full">
-        {/* Image Section */}
         <div className="relative w-full overflow-hidden rounded-t-xl transition-transform duration-300 group-hover:-translate-y-4">
           <Image
             src={imageSrc}
@@ -34,7 +33,7 @@ function BlogCard({ imageSrc, title, date, slug }) {
             className="w-full h-auto object-cover transition-transform duration-300"
             priority={false}
             placeholder="blur"
-            blurDataURL="/path-to-blur-image.jpg" // Replace with your blur image path
+            blurDataURL="/path-to-blur-image.jpg"
           />
         </div>
 

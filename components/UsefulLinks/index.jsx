@@ -31,7 +31,7 @@ function UsefulLinks({slides}) {
   const remainingText = words.join(" ");
 
   return (
-    <div className="dark:bg-bgDark pb-6 ">
+    <div className="dark:bg-bgDark pb-6 hidden md:block ">
       <h6 className="text-black dark:bg-bgDark dark:text-white text-lg font-medium md:leading-83 leading-6 flex items-center justify-center">
         {remainingText}{" "}
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-blue-500 pl-2">

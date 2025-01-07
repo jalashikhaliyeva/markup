@@ -12,6 +12,7 @@
   },
   "navigation": "Naviqasiya",
   "contact": "Əlaqə",
+  "projectNotFound": "Layihə tapılmadı",
   "theme": {
     "light": "Aydın Rejimə keç",
     "dark": "Qaranlıq Rejimə keç"

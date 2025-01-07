@@ -7,7 +7,7 @@ function FastAbout({ aboutInfo }) {
   const router = useRouter();
   const { t } = useTranslation();
   return (
-    <div className="rounded-3xl bg-mainGray dark:bg-darkHeader py-custom-space px-5 flex flex-col justify-between w-full lg:w-[50%]">
+    <div className="rounded-3xl gap-14 bg-mainGray dark:bg-darkHeader py-custom-space px-5 flex flex-col justify-between w-full lg:w-[50%]">
       <p className="text-lg font-normal leading-6 text-textGray w-full lg:w-[400px]">
         {/* Biz kimik? Yaradıcılıq və innovasiyaya önəm verən bir komandayıq.
         Məqsədimiz, unikal və müştərilərimizin ehtiyaclarına uyğun həllər təqdim
@@ -16,7 +16,7 @@ function FastAbout({ aboutInfo }) {
         {aboutInfo.description}
       </p>
 
-      <div className="flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
+      <div className="flex  flex-col md:flex-row items-center justify-between gap-5 lg:gap-0">
         <NavigationTitle>{t("nav.about")}</NavigationTitle>
         <NeonButton
           onClick={() => router.push("/about")}

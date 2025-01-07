@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,6 +37,7 @@ root {
 
 body {
   font-family: "Space Grotesk", sans-serif;
+  
 }
 
 @keyframes gradient-animation {
@@ -62,7 +62,7 @@ body {
   z-index: 9999; /* Make sure it overlays everything */
 }
 
-/* Background classes for light/dark */
+
 .theme-overlay.dark-bg {
   background: #000;
 }
@@ -71,16 +71,12 @@ body {
   background: #fff;
 }
 
-/* Active state expands the overlay to cover the entire viewport.
-   Scale factor depends on your screen size. Try something large like scale(50).
-*/
+
 .theme-overlay.active {
   transform: scale(50);
 }
 
-/* Active state expands the overlay to cover the entire viewport.
-   Scale factor depends on your screen size. Try something large like scale(50).
-*/
+
 .theme-overlay.active {
   transform: scale(50);
 }

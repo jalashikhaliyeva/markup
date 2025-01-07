@@ -9,15 +9,14 @@ import { getAllProjects } from "@/services/getAllProjects"; // Ensure correct pa
 import Head from "next/head";
 import Footer from "@/components/Footer";
 import { getSettings } from "@/services/getSettings";
+import { useTranslation } from "react-i18next";
 
 function Projects({ projectsData, categories, metaTag, settingsData }) {
+  const { t } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState("Hamısı");
-
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
-
   const filters = ["Hamısı", ...categories?.map((category) => category.title)];
-
   const filteredProjects =
     selectedFilter === "Hamısı"
       ? projectsData
@@ -49,20 +48,26 @@ function Projects({ projectsData, categories, metaTag, settingsData }) {
               />
             ))}
           </div>
-          <div
-            className="flex flex-wrap justify-center items-center"
-            style={{ gap: "33px" }}
-          >
-            {filteredProjects.map((project) => (
-              <ProjectsCard
-                key={project.slug} // Assuming slug is unique
-                imageSrc={project.thumb_image}
-                category={project.category.map((cat) => cat.title).join(", ")}
-                title={project.title}
-                slug={project.slug}
-              />
-            ))}
-          </div>
+          {filteredProjects.length > 0 ? (
+            <div
+              className="flex flex-wrap justify-center items-center"
+              style={{ gap: "33px" }}
+            >
+              {filteredProjects.map((project) => (
+                <ProjectsCard
+                  key={project.slug}
+                  imageSrc={project.thumb_image}
+                  category={project.category.map((cat) => cat.title).join(", ")}
+                  title={project.title}
+                  slug={project.slug}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-64">
+              <p className="text-lg text-gray-500">{t("projectNotFound")}</p>
+            </div>
+          )}
         </Container>
         <div className="pt-10">
           <Footer data={settingsData} />

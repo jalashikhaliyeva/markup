@@ -12,6 +12,7 @@
   },
   "navigation":"Navigation",
   "contact":"Contact",
+    "projectNotFound": "Project not found",
   "theme": {
     "light": "Switch to Light Mode",
     "dark": "Switch to Dark Mode"
