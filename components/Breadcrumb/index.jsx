@@ -12,6 +12,7 @@ const Breadcrumb = () => {
     about: "Haqqımızda",
     blogs: "Bloqlar",
     team: "Komandamız",
+    customers: "Müştərilər",
     // Add more mappings as needed
     // Example:
     // about: "Haqqımızda",

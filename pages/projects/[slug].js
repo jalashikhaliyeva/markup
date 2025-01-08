@@ -14,6 +14,7 @@ import { getSingleProject } from "@/services/getSingleProject";
 import { getSettings } from "@/services/getSettings";
 import Customers from "@/components/Customers";
 import Head from "next/head";
+import Slider from "@/components/EmblaCarouselAdvantage/EmblaCarousel";
 
 function ProjectPage({ project, settingsData, similarProjects }) {
   const router = useRouter();
@@ -64,9 +65,10 @@ function ProjectPage({ project, settingsData, similarProjects }) {
 
           <AboutProject description={project.desc} image={project.image} />
           <SimilarProjectsTitle />
-          <Customers slides={similarProjects} singleCarousel={true} />
+          {/* <Customers slides={similarProjects} singleCarousel={true} /> */}
 
-          {/* <OurAdvantagesSection data={data?.advantage} /> */}
+          {/* <OurAdvantagesSection data={similarProjects} /> */}
+          <Slider data={similarProjects} type="project" />
         </Container>
         <div className="mt-10">
           <Footer data={settingsData} />
