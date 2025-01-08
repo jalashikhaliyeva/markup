@@ -12,7 +12,7 @@ const teamMembers = [
     description: "Experienced in creating modern, responsive UIs.",
     linkedin: "https://www.linkedin.com/in/lila-montgomery",
   },
-  
+
   {
     id: 3,
     name: "Emily Davis",
@@ -39,7 +39,7 @@ const teamMembers = [
   },
 ];
 
-function Team({data}) {
+function Team({ data }) {
   return (
     <div className="flex flex-col items-center">
       <TeamTitle />

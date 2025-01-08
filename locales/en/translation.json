@@ -2,7 +2,11 @@
   "nav": {
     "services": "Our Services",
     "projects": "Projects",
-    "about": "About Us",
+    "about": "About us",
+    "whoWeare": "Who we are",
+    "team": "Team",
+ 
+    "customers": "Customers",
     "blogs": "Blogs",
     "contact": "Contact Us",
     "seeAll": "See All",

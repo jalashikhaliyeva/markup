@@ -4,7 +4,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 function TeamMemberCard({ name, profession, image, description, linkedin }) {
   return (
-    <div className="group relative flex flex-col gap-3 w-[130px]   md:w-[280px] rounded-2xl">
+    <div className="group relative flex flex-col gap-3 w-full  md:w-[280px] rounded-2xl">
       {/* Container with perspective and the flipping content */}
       <div className="relative perspective-1000 w-full h-[207px] md:h-[297px]">
         {/* Flipper container: will rotate on hover */}
@@ -39,7 +39,9 @@ function TeamMemberCard({ name, profession, image, description, linkedin }) {
                 <FaLinkedin />
               </a>
               {/* Short description on flipped side */}
-              <p className="text-white text-sm md:text-lg mt-2">{description}</p>
+              <p className="text-white text-sm md:text-lg mt-2">
+                {description}
+              </p>
             </div>
           </div>
         </div>
@@ -47,7 +49,7 @@ function TeamMemberCard({ name, profession, image, description, linkedin }) {
 
       {/* Static Name and Position (no hover effect here) */}
       <div className="flex flex-col gap-2">
-        <h6 className="font-medium text-black dark:text-white text-4xl font-grotesk leading-10">
+        <h6 className="font-medium text-black dark:text-white text-3xl font-grotesk leading-10">
           {name}
         </h6>
         <p className="font-normal text-lg leading-6 text-transparent bg-clip-text bg-gradient-to-r from-[#655C71] via-[#655C71] to-[#A25FF8]">
