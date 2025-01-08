@@ -5,7 +5,7 @@ import parse, { domToReact } from "html-react-parser";
 
 function BlogCardSingle({ blog }) {
   const transformNode = (node, index) => {
-    // 1. Handle <img> tags
+  
     if (node.type === "tag" && node.name === "img") {
       const { src, alt, width, height } = node.attribs;
       return (

@@ -55,46 +55,33 @@ function LanguageSwitcher() {
     >
       <button
         id="dropdownLanguageButton"
-        className="text-textSecondaryDefault dark:text-white text-base inline-flex items-center font-normal focus:outline-none text-center py-3 px-4 hover:text-textHoverBlue"
+        className="w-6 h-6 flex items-center justify-center focus:outline-none mx-0 md:mx-2"
         type="button"
       >
-        <TbWorld className="text-xl" />
-        {/* {selectedLanguage} */}
-     
-        {/* <svg
-          className={`ml-2 h-4 w-4 transition-transform duration-200 ${
-            isDropdownOpen ? "transform rotate-180" : ""
-          }`}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg> */}
+        {/* Consistent size and color as original TbWorld */}
+        <TbWorld className="w-6 h-6 dark:text-white" />
       </button>
 
       <div
-        className={`absolute z-20 w-32 mt-2 bg-white dark:bg-darkHeader border border-gray-300 rounded-lg shadow-lg p-2 transition-all duration-300 ease-in-out transform ${
+        className={`absolute z-20  w-32 mt-2 bg-white dark:bg-darkHeader border border-gray-300 rounded-lg shadow-lg p-2 transition-all duration-300 ease-in-out transform ${
           isDropdownOpen
-            ? "opacity-100 translate-y-0 visible"
-            : "opacity-0 -translate-y-4 invisible"
-        }`}
-        style={{ top: "100%" }}
+          ? "opacity-100 translate-y-0 visible"
+          : "opacity-0 -translate-y-4 invisible"
+      } left-1/2 transform -translate-x-1/2`}
       >
         <ul className="py-1">
           {["AZ", "EN", "RU"].map((lang) => (
-          <li
-          key={lang}
-          className={`block px-4 py-2 cursor-pointer rounded hover:bg-gray-100 dark:hover:bg-gray-500 font-normal text-base transition-colors ${
-            selectedLanguage === lang
-              ? "text-blue-700 font-semibold dark:text-blue-400"
-              : "text-gray-700 dark:text-white"
-          }`}
-          onClick={() => handleLanguageChange(lang)}
-        >
-          {lang}
-        </li>
+            <li
+              key={lang}
+              className={`block px-4 py-2 cursor-pointer rounded hover:bg-gray-100 dark:hover:bg-gray-500 font-normal text-base transition-colors ${
+                selectedLanguage === lang
+                  ? "text-blue-700 font-semibold dark:text-blue-400"
+                  : "text-gray-700 dark:text-white"
+              }`}
+              onClick={() => handleLanguageChange(lang)}
+            >
+              {lang}
+            </li>
           ))}
         </ul>
       </div>

@@ -8,6 +8,7 @@ const ThemeToggle = dynamic(() => import('../ThemeToggle'), { ssr: false });
 // import ThemeToggle from "../ThemeToggle";
 import { FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
 import dynamic from "next/dynamic";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,7 +49,8 @@ function SmallScreenHeader() {
         {/* Icons (World and Menu/Close) on the right */}
         <div className="flex items-center gap-2">
           <div className="bg-mainGray p-2 rounded-xl dark:bg-bgDark dark:border dark:border-gray-400">
-            <TbWorld className="w-6 h-6 dark:text-white" />
+            {/* <TbWorld className="w-6 h-6 dark:text-white" /> */}
+            <LanguageSwitcher    />
           </div>
           <div
             className="bg-mainGray dark:bg-bgDark dark:border dark:border-gray-400 p-2 rounded-xl cursor-pointer"
