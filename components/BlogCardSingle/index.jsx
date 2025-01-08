@@ -1,67 +1,61 @@
 import Image from "next/image";
 import React from "react";
-import { FiInstagram } from "react-icons/fi";
-import { FiFacebook } from "react-icons/fi";
-import { FiLinkedin } from "react-icons/fi";
+import { FiInstagram, FiFacebook, FiLinkedin } from "react-icons/fi";
+import parse, { domToReact } from "html-react-parser";
 
 function BlogCardSingle({ blog }) {
-  return (
-    <div className="flex flex-col pb-custom-space ">
-      <Image
-        className="w-full h-full lg:[540px] md:w-[60%] mx-auto  object-cover rounded-2xl my-custom-space"
-        src={blog.image}
-        width={1000}
-        height={516}
-        alt={blog.title}
-      />
-
-      <div className="md:w-[60%] mx-auto ">
-        <p className="pb-custom-space  border-b-4 border-b-gradient dark:text-white">
-       {blog.desc}
-        </p>
-
-        <h6 className="pt-custom-space pb-6 text-black dark:text-white font-medium leading-9 text-32">
-          Introduction
-        </h6>
-
-        <p className="pb-custom-space text-black dark:text-white font-medium leading-7 text-lg">
-          Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
-          suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis
-          montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere
-          vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien
-          varius id. Eget quis mi enim, leo lacinia pharetra, semper. Eget in
-          volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames
-          arcu quis fusce augue enim. Quis at habitant diam at. Suscipit
-          tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum
-          molestie aliquet sodales id est ac volutpat.{" "}
-        </p>
-
-        <Image
-          src="/blogs/blog-single2.png"
-          width={720}
-          height={480}
-          alt={blog.title}
-          className="object-cover pb-custom-space"
-        />
-
-        <div className="border-l border-l-gradient pl-5 mb-custom-space">
-          <h6 className="text-2xl text-black dark:text-white font-medium leading-8 pb-8">
-            “In a world older and more complete than ours they move finished and
-            complete, gifted with extensions of the senses we have lost or never
-            attained, living by voices we shall never hear.”
-          </h6>
-          <p className="dark:text-white">— Olivia Rhye, Product Designer</p>
+  const transformNode = (node, index) => {
+    // 1. Handle <img> tags
+    if (node.type === "tag" && node.name === "img") {
+      const { src, alt, width, height } = node.attribs;
+      return (
+        <div
+          key={index}
+          className="rounded-2xl overflow-hidden pb-custom-space"
+        >
+          <img
+            src={src}
+            alt={alt || "Blog image"}
+            width={width ? parseInt(width) : 790}
+            height={height ? parseInt(height) : 480}
+            className="rounded-2xl w-full h-auto"
+          />
         </div>
+      );
+    }
 
-        <p className="text-2xl text-black dark:text-white font-medium leading-8 py-custom-space border-b border-b-gradient">
-          In a world older and more complete than ours they move finished and
-          complete, gifted with extensions of the senses we have lost or never
-          attained, living by voices we shall never hear.
+    if (node.type === "text" && !/^\s*$/.test(node.data)) {
+      return (
+        <p
+          key={index}
+          className="pb-custom-space text-black dark:text-white font-medium leading-7 text-lg"
+        >
+          {node.data}
         </p>
+      );
+    }
+
+    if (node.type === "tag") {
+      return (
+        <React.Fragment key={index}>
+          {domToReact(node.children, { replace: transformNode })}
+        </React.Fragment>
+      );
+    }
+  };
+
+  const parsedContent = parse(blog.desc, { replace: transformNode });
+
+  return (
+    <div className="flex flex-col pb-custom-space">
+      <div className="md:w-[60%] mx-auto">
+        <div className="pb-custom-space border-b-4 border-b-gradient dark:text-white">
+          {parsedContent}
+        </div>
 
         <div className="flex flex-col py-custom-space">
           <div className="flex items-center gap-2">
-            <hr className="w-[30px] h-[2px] rounded-xl text-black bg-black dark:bg-white dark:text-white"></hr>
+            <hr className="w-[30px] h-[2px] rounded-xl text-black bg-black dark:bg-white dark:text-white" />
             <p className="text-black dark:text-white font-medium leading-6 text-base">
               Share
             </p>

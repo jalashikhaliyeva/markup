@@ -67,7 +67,7 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
                   count={aboutData.counter}
                 />
               </div>
-              <MissionVision />
+              <MissionVision data={aboutData.advantages} />
 
               <Faq data={faqData.item} />
               {/* <Team data={teamData.item} /> */}

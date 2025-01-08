@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
 import Slider from "../EmblaCarouselAdvantage/EmblaCarousel";
+import Card from "../Card";
 function Projects({ projects, title }) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -111,7 +112,8 @@ function Projects({ projects, title }) {
 
       <Container>
         {/* <OurAdvantagesSection data={projects} /> */}
-        <Slider data={projects} type="project" />
+        {/* <Slider data={projects} type="project" /> */}
+        <Card  data={projects}  type="project" /> 
       </Container>
 
       <Container>

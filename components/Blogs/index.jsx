@@ -7,69 +7,10 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
 import Slider from "../EmblaCarouselAdvantage/EmblaCarousel";
+import Card from "../Card";
 function Blogs({ blogs, title }) {
   const { t } = useTranslation();
   const router = useRouter();
-  // const data = {
-  //   advantage: [
-  //     {
-  //       id: 1,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 3,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 4,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 5,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 6,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 7,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //     {
-  //       id: 8,
-  //       title: "Uğura Aparan Rəqəmsal Həllər",
-  //       desc: "Ətraflı",
-  //       btn: "12.12.2024",
-  //       image: "/blogs/blogs.png",
-  //     },
-  //   ],
-  // };
 
   const handleNavigate = () => {
     router.push("/blogs"); // Navigate to /services
@@ -110,7 +51,8 @@ function Blogs({ blogs, title }) {
         {/* Pass the advantage array directly */}
         <Container>
           {/* <OurAdvantagesSection data={blogs} /> */}
-          <Slider data={blogs}  type="blog" />
+          <Card   data={blogs}  type="blog" /> 
+          {/* <Slider data={blogs}  type="blog" /> */}
         </Container>
 
         <Container>

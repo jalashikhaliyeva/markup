@@ -80,11 +80,7 @@ const Slider = ({ data , type }) => {
               className={`${styles.embla__slide} lg:flex-[0_0_35%] px-2`}
               key={slide.id}
             >
-              {/* 
-                Apply the 'group' class here to make the entire card a hover target.
-                This ensures that hovering anywhere on the card affects the child SVG.
-                Also, add an onClick handler and cursor-pointer for better UX.
-              */}
+      
               <div
                 className="group flex flex-col w-full bg-boxGrayBodyColor rounded-2xl transition-transform duration-300 cursor-pointer"
                 onClick={() => handleCardClick(slide.slug)} // Add onClick handler
