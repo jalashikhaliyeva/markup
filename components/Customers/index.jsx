@@ -35,13 +35,14 @@ function Customers({ slides, singleCarousel = false }) { // 1. Accept the new pr
           <EmblaCarousel
             slides={slides}
             options={OPTIONS}
-            autoScrollOptions={autoScrollRight}
+            autoScrollOptions={autoScrollLeft}
           />
           <EmblaCarousel
             slides={slides}
             options={OPTIONS}
-            autoScrollOptions={autoScrollLeft}
+            autoScrollOptions={autoScrollRight}
           />
+        
         </>
       )}
     </div>
