@@ -7,7 +7,7 @@ import CervicesCard from "../CervicesCard";
 import { useRouter } from "next/router"; // Import useRouter
 import { useTranslation } from "react-i18next";
 import ShortDescription from "../ShortDescription";
-function Services({ services , title }) {
+function Services({ services, title }) {
   console.log(services, "services page");
   console.log(title, "----title ");
 

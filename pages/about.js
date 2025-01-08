@@ -95,6 +95,7 @@ import Head from "next/head";
 
 export async function getServerSideProps(context) {
   const lang = context.locale; // Default to "az" if locale is not set
+console.log(context, "context");
 
   try {
     const [aboutData, faqData, teamData, clientsData, settingsData] =

@@ -10,7 +10,11 @@ import {
   FiMail,
   FiNavigation,
 } from "react-icons/fi";
-import ThemeToggle from "../ThemeToggle";
+import dynamic from 'next/dynamic';
+
+const ThemeToggle = dynamic(() => import('../ThemeToggle'), { ssr: false });
+
+// import ThemeToggle from "../ThemeToggle";
 import { useTranslation } from "react-i18next";
 
 const Footer = ({ data }) => {

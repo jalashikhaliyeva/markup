@@ -3,8 +3,11 @@ import { IoMenuOutline, IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import ThemeToggle from "../ThemeToggle";
+const ThemeToggle = dynamic(() => import('../ThemeToggle'), { ssr: false });
+
+// import ThemeToggle from "../ThemeToggle";
 import { FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
+import dynamic from "next/dynamic";
 
 function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
