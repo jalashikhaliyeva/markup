@@ -46,7 +46,8 @@ module.exports = {
         customPurple: "#6a5acd",
         customBlue: "#197df7",
         textSecondaryDefault: "#1F2937",
-        darkHover:"#494949"
+        darkHover:"#494949",
+        blueCard:"#F0F5FF"
       },
       transitionDelay: {
         150: "150ms",

@@ -58,11 +58,9 @@ function ProjectPage({ project, settingsData, similarProjects }) {
         </Container>
         <Container>
           <TitleButtonProject title={project.title} link={project.link} />
-
           <CategoriesProject
             categoryTitles={project.category.map((cat) => cat.title)}
           />
-
           <AboutProject description={project.desc} image={project.image} />
           <SimilarProjectsTitle />
           {/* <Customers slides={similarProjects} singleCarousel={true} /> */}

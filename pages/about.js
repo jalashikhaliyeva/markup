@@ -67,6 +67,7 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
                   count={aboutData.counter}
                 />
               </div>
+              <MissionVision />
 
               <Faq data={faqData.item} />
               {/* <Team data={teamData.item} /> */}
@@ -92,6 +93,7 @@ import { getClients } from "@/services/getClients"; // Ensure the path is correc
 import CustomersTitleIndex from "@/components/CustomersTitleIndex";
 import { getSettings } from "@/services/getSettings";
 import Head from "next/head";
+import MissionVision from "@/components/MissionVision";
 
 export async function getServerSideProps(context) {
   const lang = context.locale; // Default to "az" if locale is not set
