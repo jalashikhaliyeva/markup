@@ -1,5 +1,4 @@
 // pages/blogs/index.js
-
 import React, { useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import Container from "@/components/Container";
@@ -12,26 +11,30 @@ import { getBlogs } from "@/services/getBlogs";
 import Head from "next/head";
 import { getSettings } from "@/services/getSettings";
 import { useTranslation } from "react-i18next";
+import { getTitles } from "@/services/getTitles";
 
-function Blogs({ blogsData, metaTag, settingsData }) {
+function Blogs({ blogsData, metaTag, settingsData, titlesData }) {
   const { t } = useTranslation();
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
   const router = useRouter();
-  const [visibleBlogs, setVisibleBlogs] = useState(6); // Initially show 6 blogs
+  const [visibleBlogs, setVisibleBlogs] = useState(6);
   console.log(blogsData, "blogsData");
 
   const loadMoreBlogs = () => {
-    setVisibleBlogs((prevVisible) => prevVisible + 6); // Load 6 each time
+    setVisibleBlogs((prevVisible) => prevVisible + 6);
   };
 
   console.log(metaTag, "metaTag blogs");
 
   const hasMoreBlogs = visibleBlogs < blogsData?.length;
+  const titlesMap = titlesData.item.reduce((acc, { name, title }) => {
+    acc[name] = title;
+    return acc;
+  }, {});
 
   return (
     <div className="pt-20 bg-mainGray dark:bg-bgDark">
-      {/* Head component to set meta tags dynamically */}
       <Head>
         <title>{metaTag.meta_title || "Blogs"}</title>
         <meta name="description" content={metaTag.meta_description} />
@@ -50,6 +53,7 @@ function Blogs({ blogsData, metaTag, settingsData }) {
         <div className="flex items-center justify-center pb-custom-space">
           <p className="text-pink-500 text-xl justify-center items-center  leading-7 font-medium bg-custom-gradient bg-clip-text text-transparent">
             description
+            {titlesMap.Bloq}
           </p>
         </div>
         <Container>
@@ -60,6 +64,7 @@ function Blogs({ blogsData, metaTag, settingsData }) {
                 key={blog.slug} // Assuming 'slug' is unique
                 imageSrc={blog.thumb_image} // Using thumbnail for performance
                 title={blog.title}
+                desc={blog.short_desc}
                 date={blog.created_at}
                 slug={blog.slug}
               />
@@ -86,16 +91,18 @@ export default Blogs;
 
 // Server-side data fetching
 export async function getServerSideProps(context) {
-  const lang = context.locale || "az"; // Default to "az" if locale is not set
+  const lang = context.locale || "az";
 
   try {
     const data = await getBlogs(lang);
     const settingsData = await getSettings(lang);
+    const titlesData = await getTitles(lang);
     return {
       props: {
-        blogsData: data.item || [], // Pass the blogs array
-        metaTag: data.meta_tag || {}, // Pass meta tags
+        blogsData: data.item || [],
+        metaTag: data.meta_tag || {},
         settingsData,
+        titlesData,
       },
     };
   } catch (error) {
@@ -110,6 +117,7 @@ export async function getServerSideProps(context) {
           meta_keywords: "blogs, default keywords",
         },
         settingsData,
+        titlesData,
       },
     };
   }

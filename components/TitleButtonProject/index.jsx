@@ -16,7 +16,7 @@ function TitleButtonProject({ title, link }) {
       <div className="hidden lg:block">
         <button
           onClick={() => handleNavigate(link)}
-          className="py-3 px-4 text-center flex justify-center rounded-full border border-neutralBlack bg-neutralBlack text-white dark:border-white text-lg leading-6  items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group"
+          className="py-3 px-4 text-center flex justify-center rounded-2xl border border-neutralBlack bg-neutralBlack text-white dark:border-white text-lg leading-6  items-center gap-2 hover:bg-neutralBlack hover:text-white dark:text-white transition-colors duration-300 group"
         >
           Sayta keçid
           <span className="transform transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1 group-hover:-translate-y-0.5">

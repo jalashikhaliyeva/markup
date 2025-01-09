@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-function BlogCard({ imageSrc, title, date, slug }) {
+function BlogCard({ imageSrc, title, date, slug, desc }) {
   const router = useRouter();
 
   const handleNavigate = () => {
@@ -38,18 +38,20 @@ function BlogCard({ imageSrc, title, date, slug }) {
         </div>
 
         {/* Date Section - Always takes up space, hidden by opacity */}
-        <div className="mt-2 px-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-purple-200 w-24 sm:w-28 text-lg rounded-2xl mx-4 py-1">
+        <div className=" px-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-categoryBtn w-24 sm:w-28 text-lg rounded-2xl mx-4 py-1">
           {date}
         </div>
 
         {/* Content Section */}
         <div className="flex flex-col flex-1 p-4">
-          <h5 className="text-sliderTitle dark:text-white text-textSecondaryDefault font-medium pb-2 line-clamp-2">
+          <h5 className="text-xl leading-[44px] md:text-sliderTitle dark:text-white text-textSecondaryDefault font-medium pb-2 line-clamp-2">
             {title}
           </h5>
 
-          <p className="text-lg dark:text-white text-textSecondaryDefault font-medium pb-4">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          <p className="text-md md:text-lg dark:text-white text-textGray font-medium pb-4">
+            {/* Lorem ipsum dolor sit, amet consectetur adipisicing elit. */}
+            {/* Lorem ipsum dolor sit, amet consectetur adipisicing elit. */}
+            {desc}
           </p>
           <div className="flex items-center gap-2 dark:text-white">
             <svg

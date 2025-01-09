@@ -117,8 +117,9 @@ function Projects({ projects, title }) {
       </Container>
 
       <Container>
-        <div className="block lg:hidden w-full">
+        <div className="block mt-4 lg:hidden w-full">
           <NavigationButton
+             onClick={handleNavigate}
             icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"

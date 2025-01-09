@@ -19,14 +19,12 @@ import { useRouter } from "next/router";
 import React from "react";
 
 function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
-  // Added clientsData
   console.log(aboutData, "aboutData");
 
   const router = useRouter();
   const { locale } = router;
   const { meta_tag } = aboutData;
   if (!aboutData || !faqData || !teamData || !clientsData || !settingsData) {
-    // Updated condition
     return <LoadingAnimation />;
   }
 
@@ -97,7 +95,7 @@ import MissionVision from "@/components/MissionVision";
 
 export async function getServerSideProps(context) {
   const lang = context.locale; // Default to "az" if locale is not set
-console.log(context, "context");
+  console.log(context, "context");
 
   try {
     const [aboutData, faqData, teamData, clientsData, settingsData] =
@@ -105,16 +103,16 @@ console.log(context, "context");
         getAbout(lang),
         getFaq(lang),
         getTeam(lang),
-        getClients(lang), // Fetch clients data
+        getClients(lang),
         getSettings(lang),
       ]);
 
     return {
       props: {
-        aboutData, // Data for the About section
-        faqData, // Data for the FAQ section
-        teamData, // Data for the Team section
-        clientsData, // Data for the Clients/Partners section
+        aboutData,
+        faqData,
+        teamData,
+        clientsData,
         settingsData,
       },
     };
@@ -125,7 +123,7 @@ console.log(context, "context");
         aboutData: null,
         faqData: null,
         teamData: null,
-        clientsData: null, // Handle clients data failure
+        clientsData: null,
         settingsData: null,
       },
     };

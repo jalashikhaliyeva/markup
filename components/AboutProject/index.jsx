@@ -6,7 +6,7 @@ function AboutProject({description ,image}) {
   return (
     <div className="bg-white dark:bg-black p-5 flex flex-col m-auto items-center lg:flex-row rounded-xl my-custom-space gap-8">
       <Image
-        className="object-contain w-[40%]"
+        className="object-contain w-[40%] rounded-xl"
         src={image}
         width={546}
         height={492}

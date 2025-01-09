@@ -26,7 +26,7 @@ function Card({ data, type }) {
       {data?.map((slide, index) => (
         <div
           key={slide.id}
-          className={`${styles.card} group border hover:border-purple-400 transition-colors duration-300 ease-in-out flex flex-col w-full bg-mainGray rounded-2xl cursor-pointer`}
+          className={`${styles.card} group border dark:bg-darkHeader hover:border-purple-400 transition-colors duration-300 ease-in-out flex flex-col w-full bg-mainGray rounded-2xl cursor-pointer`}
           onClick={() => handleCardClick(slide.slug)}
         >
           <Image
@@ -38,7 +38,7 @@ function Card({ data, type }) {
             quality={100}
           />
 
-          <div className="flex flex-wrap mt-2 gap-2 px-4">
+          <div className="flex flex-wrap mt-2 mb-3 gap-2 px-4">
             {slide.category?.map((cat) => (
               <span
                 key={cat.slug}

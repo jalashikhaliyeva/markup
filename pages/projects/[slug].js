@@ -64,7 +64,6 @@ function ProjectPage({ project, settingsData, similarProjects }) {
           <AboutProject description={project.desc} image={project.image} />
           <SimilarProjectsTitle />
           {/* <Customers slides={similarProjects} singleCarousel={true} /> */}
-
           {/* <OurAdvantagesSection data={similarProjects} /> */}
           <Slider data={similarProjects} type="project" />
         </Container>

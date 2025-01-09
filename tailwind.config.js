@@ -47,7 +47,9 @@ module.exports = {
         customBlue: "#197df7",
         textSecondaryDefault: "#1F2937",
         darkHover:"#494949",
-        blueCard:"#F0F5FF"
+        blueCard:"#F0F5FF",
+        categoryBtn:"#dfe2ff"
+
       },
       transitionDelay: {
         150: "150ms",
