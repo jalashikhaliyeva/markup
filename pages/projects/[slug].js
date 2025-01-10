@@ -21,6 +21,7 @@ import ProjectSlider from "@/components/ProjectSlider";
 
 function ProjectPage({ project, settingsData, similarProjects }) {
   const router = useRouter();
+console.log(project, "project");
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -67,7 +68,7 @@ function ProjectPage({ project, settingsData, similarProjects }) {
             />
             <ProjectDetails image={project.image} />
             <AboutProject description={project.desc} />
-            <ProjectSlider data={similarProjects} />
+            <ProjectSlider   data={project.images} />
 
             {/* <Customers slides={similarProjects} singleCarousel={true} /> */}
             {/* <OurAdvantagesSection data={similarProjects} /> */}

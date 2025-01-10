@@ -46,6 +46,7 @@
   max-width: 100%;
   height: 500px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .prevButton,
@@ -87,6 +88,8 @@
 
 .thumbnailImage {
   border-radius: 4px;
+  height: 60px;
+  object-fit: cover;
   /* If you want a hover effect, add it: */
   transition: transform 0.3s;
 }
