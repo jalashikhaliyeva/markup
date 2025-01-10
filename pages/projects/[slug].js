@@ -6,7 +6,7 @@ import Container from "@/components/Container";
 import Header from "@/components/Header";
 import TitleButtonProject from "@/components/TitleButtonProject";
 import CategoriesProject from "@/components/CategoriesProject";
-import AboutProject from "@/components/AboutProject";
+
 import SimilarProjectsTitle from "@/components/SimilarProjectsTitle";
 import OurAdvantagesSection from "@/components/OurAdvantagesSection";
 import Footer from "@/components/Footer";
@@ -15,6 +15,9 @@ import { getSettings } from "@/services/getSettings";
 import Customers from "@/components/Customers";
 import Head from "next/head";
 import Slider from "@/components/EmblaCarouselAdvantage/EmblaCarousel";
+import ProjectDetails from "@/components/ProjectDetails";
+import AboutProject from "@/components/AboutProject";
+import ProjectSlider from "@/components/ProjectSlider";
 
 function ProjectPage({ project, settingsData, similarProjects }) {
   const router = useRouter();
@@ -57,15 +60,21 @@ function ProjectPage({ project, settingsData, similarProjects }) {
           <Breadcrumb />
         </Container>
         <Container>
-          <TitleButtonProject title={project.title} link={project.link} />
-          <CategoriesProject
-            categoryTitles={project.category.map((cat) => cat.title)}
-          />
-          <AboutProject description={project.desc} image={project.image} />
-          <SimilarProjectsTitle />
-          {/* <Customers slides={similarProjects} singleCarousel={true} /> */}
-          {/* <OurAdvantagesSection data={similarProjects} /> */}
-          <Slider data={similarProjects} type="project" />
+          <div className="bg-white dark:bg-black p-5 rounded-xl">
+            <TitleButtonProject title={project.title} link={project.link} />
+            <CategoriesProject
+              categoryTitles={project.category.map((cat) => cat.title)}
+            />
+            <ProjectDetails image={project.image} />
+            <AboutProject description={project.desc} />
+            <ProjectSlider data={similarProjects} />
+
+            {/* <Customers slides={similarProjects} singleCarousel={true} /> */}
+            {/* <OurAdvantagesSection data={similarProjects} /> */}
+            <SimilarProjectsTitle />
+
+            <Slider data={similarProjects} type="project" />
+          </div>
         </Container>
         <div className="mt-10">
           <Footer data={settingsData} />
