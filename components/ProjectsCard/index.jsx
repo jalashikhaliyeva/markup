@@ -2,9 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "./ProjectsCard.module.css";
+import { useTranslation } from "react-i18next";
 
 function ProjectsCard({ imageSrc, category, title, slug }) {
   const router = useRouter();
+     const { t } = useTranslation();
 
   const handleNavigate = () => {
     router.push(`/projects/${slug}`);
@@ -13,7 +15,7 @@ function ProjectsCard({ imageSrc, category, title, slug }) {
   return (
     <div
       onClick={handleNavigate}
-      className={`relative flex flex-col space-y-4 cursor-pointer group ${styles.card}`}
+      className={`relative flex flex-col space-y-4 cursor-pointer  group ${styles.card}`}
     >
       {/* Content */}
       <Image
@@ -23,10 +25,10 @@ function ProjectsCard({ imageSrc, category, title, slug }) {
         className="rounded-2xl"
         alt={title}
       />
-      <span className="text-lg w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard">
+      <span className="text-sm w-fit rounded-full text-textSecondaryDefault font-normal py-1 px-3 bg-lightPurpleCard">
         {category}
       </span>
-      <h5 className="text-sliderTitle dark:text-white leading-52 text-textSecondaryDefault font-medium pb-4">
+      <h5 className="text-2xl leading-7 text-textSecondaryDefault font-medium pb-2 dark:text-white line-clamp-2">
         {title}
       </h5>
       <div className="flex items-center gap-2 pb-3 dark:text-white">
@@ -44,7 +46,7 @@ function ProjectsCard({ imageSrc, category, title, slug }) {
           />
         </svg>
         <p className="text-lg font-medium text-grayTextinBox tracking-036 leading-normal">
-          Ətraflı
+        {t("more")}
         </p>
       </div>
 

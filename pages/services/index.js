@@ -10,11 +10,13 @@ import { getSettings } from "@/services/getSettings";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Services({ servicesData, settingsData }) {
   const router = useRouter();
   const { locale } = router;
-  console.log(servicesData, "servicesData");
+  const { t } = useTranslation();
+  // console.log(servicesData, "servicesData");
 
   if (!servicesData) {
     return <LoadingAnimation />;
@@ -39,7 +41,7 @@ function Services({ servicesData, settingsData }) {
         <Container>
           <Breadcrumb />
         </Container>
-        <SingleTitle>Xidmətlərimiz</SingleTitle>
+        <SingleTitle> {t("nav.services")}</SingleTitle>
         <Container>
           <CervicesCard item={servicesData.item} />
         </Container>

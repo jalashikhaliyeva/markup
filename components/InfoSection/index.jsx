@@ -15,7 +15,7 @@ function InfoSection({ data }) {
   return (
     <div className="dark:bg-bgDarkGray pt-10 lg:pt-0">
       <Container>
-        <div className="flex flex-col lg:flex-row gap-5 pb-16 ">
+        <div className="flex flex-col lg:flex-row gap-5 pb-4 ">
           <FastContact contactInfo={contactInfo} />
           <FastAbout aboutInfo={aboutInfo}  />
         </div> 

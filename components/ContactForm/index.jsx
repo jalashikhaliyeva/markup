@@ -1,9 +1,11 @@
 import { postContactForm } from "@/services/postContactForm";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ContactForm() {
+    const { t } = useTranslation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [subject, setSubject] = useState("");
@@ -19,16 +21,16 @@ function ContactForm() {
     const newErrors = {};
 
     if (!firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = `${t('firstNameRequired')}`;
     }
     if (!lastName.trim()) {
-      newErrors.lastName = "Last name is required";
+      newErrors.lastName = `${t('lastNameRequired')}`;
     }
     if (!subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = `${t('subjectRequired')}`;
     }
     if (!message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = `${t('messageRequired')}`;
     }
 
     // If there are errors, set them and don't submit
@@ -67,11 +69,11 @@ function ContactForm() {
       <ToastContainer />
 
       <h3 className="text-black dark:text-white font-bold text-2xl leading-8 pb-4">
-        Request A Quote — let’s work together.
+ 
+        {t("contact-form.title")}
       </h3>
       <p className="text-darkGray dark:text-white text-base font-normal leading-6 pb-6">
-        Got a project? Drop me a line if you want to work together on something
-        exciting. Or do you need our help? Feel free to contact us.
+      {t("contact-form.desc")}
       </p>
 
       <form
@@ -85,12 +87,12 @@ function ContactForm() {
               htmlFor="firstName"
               className="block text-sm font-normal text-black dark:text-white mb-2"
             >
-              First name
+            {t('firstName')}
             </label>
             <input
               type="text"
               id="firstName"
-              placeholder="Your first name"
+              placeholder={t('yourName')}
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               className={`w-full p-3 border rounded-md shadow-sm transition duration-300
@@ -112,12 +114,12 @@ function ContactForm() {
               htmlFor="lastName"
               className="block text-sm font-normal dark:text-white text-black mb-2"
             >
-              Last name
+             {t('lastName')}
             </label>
             <input
               type="text"
               id="lastName"
-              placeholder="Your last name"
+              placeholder={t('yourLastName')}
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               className={`w-full p-3 border rounded-md shadow-sm transition duration-300
@@ -142,12 +144,12 @@ function ContactForm() {
             htmlFor="subject"
             className="block text-sm font-normal dark:text-white text-black mb-2"
           >
-            Subject
+          {t('subject')}
           </label>
           <input
             type="text"
             id="subject"
-            placeholder="Enter a subject"
+            placeholder={t('enterSubject')}
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             className={`w-full p-3 border rounded-md shadow-sm transition duration-300
@@ -171,12 +173,12 @@ function ContactForm() {
             htmlFor="message"
             className="block text-sm font-normal dark:text-white text-black mb-2"
           >
-            Message
+           {t('message')}
           </label>
           <textarea
             id="message"
             rows="4"
-            placeholder="Tell us about your project..."
+            placeholder={t('tellUsAboutYourProject')}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className={`w-full p-3 border rounded-md shadow-sm transition duration-300
@@ -202,7 +204,7 @@ function ContactForm() {
                        hover:bg-blackButtonHover transition duration-300 
                        rounded-2xl flex items-center gap-2 text-xl leading-6 font-medium group"
           >
-            Göndər
+            {t('send')}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function BlogCard({ imageSrc, title, date, slug, desc }) {
   const router = useRouter();
@@ -10,7 +11,7 @@ function BlogCard({ imageSrc, title, date, slug, desc }) {
   const handleNavigate = () => {
     router.push(`/blogs/${slug}`);
   };
-
+    const { t } = useTranslation();
   return (
     <div
       onClick={handleNavigate}
@@ -68,7 +69,7 @@ function BlogCard({ imageSrc, title, date, slug, desc }) {
               />
             </svg>
             <p className="text-lg font-medium text-grayTextinBox tracking-036 leading-normal">
-              Ətraflı
+            {t("more")}
             </p>
           </div>
         </div>

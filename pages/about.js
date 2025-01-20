@@ -19,8 +19,8 @@ import { useRouter } from "next/router";
 import React from "react";
 
 function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
-  console.log(aboutData, "aboutData");
-
+  // console.log(aboutData, "aboutData");
+  const { t } = useTranslation();
   const router = useRouter();
   const { locale } = router;
   const { meta_tag } = aboutData;
@@ -47,7 +47,8 @@ function About({ aboutData, faqData, teamData, clientsData, settingsData }) {
           <div className="bg-white dark:bg-black rounded-2xl mb-28">
             <div className="p-2 lg:p-9">
               <h1 className="text-black dark:text-white font-medium leading-83 flex items-center justify-center text-4xl md:text-title">
-                Haqqımızda
+             
+                {t("nav.about")}
               </h1>
               <p className="text-lg leading-6 flex items-center justify-center text-purple1 pb-custom-space">
                 {aboutData.item.title}
@@ -92,6 +93,7 @@ import CustomersTitleIndex from "@/components/CustomersTitleIndex";
 import { getSettings } from "@/services/getSettings";
 import Head from "next/head";
 import MissionVision from "@/components/MissionVision";
+import { useTranslation } from "react-i18next";
 
 export async function getServerSideProps(context) {
   const lang = context.locale; // Default to "az" if locale is not set

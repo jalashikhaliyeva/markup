@@ -36,7 +36,7 @@ function FastAbout({ aboutInfo }) {
             </svg>
           }
         >
-          {t("nav.contact")}
+          {t("nav.about")}
         </NeonButton>
       </div>
     </div>

@@ -3,13 +3,15 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import NavigationButton from "../NavigationButton";
+import { useTranslation } from "react-i18next";
 
 function CervicesCard({ item }) {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [visibleCards, setVisibleCards] = useState(6); // Number of initially visible cards
   const router = useRouter();
   const isIndexPage = router.pathname === "/";
-  console.log(item, "item");
+  // console.log(item, "item");
+    const { t } = useTranslation();
 
   const handleMouseEnter = (index) => {
     setHoveredCard(index);
@@ -64,7 +66,7 @@ function CervicesCard({ item }) {
                     className="fill-black dark:fill-white"
                   />
                 </svg>
-                Ətraflı
+                {t("more")}
               </button>
             </div>
             <div className="relative flex-shrink-0 w-[104px] h-[104px] lg:w-[190px] lg:h-[190px] overflow-hidden">

@@ -20,5 +20,30 @@
   "theme": {
     "light": "Aydın Rejimə keç",
     "dark": "Qaranlıq Rejimə keç"
-  }
+  },
+  "contact-form": {
+    "title": "Gəlin Birlikdə İşləyək",
+    "desc": "Xidmətlərimiz haqqında sualınız varsa, xüsusi təklifə ehtiyacınız varsa , aşağıdakı formu doldurun və komandamız sizə qısa müddət ərzində cavab verəcək. Məqsədlərinizə nail olmaq üçün gəlin birlikdə işləyək."
+  },
+  "firstName": "Ad",
+  "yourName": "Sizin adınız",
+  "lastName": "Soyad",
+  "yourLastName": "Sizin soyadınız",
+  "subject": "Mövzu",
+  "enterSubject": "Mövzu daxil edin",
+  "message": "Mesaj",
+  "tellUsAboutYourProject": "Layihəniz haqqında bizə danışın",
+  "firstNameRequired": "Ad tələb olunur",
+  "lastNameRequired": "Soyad tələb olunur",
+  "subjectRequired": "Mövzu tələb olunur",
+  "messageRequired": "Mesaj tələb olunur",
+  "contactUs": "Bizimlə əlaqə",
+  "emailUs": "Bizə email göndərin",
+  "messageUs": "Bizə mesaj göndərin",
+  "send": "Göndər",
+  "submit": "Təsdiqlə",
+  "callUs": "Bizə zəng edin",
+  "more": "Ətraflı",
+  "faq-title": "Agentlik haqqında Suallar",
+  "faq-desc":"Şirkət və komanda haqqında daha çox öyrənin."
 }

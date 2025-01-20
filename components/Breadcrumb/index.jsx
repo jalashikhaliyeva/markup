@@ -1,23 +1,12 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 const Breadcrumb = () => {
+  const { t } = useTranslation(); // For translations
   const router = useRouter();
-
-  // Mapping path segments to their corresponding labels
-  const pathToLabel = {
-    services: "Xidmətlər",
-    projects: "Layihələr",
-    about: "Haqqımızda",
-    blogs: "Bloqlar",
-    team: "Komandamız",
-    customers: "Müştərilər",
-    // Add more mappings as needed
-    // Example:
-    // about: "Haqqımızda",
-    contact: "Əlaqə",
-  };
+  const { locale } = router; // Current locale
 
   const pathSegments = router.asPath
     .split("/")
@@ -40,7 +29,7 @@ const Breadcrumb = () => {
       if (segment === "home" || segment === "profil") return;
 
       const path = `/${pathSegments.slice(0, index + 1).join("/")}`;
-      const label = pathToLabel[segment] || formatLabel(segment);
+      const label = t(`nav.${segment}`, formatLabel(segment)); // Use translations with fallback
       const isLast = index === pathSegments.length - 1;
 
       items.push(
@@ -53,7 +42,7 @@ const Breadcrumb = () => {
               {label}
             </span>
           ) : (
-            <Link href={path}>
+            <Link href={path} locale={locale}>
               <span className=" text-base font-normal leading-6 text-grayText hover:text-textSecondaryDefault dark:text-white cursor-pointer transition-colors duration-300 ease-in-out">
                 {label}
               </span>
@@ -64,7 +53,7 @@ const Breadcrumb = () => {
     });
 
     return items;
-  }, [pathSegments]);
+  }, [pathSegments, t]);
 
   // Determine if "Profil" should be shown based on the current path
   const showProfile = router.pathname.startsWith("/hesablarim");
@@ -72,9 +61,9 @@ const Breadcrumb = () => {
   return (
     <div className="flex flex-wrap md:flex-nowrap flex-row gap-3 mb-6 mt-custom-space">
       {/* Static home link */}
-      <Link href="/">
+      <Link href="/" locale={locale}>
         <span className=" text-base font-normal leading-6 text-gray-500 dark:text-gray-400 hover:text-textSecondaryDefault cursor-pointer transition-colors duration-300 ease-in-out">
-          Əsas səhifə
+          {t("nav.home", "Əsas səhifə")}
         </span>
       </Link>
 
@@ -84,9 +73,9 @@ const Breadcrumb = () => {
           <span className=" text-base font-normal leading-6 text-grayText mx-2">
             /
           </span>
-          <Link href="/hesablarim">
+          <Link href="/hesablarim" locale={locale}>
             <span className=" text-base font-normal leading-6 text-grayText hover:text-textSecondaryDefault cursor-pointer transition-colors duration-300 ease-in-out">
-              Profil
+              {t("nav.profil", "Profil")}
             </span>
           </Link>
         </>

@@ -17,6 +17,7 @@
   backface-visibility: hidden;
   display: flex;
   touch-action: pan-y pinch-zoom;
+  justify-content: center;
   margin-left: calc(0.5rem * -1);
   justify-content: flex-start; /* Default alignment */
 }

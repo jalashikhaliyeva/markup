@@ -5,7 +5,7 @@
     "about": "About us",
     "whoWeare": "Who we are",
     "team": "Team",
- 
+
     "customers": "Customers",
     "blogs": "Blogs",
     "contact": "Contact Us",
@@ -14,11 +14,36 @@
     "forums": "Forums",
     "usefulLinks": "Useful Links"
   },
-  "navigation":"Navigation",
-  "contact":"Contact",
-    "projectNotFound": "Project not found",
+  "navigation": "Navigation",
+  "contact": "Contact",
+  "projectNotFound": "Project not found",
   "theme": {
     "light": "Switch to Light Mode",
     "dark": "Switch to Dark Mode"
-  }
+  },
+  "contact-form": {
+    "title": "Let’s Work Together",
+    "desc": "We’d love to hear from you! Whether you have a question about our services, need a custom quote, or just want to say hello, fill out the form below and our team will get back to you promptly. Let’s work together to achieve your goals."
+  },
+  "firstName": "First name",
+  "yourName": "Your name",
+  "lastName": "Last name",
+  "yourLastName": "Your last name",
+  "subject": "Subject",
+  "enterSubject": "Enter a subject",
+  "message": "Message",
+  "tellUsAboutYourProject": "Tell us about your project",
+  "firstNameRequired": "First name is required",
+  "lastNameRequired": "Last name is required",
+  "subjectRequired": "Subject is required",
+  "messageRequired": "Message is required",
+  "contactUs": "Contact Us",
+  "emailUs": "Email us",
+  "messageUs": "Message us",
+  "send": "Send",
+  "submit": "Submit",
+  "callUs": "Call us",
+  "more": "More",
+  "faq-title": "AAgency Questions",
+     "faq-desc":"Learn more about the company and the team behind it."
 }

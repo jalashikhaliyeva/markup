@@ -6,9 +6,11 @@ import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import sanitizeHtml from "sanitize-html";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
-const Slider = ({ data , type }) => {
+const Slider = ({ data, type }) => {
   console.log(data, "data slider");
+  const { t } = useTranslation();
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
@@ -70,7 +72,6 @@ const Slider = ({ data , type }) => {
     router.push(`${basePath}/${slug}`);
   };
 
-
   return (
     <div className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
@@ -80,7 +81,6 @@ const Slider = ({ data , type }) => {
               className={`${styles.embla__slide} lg:flex-[0_0_35%] px-2`}
               key={slide.id}
             >
-      
               <div
                 className="group flex flex-col w-full bg-boxGrayBodyColor rounded-2xl transition-transform duration-300 cursor-pointer"
                 onClick={() => handleCardClick(slide.slug)} // Add onClick handler
@@ -95,14 +95,14 @@ const Slider = ({ data , type }) => {
                 />
 
                 <div className="flex flex-wrap mt-2 gap-2">
-                  {slide.category?.map((cat) => (
+                  {/* {slide.category?.map((cat) => (
                     <span
                       key={cat.slug}
                       className="text-sm w-fit rounded-full text-textSecondaryDefault font-normal py-2 px-3 mb-4 bg-lightPurpleCard"
                     >
                       {cat.title}
                     </span>
-                  ))}
+                  ))} */}
                 </div>
                 <h5 className="text-3xl leading-52 text-textSecondaryDefault font-medium pb-2 dark:text-white line-clamp-2">
                   {slide.title}
@@ -130,7 +130,7 @@ const Slider = ({ data , type }) => {
                     //   __html: sanitizeHtml(slide.desc),
                     // }}
                   >
-                    Ətraflı
+                    {t("more")}
                   </p>
                 </div>
               </div>

@@ -80,3 +80,25 @@ body {
 .theme-overlay.active {
   transform: scale(50);
 }
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+.swiper-button-prev{
+  display: none !important;
+}
+.swiper-button-next{
+  display: none !important;
+}
+
+/* .swiper-slide{
+  height: 520px !important;
+} */
+
+.swiper-slide img{
+  height: 200px !important;
+  /* width: 120px !important; */
+}

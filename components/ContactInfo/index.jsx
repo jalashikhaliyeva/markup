@@ -2,26 +2,37 @@ import React from "react";
 import Container from "@/components/Container";
 import NavigationTitle from "@/components/NavigationTitle";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 function ContactInfo({ data, socialLinks }) {
-  console.log(socialLinks, "socialLinks");
+  const { t } = useTranslation();
+  // console.log(socialLinks, "socialLinks");
+  const translatedText = t('contactUs');
 
+  // Split the string into words
+  const words = translatedText.trim().split(' ');
+
+  // Extract the last word
+  const lastWord = words.pop();
+
+  // Join the remaining words
+  const firstPart = words.join(' ');
   return (
     <div className="flex flex-col">
-      <h2 className="font-grotesk font-medium leading-9 lg:leading-83 text-neutralBlack dark:text-white text-3xl md:text-title">
-        Bizimlə{" "}
-        <span
-          style={{
-            background:
-              "linear-gradient(90deg, #FF0FFD 0.24%, #006FFC 32.56%, #6E5EEE 65.48%,  #197DF7 92.99%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-          className="inline-block"
-        >
-          əlaqə
-        </span>
-      </h2>
+    <h2 className="font-grotesk font-medium leading-9 lg:leading-83 text-neutralBlack dark:text-white text-3xl md:text-title">
+      {firstPart}{firstPart ? ' ' : ''}
+      <span
+        style={{
+          background:
+            'linear-gradient(90deg, #FF0FFD 0.24%, #006FFC 32.56%, #6E5EEE 65.48%, #197DF7 92.99%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+        className="inline-block"
+      >
+        {lastWord}
+      </span>
+    </h2>
 
       <Image
         src="/contact-img.png"
@@ -68,7 +79,7 @@ function ContactInfo({ data, socialLinks }) {
 
           <div className="flex flex-col items-start justify-center">
             <h5 className="text-gray-500 text-base uppercase leading-3 font-medium">
-              Email us
+              {t("emailUs")}
             </h5>
 
             <p className="text-black dark:text-white leading-8 font-base font-medium">
@@ -113,7 +124,7 @@ function ContactInfo({ data, socialLinks }) {
 
           <div className="flex flex-col items-start justify-center">
             <h5 className="text-gray-500 text-base uppercase leading-3 font-medium">
-              Message us
+            {t("callUs")}
             </h5>
 
             <p className="text-black dark:text-white leading-8 font-base font-medium">
@@ -128,7 +139,7 @@ function ContactInfo({ data, socialLinks }) {
         <div className="flex items-center gap-2">
           <hr className="w-[30px] h-[3px] rounded-xl text-black bg-black dark:bg-white dark:text-white"></hr>
           <p className="text-black dark:text-white font-medium leading-6 text-base">
-            Connect with us:
+          {t("contactUs")}:
           </p>
         </div>
 
