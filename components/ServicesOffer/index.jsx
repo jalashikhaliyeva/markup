@@ -5,7 +5,8 @@ import NavigateToPortfolio from "../NavigateToPortfolio";
 import useTheme from "@/shared/hooks/useTheme";
 
 function ServicesOffer({ data }) {
-  const { isDarkMode } = useTheme(); // Destructure isDarkMode from the context
+  console.log(data, "data");
+  const { isDarkMode } = useTheme(); 
 
   return (
     <div className="pt-custom-space">

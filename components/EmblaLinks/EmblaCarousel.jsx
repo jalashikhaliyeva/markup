@@ -1,26 +1,23 @@
-// EmblaLinks.jsx
 import React, { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
+import { useNavigate } from "react-router-dom"; // import useNavigate
 import styles from "./embla.module.css";
 import { FaLink } from "react-icons/fa";
-const formatLink = (link) => {
-  if (/^(http|https):\/\//i.test(link)) {
-    return link;
-  }
-  return `https://${link}`;
-};
+import { useRouter } from "next/router";
+
 const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
   const [emblaRef] = useEmblaCarousel(options, [AutoScroll(autoScrollOptions)]);
   const [isPlaying, setIsPlaying] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     setIsPlaying(true);
   }, []);
 
-  const handleClick = (link) => {
-    const formattedLink = formatLink(link);
-    window.open(formattedLink, "_blank", "noopener,noreferrer");
+  // Updated click handler to navigate internally using the slide's slug
+  const handleClick = (slug) => {
+    router.push(`useful-links/${slug}`);
   };
 
   return (
@@ -28,11 +25,14 @@ const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
           {slides.map((slide, index) => (
-            <div className={styles.embla__slide} key={index}>
+            <div 
+              className={styles.embla__slide} 
+              key={index}
+              onClick={() => handleClick(slide.slug)} // call handleClick with slide.slug
+              style={{ cursor: "pointer" }} // indicate clickable area
+            >
               <div className={styles.box}>
-                {/* <FaLink className={styles.icon}  /> */}
                 <div className={styles.icon}>
-                  {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -46,15 +46,9 @@ const EmblaLinks = ({ slides, options, autoScrollOptions }) => {
                     />
                   </svg>
                 </div>
-
-                <a
-                  href={formatLink(slide.link)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.text} dark:text-white`}
-                >
+                <div className={`${styles.text} dark:text-white`}>
                   {slide.title}
-                </a>
+                </div>
               </div>
             </div>
           ))}

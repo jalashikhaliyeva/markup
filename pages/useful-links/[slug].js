@@ -10,23 +10,27 @@ import BlogCardSingle from "@/components/BlogCardSingle";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getSingleBlog } from "@/services/getSingleBlog";
 import { getSettings } from "@/services/getSettings"; // <-- Import getSettings
+import UsefulLinksSingle from "@/components/UsefulLinksSIngle";
+import { getSingleUsefulLinks } from "@/services/getSingleUsefulLinks";
 
-function BlogSingle({ blog, settingsData }) {
+function UsefulLinks({ data, settingsData }) {
+
+
   // Handle the case where the blog is not found
-  if (!blog) {
+  if (!data) {
     return (
       <>
         <Header />
         <Container>
           <h1 className="text-2xl py-96 flex justify-center items-center ">
-            Blog not found
+            Link not found
           </h1>
         </Container>
         <Footer data={settingsData} />
       </>
     );
   }
-  console.log(blog, "blog");
+ 
 
   const headerBgColor = "#ffff";
   const headerDarkBgColor = "#333435";
@@ -34,9 +38,9 @@ function BlogSingle({ blog, settingsData }) {
   return (
     <>
       <Head>
-        <title>{blog.meta_title}</title>
-        <meta name="description" content={blog.meta_description} />
-        <meta name="keywords" content={blog.meta_keywords} />
+        <title>{data.meta_title}</title>
+        <meta name="description" content={data.meta_description} />
+        <meta name="keywords" content={data.meta_keywords} />
       </Head>
       <div className="pt-20 bg-mainGray dark:bg-bgDark">
         <Header bgColor={headerBgColor} darkBgColor={headerDarkBgColor} />
@@ -44,8 +48,8 @@ function BlogSingle({ blog, settingsData }) {
           <Breadcrumb />
         </Container>
         <Container>
-          <BlogsSingleTitle blog={blog} />
-          <BlogCardSingle blog={blog} />
+          <BlogsSingleTitle blog={data} />
+          <UsefulLinksSingle blog={data} />
         </Container>
         <Footer data={settingsData} />
       </div>
@@ -53,28 +57,27 @@ function BlogSingle({ blog, settingsData }) {
   );
 }
 
-export default BlogSingle;
-
+export default UsefulLinks;
 
 export async function getServerSideProps(context) {
   const { locale = "az" } = context;
   const { slug } = context.params;
   try {
-    const data = await getSingleBlog(locale, slug);
+    const response = await getSingleUsefulLinks(locale, slug);
 
-    if (!data?.item) {
+    if (!response?.item) {
       return {
-        notFound: true, 
+        notFound: true, // Triggers a 404 page if there's no item
       };
     }
 
-    const blog = data.item;
+    const data = response.item;
 
     const settingsData = await getSettings(locale);
 
     return {
       props: {
-        blog,
+        data,
         settingsData,
       },
     };

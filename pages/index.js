@@ -41,7 +41,7 @@ export default function Home({
   const { locale } = router;
   const headerBgColor = "#F5F5F7";
   const headerDarkBgColor = "#333435";
-  // console.log(heroData, "heroData");
+  console.log(heroData, "heroData");
   if (
     !heroData ||
     !servicesData ||
